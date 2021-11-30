@@ -1,1 +1,5 @@
-﻿LINK : fatal error LNK1104: cannot open file 'd3dx9.lib'
+﻿cl : command line warning D9035: option 'Gm' has been deprecated and will be removed in a future release
+  spacewar.cpp
+C:\Users\user\Desktop\Overtale\constants.h(52,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
+C:\Users\user\Desktop\Overtale\constants.h(52,30): warning C4309: 'initializing': truncation of constant value
+  Overtale.vcxproj -> C:\Users\user\Desktop\Overtale\Debug\Overtale.exe
