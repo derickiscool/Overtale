@@ -39,6 +39,7 @@ const float MAX_FRAME_TIME = 1.0f/MIN_FRAME_RATE; // maximum time used in calcul
 // graphic images
 const char NEBULA_IMAGE[] = "pictures\\orion.jpg";     // placeholder for background
 const char TEXTURES_IMAGE[] = "pictures\\textures.png";  // placeholder for ship
+const char FLOOR_IMAGE[] = "pictures\\floor.png";
 
 // key mappings
 // In this game simple constants are used for key mappings. If variables were used

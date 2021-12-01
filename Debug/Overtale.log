@@ -1,5 +1,5 @@
-﻿cl : command line warning D9035: option 'Gm' has been deprecated and will be removed in a future release
-  spacewar.cpp
-C:\Users\user\Desktop\Overtale\constants.h(52,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
-C:\Users\user\Desktop\Overtale\constants.h(52,30): warning C4309: 'initializing': truncation of constant value
-  Overtale.vcxproj -> C:\Users\user\Desktop\Overtale\Debug\Overtale.exe
+﻿  overtale.cpp
+D:\GPP Assignment\Overtale\constants.h(53,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
+D:\GPP Assignment\Overtale\constants.h(53,30): warning C4309: 'initializing': truncation of constant value
+entity.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
+  Overtale.vcxproj -> D:\GPP Assignment\Overtale\Debug\Overtale.exe

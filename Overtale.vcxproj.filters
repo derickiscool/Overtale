@@ -27,19 +27,19 @@
     <ClCompile Include="winmain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="spacewar.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Gpp\Week 5\PlanetCollision(1)\PlanetCollision\image.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Gpp\Week 5\PlanetCollision(1)\PlanetCollision\entity.cpp">
+    <ClCompile Include="textureManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="textureManager.cpp">
+    <ClCompile Include="entity.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="image.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="overtale.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -59,9 +59,6 @@
     <ClInclude Include="gameError.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="spacewar.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="player.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -72,6 +69,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="textureManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="overtale.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
