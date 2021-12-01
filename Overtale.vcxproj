@@ -88,20 +88,27 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\Gpp\Week 5\PlanetCollision(1)\PlanetCollision\entity.cpp" />
+    <ClCompile Include="..\Gpp\Week 5\PlanetCollision(1)\PlanetCollision\image.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="graphics.cpp" />
     <ClCompile Include="input.cpp" />
-    <ClCompile Include="menu.cpp" />
+    <ClCompile Include="player.cpp" />
     <ClCompile Include="spacewar.cpp" />
+    <ClCompile Include="textureManager.cpp" />
     <ClCompile Include="winmain.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="constants.h" />
+    <ClInclude Include="entity.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="gameError.h" />
     <ClInclude Include="graphics.h" />
+    <ClInclude Include="image.h" />
     <ClInclude Include="input.h" />
+    <ClInclude Include="player.h" />
     <ClInclude Include="spacewar.h" />
+    <ClInclude Include="textureManager.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram1.cd" />

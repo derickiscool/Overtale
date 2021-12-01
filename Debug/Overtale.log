@@ -1,12 +1,5 @@
 ﻿cl : command line warning D9035: option 'Gm' has been deprecated and will be removed in a future release
-  winmain.cpp
-C:\Users\pegas\Desktop\Sem 3.2 stuff\GPP\ASG1\winmain.cpp : fatal error C1073: Internal error involving incremental compilation(compiler file 'd:\agent\_work\57\s\src\vctools\Compiler\CxxFE\sl\p1\c\main.c', line 1030)
   spacewar.cpp
-C:\Users\pegas\Desktop\Sem 3.2 stuff\GPP\ASG1\spacewar.cpp : fatal error C1073: Internal error involving incremental compilation(compiler file 'd:\agent\_work\57\s\src\vctools\Compiler\CxxFE\sl\p1\c\main.c', line 1030)
-  input.cpp
-C:\Users\pegas\Desktop\Sem 3.2 stuff\GPP\ASG1\input.cpp : fatal error C1073: Internal error involving incremental compilation(compiler file 'd:\agent\_work\57\s\src\vctools\Compiler\CxxFE\sl\p1\c\main.c', line 1030)
-  graphics.cpp
-C:\Users\pegas\Desktop\Sem 3.2 stuff\GPP\ASG1\graphics.cpp : fatal error C1073: Internal error involving incremental compilation(compiler file 'd:\agent\_work\57\s\src\vctools\Compiler\CxxFE\sl\p1\c\main.c', line 1030)
-  game.cpp
-C:\Users\pegas\Desktop\Sem 3.2 stuff\GPP\ASG1\game.cpp : fatal error C1073: Internal error involving incremental compilation(compiler file 'd:\agent\_work\57\s\src\vctools\Compiler\CxxFE\sl\p1\c\main.c', line 1030)
-  Generating Code...
+C:\Users\user\Desktop\Overtale\constants.h(52,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
+C:\Users\user\Desktop\Overtale\constants.h(52,30): warning C4309: 'initializing': truncation of constant value
+  Overtale.vcxproj -> C:\Users\user\Desktop\Overtale\Debug\Overtale.exe
