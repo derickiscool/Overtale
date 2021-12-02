@@ -7,6 +7,7 @@
 #include "textureManager.h"
 #include "image.h"
 #include "player.h"
+#include "environment.h"
 
 //=============================================================================
 // Create game class
@@ -15,11 +16,12 @@ class Overtale : public Game
 {
 private:
     // variables
-    TextureManager nebulaTexture;   // nebula texture
     TextureManager gameTextures;    // game texture
     TextureManager floorTexture;    //floor texture
     Player    ship1;          // spaceship
-    Image   nebula;         // backdrop image
+    Environment floorEnvironment; //floor environment
+    Environment fullFloorRow[ENVIRONMENT_ROW_LENGTH];  //Creating Singular Row
+    Environment fullFloor[ENVIRONMENT_ROW_LENGTH*ENVIRONMENT_COLUMN_LENGTH]; //Creating whole floor
     
 
 public:

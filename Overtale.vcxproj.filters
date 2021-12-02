@@ -42,6 +42,9 @@
     <ClCompile Include="overtale.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="environment.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="constants.h">
@@ -72,6 +75,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="overtale.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="environment.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

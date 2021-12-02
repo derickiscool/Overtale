@@ -23,13 +23,8 @@ void Overtale::initialize(HWND hwnd)
 {
     Game::initialize(hwnd); // throws GameError
 
-
-    // nebula texture
-    if (!nebulaTexture.initialize(graphics, NEBULA_IMAGE))
-        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing nebula texture"));
-
-    // floor texture
-    
+   
+    //floor texture
     if (!floorTexture.initialize(graphics, FLOOR_IMAGE))
         throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing floor texture"));
 
@@ -37,10 +32,55 @@ void Overtale::initialize(HWND hwnd)
     if (!gameTextures.initialize(graphics, TEXTURES_IMAGE))
         throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing game textures"));
 
-    // nebula image
-    if (!nebula.initialize(graphics, 0, 0, 0, &nebulaTexture))
-        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing nebula"));
-    //floor image
+
+    //floor generation 
+    if (!floorEnvironment.initialize(this, floorEnvironmentNS::WIDTH, floorEnvironmentNS::HEIGHT, 0, &floorTexture))
+        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing floor"));
+
+    
+    fullFloorRow[0] = floorEnvironment; //fullFloor [0] refers to center of the square. We start to generate more textures from this center point
+    
+    //Create one row
+    for (int i = 1; i < ENVIRONMENT_ROW_LENGTH; ++i)
+    {
+        fullFloorRow[i] = floorEnvironment;
+        if (i % 2 != 0)
+        {
+            fullFloorRow[i].setX(fullFloorRow[0].getX() + (floorEnvironmentNS::WIDTH/2 * i));
+        }
+        else
+        {
+            fullFloorRow[i].setX(fullFloorRow[0].getX() - (floorEnvironmentNS::WIDTH / 2 * i));
+        }
+    }
+    //Copy row and generate more copies
+    int block = 0; //Refers to which position in array to store the block in, multiplied by i 
+    for (Environment floorTile : fullFloorRow)
+    {
+        for (int i = 0; i < 9;++i)
+        {
+            fullFloor[i + block] = floorTile;
+            if (i % 2 != 0)
+            {
+                fullFloor[i +block].setY(fullFloor[i+ block].getY() + 8 * i);
+            }
+            else
+            {
+                fullFloor[i + block].setY(fullFloor[i + block].getY() - 8 * i);
+            }
+
+
+        }
+        block += ENVIRONMENT_COLUMN_LENGTH; //Move onto the next column 
+        
+    }
+    
+ 
+
+    
+
+ 
+
 
 
     // ship
@@ -109,10 +149,11 @@ void Overtale::render()
 {
     graphics->spriteBegin();                // begin drawing sprites
 
-    
-    nebula.draw();                          // add the orion nebula to the scene
+    for (Environment e : fullFloor)
+    {
+        e.draw();
+    }
     ship1.draw();                           //add ship to scene
-
     graphics->spriteEnd();                  // end drawing sprites
 }
 
