@@ -43,8 +43,8 @@ const char FLOOR_IMAGE[] = "pictures\\floor.png";
 
 
 //ENVIRONMENT 
-const int ENVIRONMENT_ROW_LENGTH = 9;
-const int ENVIRONMENT_COLUMN_LENGTH = 9;
+const int ENVIRONMENT_ROW_LENGTH = 31; //Must be odd numbers for true center square value
+const int ENVIRONMENT_COLUMN_LENGTH = 31;
 
 // key mappings
 // In this game simple constants are used for key mappings. If variables were used

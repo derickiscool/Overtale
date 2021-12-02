@@ -57,7 +57,7 @@ void Overtale::initialize(HWND hwnd)
     int block = 0; //Refers to which position in array to store the block in, multiplied by i 
     for (Environment floorTile : fullFloorRow)
     {
-        for (int i = 0; i < 9;++i)
+        for (int i = 0; i < ENVIRONMENT_COLUMN_LENGTH;++i)
         {
             fullFloor[i + block] = floorTile;
             if (i % 2 != 0)
@@ -88,8 +88,8 @@ void Overtale::initialize(HWND hwnd)
         throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing ship1"));
     ship1.setFrames(playerNS::SHIP1_START_FRAME, playerNS::SHIP1_END_FRAME);
     ship1.setCurrentFrame(playerNS::SHIP1_START_FRAME);
-    ship1.setX(GAME_WIDTH / 4);
-    ship1.setY(GAME_HEIGHT / 4);
+    ship1.setX(GAME_WIDTH / 4); //Set ship to center 
+    ship1.setY(GAME_HEIGHT / 4); //Set ship to center 
 
     return;
 }
