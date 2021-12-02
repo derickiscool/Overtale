@@ -18,10 +18,12 @@ private:
     // variables
     TextureManager gameTextures;    // game texture
     TextureManager floorTexture;    //floor texture
+    TextureManager crateTexture;    //crate texture
     Player    ship1;          // spaceship
-    Environment floorEnvironment; //floor environment
-    Environment fullFloorRow[ENVIRONMENT_ROW_LENGTH];  //Creating Singular Row
-    Environment fullFloor[ENVIRONMENT_ROW_LENGTH*ENVIRONMENT_COLUMN_LENGTH]; //Creating whole floor
+    Environment floorEnvironment; //floor tile environment placeholder
+    Environment fullFloorRow[FLOOR_ROW_LENGTH];  //Creating Singular Row
+    Environment fullFloor[FLOOR_ROW_LENGTH*FLOOR_COLUMN_LENGTH]; //Creating whole floor
+    Environment crateEnvironment; //Crate environment placeholder
     
 
 public:
@@ -39,6 +41,8 @@ public:
     void render();      // "
     void releaseAll();
     void resetAll();
+    void generateFloor(); //used to generate the floor of the game
+    void generateBoundary();
 };
 
 #endif

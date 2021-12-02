@@ -15,6 +15,17 @@ namespace floorEnvironmentNS
 
 }
 
+namespace boundaryEnvironmentNS
+{
+    const int WIDTH = 16;   //image width 
+    const int HEIGHT = 16;  //image height
+    const int MIN_X = (GAME_WIDTH / 2 - floorEnvironmentNS::WIDTH) - (floorEnvironmentNS::WIDTH * FLOOR_ROW_LENGTH);   //left side coordinate of boundary 
+    const int MAX_X = (GAME_WIDTH /2 ) + (floorEnvironmentNS::WIDTH * FLOOR_ROW_LENGTH) ;   //right side coordinate of boundary
+    const int MIN_Y = (GAME_HEIGHT /2 - floorEnvironmentNS::HEIGHT ) - (floorEnvironmentNS::HEIGHT * FLOOR_COLUMN_LENGTH) ;   //top side coordinate of boundary 
+    const int MAX_Y = (GAME_HEIGHT / 2) + (floorEnvironmentNS::HEIGHT * FLOOR_COLUMN_LENGTH);   //bottom side cooardinate of boundary 
+
+}
+
 // inherits from Entity class
 class Environment : public Entity
 {

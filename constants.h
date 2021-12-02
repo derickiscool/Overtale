@@ -40,11 +40,12 @@ const float MAX_FRAME_TIME = 1.0f/MIN_FRAME_RATE; // maximum time used in calcul
 const char NEBULA_IMAGE[] = "pictures\\orion.jpg";     // placeholder for background
 const char TEXTURES_IMAGE[] = "pictures\\textures.png";  // placeholder for ship
 const char FLOOR_IMAGE[] = "pictures\\floor.png";
+const char CRATE_IMAGE[] = "pictures\\crate.png";
 
 
 //ENVIRONMENT 
-const int ENVIRONMENT_ROW_LENGTH = 31; //Must be odd numbers for true center square value
-const int ENVIRONMENT_COLUMN_LENGTH = 31;
+const int FLOOR_ROW_LENGTH = 31; //Must be odd numbers for true center square value
+const int FLOOR_COLUMN_LENGTH = 31;
 
 // key mappings
 // In this game simple constants are used for key mappings. If variables were used

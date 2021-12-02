@@ -1,37 +1,8 @@
-﻿  entity.cpp
-D:\GPP Assignment\Overtale\constants.h(58,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
-D:\GPP Assignment\Overtale\constants.h(58,30): warning C4309: 'initializing': truncation of constant value
-D:\GPP Assignment\Overtale\entity.cpp(331,48): warning C4244: 'argument': conversion from 'double' to 'FLOAT', possible loss of data
-D:\GPP Assignment\Overtale\entity.cpp(331,25): warning C4244: 'argument': conversion from 'double' to 'FLOAT', possible loss of data
-D:\GPP Assignment\Overtale\entity.cpp(332,49): warning C4244: 'argument': conversion from 'double' to 'FLOAT', possible loss of data
-D:\GPP Assignment\Overtale\entity.cpp(332,22): warning C4244: 'argument': conversion from 'double' to 'FLOAT', possible loss of data
-D:\GPP Assignment\Overtale\entity.cpp(434,52): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-  environment.cpp
-D:\GPP Assignment\Overtale\constants.h(58,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
-D:\GPP Assignment\Overtale\constants.h(58,30): warning C4309: 'initializing': truncation of constant value
-  game.cpp
-D:\GPP Assignment\Overtale\constants.h(58,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
-D:\GPP Assignment\Overtale\constants.h(58,30): warning C4309: 'initializing': truncation of constant value
-  graphics.cpp
-D:\GPP Assignment\Overtale\constants.h(58,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
-D:\GPP Assignment\Overtale\constants.h(58,30): warning C4309: 'initializing': truncation of constant value
-  image.cpp
-D:\GPP Assignment\Overtale\constants.h(58,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
-D:\GPP Assignment\Overtale\constants.h(58,30): warning C4309: 'initializing': truncation of constant value
-  input.cpp
-D:\GPP Assignment\Overtale\constants.h(58,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
-D:\GPP Assignment\Overtale\constants.h(58,30): warning C4309: 'initializing': truncation of constant value
-  overtale.cpp
-D:\GPP Assignment\Overtale\constants.h(58,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
-D:\GPP Assignment\Overtale\constants.h(58,30): warning C4309: 'initializing': truncation of constant value
-  player.cpp
-D:\GPP Assignment\Overtale\constants.h(58,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
-D:\GPP Assignment\Overtale\constants.h(58,30): warning C4309: 'initializing': truncation of constant value
-  textureManager.cpp
-D:\GPP Assignment\Overtale\constants.h(58,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
-D:\GPP Assignment\Overtale\constants.h(58,30): warning C4309: 'initializing': truncation of constant value
+﻿  overtale.cpp
+D:\GPP Assignment\Overtale\constants.h(59,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
+D:\GPP Assignment\Overtale\constants.h(59,30): warning C4309: 'initializing': truncation of constant value
   winmain.cpp
-D:\GPP Assignment\Overtale\constants.h(58,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
-D:\GPP Assignment\Overtale\constants.h(58,30): warning C4309: 'initializing': truncation of constant value
+D:\GPP Assignment\Overtale\constants.h(59,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
+D:\GPP Assignment\Overtale\constants.h(59,30): warning C4309: 'initializing': truncation of constant value
   Generating Code...
   Overtale.vcxproj -> D:\GPP Assignment\Overtale\Debug\Overtale.exe
