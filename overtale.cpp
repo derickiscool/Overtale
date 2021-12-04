@@ -44,6 +44,7 @@ void Overtale::initialize(HWND hwnd)
     ship1.setX(GAME_WIDTH / 2 - playerNS::WIDTH / 2); //Set ship to center 
     ship1.setY(GAME_HEIGHT / 2 - playerNS::HEIGHT / 2); //Set ship to center 
 
+
     //floor object initialization 
     if (!floorEnvironment.initialize(this, floorEnvironmentNS::WIDTH, floorEnvironmentNS::HEIGHT, 0, &floorTexture))
         throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing floor"));
@@ -82,14 +83,18 @@ void Overtale::update()
         ship1.setY(ship1.getY() + playerNS::SPEED);
     }
 
-    if (ship1.getX() > GAME_WIDTH)               // if off screen right
-        ship1.setX((float)-ship1.getWidth());     // position off screen left
-    if (ship1.getX() < -ship1.getWidth())         // if off screen left
-        ship1.setX((float)GAME_WIDTH);           // position off screen right
-    if (ship1.getY() > GAME_HEIGHT)               // if off screen right
-        ship1.setX((float)-ship1.getHeight());     // position off screen left
-    if (ship1.getY() < -ship1.getHeight())         // if off screen left
-        ship1.setY((float)GAME_HEIGHT);           // position off screen right
+    if (ship1.getX() > boundaryEnvironmentNS::MAX_X - boundaryEnvironmentNS::WIDTH)    //if touching boundary      
+        ship1.setX(boundaryEnvironmentNS::MAX_X - boundaryEnvironmentNS::WIDTH);
+                                                                                       
+    if (ship1.getX() < boundaryEnvironmentNS::MIN_X)        
+        ship1.setX((float)boundaryEnvironmentNS::MIN_X); 
+
+
+
+    if (ship1.getY() > boundaryEnvironmentNS::MAX_Y - boundaryEnvironmentNS::HEIGHT)              
+        ship1.setY((float)boundaryEnvironmentNS::MAX_Y - boundaryEnvironmentNS::HEIGHT);     
+    if (ship1.getY() < boundaryEnvironmentNS::MIN_Y)        
+        ship1.setY((float)boundaryEnvironmentNS::MIN_Y);          
     ship1.update(frameTime);
 }
 
@@ -104,15 +109,6 @@ void Overtale::ai()
 //=============================================================================
 void Overtale::collisions()
 {
-    VECTOR2 collisionVector;
-
-    for (int i = 0; i < sizeof(fullCrateEnvironment)/sizeof(fullCrateEnvironment[0]); ++i)
-    {
-        if (ship1.collidesWith(fullCrateEnvironment[i], collisionVector))
-        {
-            ship1.setX(ship1.getX() - 50);
-        }
-    }
 
     
 }
