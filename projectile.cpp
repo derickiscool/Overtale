@@ -15,7 +15,6 @@ Projectile::Projectile()
 	collisionType = entityNS::CIRCLE;
 	loop = false;
 
-
 }
 bool Projectile::initialize(Game* gamePtr, int width, int height, int ncols,
 	TextureManager* textureM)
@@ -30,7 +29,21 @@ void Projectile::draw()
 
 void Projectile::update(float frameTime)
 {
-
+	spriteData.x += frameTime * velocity.x;         // move ship along X 
+	spriteData.y += frameTime * velocity.y;         // move ship along Y
 	Entity::update(frameTime);
 }
+void Projectile::spawnProjectiles(Projectile projectiles[])
+{
+	for (int i = 0; i < MAX_PROJECTILES; ++i)
+	{
+		if (projectiles[i].getActive() == true)
+		{
+			projectiles[i].draw();
+
+		}
+	}
+}
+
+
 
