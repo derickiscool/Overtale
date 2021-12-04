@@ -8,6 +8,7 @@
 #include "image.h"
 #include "player.h"
 #include "environment.h"
+#include "boss1.h"
 
 //=============================================================================
 // Create game class
@@ -19,6 +20,8 @@ private:
     TextureManager gameTextures;    // game texture
     TextureManager floorTexture;    //floor texture
     TextureManager crateTexture;    //crate texture
+    TextureManager boss1Texture;    //boss1 texture 
+    Boss1 boss1;
     Player    ship1;          // spaceship
     Environment floorEnvironment; //floor tile environment placeholder
     Environment fullFloorRow[FLOOR_ROW_LENGTH];  //Creating Singular Row

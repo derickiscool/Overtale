@@ -59,8 +59,6 @@ void Player::draw()
 void Player::update(float frameTime)
 {
     Entity::update(frameTime);
-    spriteData.x += frameTime * velocity.x;         // move ship along X 
-    spriteData.y += frameTime * velocity.y;         // move ship along Y
 
    //code for shield from practical
    /* if (shieldOn)

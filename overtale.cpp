@@ -36,6 +36,15 @@ void Overtale::initialize(HWND hwnd)
     if (!gameTextures.initialize(graphics, TEXTURES_IMAGE))
         throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing game textures"));
 
+    //boss 1 textures
+    if (!boss1Texture.initialize(graphics, BOSS1_IMAGE))
+        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing game textures"));
+
+    if (!boss1.initialize(this, boss1NS::WIDTH, boss1NS::HEIGHT, boss1NS::TEXTURE_COLS, &boss1Texture))
+        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing boss1"));
+    boss1.setFrames(boss1NS::START_FRAME, boss1NS::END_FRAME);
+    boss1.setCurrentFrame(boss1NS::START_FRAME);
+
     // ship
     if (!ship1.initialize(this, playerNS::WIDTH, playerNS::HEIGHT, playerNS::TEXTURE_COLS, &gameTextures))
         throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing ship1"));
@@ -96,6 +105,7 @@ void Overtale::update()
     if (ship1.getY() < boundaryEnvironmentNS::MIN_Y)        
         ship1.setY((float)boundaryEnvironmentNS::MIN_Y);          
     ship1.update(frameTime);
+    boss1.update(frameTime);
 }
 
 //=============================================================================
@@ -120,11 +130,6 @@ void Overtale::render()
 {
     graphics->spriteBegin();                // begin drawing sprites
 
-    //for (Environment e : fullFloorRow)
-    //{
-    //    e.draw();
-    //}
-
     for (Environment e : fullFloor)
     {
         e.draw();
@@ -134,6 +139,7 @@ void Overtale::render()
         e.draw();
     }
     ship1.draw();                           //add ship to scene
+    boss1.draw();
     graphics->spriteEnd();                  // end drawing sprites
 }
 

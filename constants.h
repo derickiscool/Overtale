@@ -41,6 +41,7 @@ const char NEBULA_IMAGE[] = "pictures\\orion.jpg";     // placeholder for backgr
 const char TEXTURES_IMAGE[] = "pictures\\textures.png";  // placeholder for ship
 const char FLOOR_IMAGE[] = "pictures\\floor.png";
 const char CRATE_IMAGE[] = "pictures\\crate.png";
+const char BOSS1_IMAGE[] = "pictures\\boss1.png";
 
 
 //ENVIRONMENT 
