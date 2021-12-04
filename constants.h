@@ -35,6 +35,7 @@ const float FRAME_RATE  = 200.0f;               // the target frame rate (frames
 const float MIN_FRAME_RATE = 10.0f;             // the minimum frame rate
 const float MIN_FRAME_TIME = 1.0f/FRAME_RATE;   // minimum desired time for 1 frame
 const float MAX_FRAME_TIME = 1.0f/MIN_FRAME_RATE; // maximum time used in calculations
+const int MAX_PROJECTILES = 100;
 
 // graphic images
 const char NEBULA_IMAGE[] = "pictures\\orion.jpg";     // placeholder for background
@@ -42,6 +43,7 @@ const char TEXTURES_IMAGE[] = "pictures\\textures.png";  // placeholder for ship
 const char FLOOR_IMAGE[] = "pictures\\floor.png";
 const char CRATE_IMAGE[] = "pictures\\crate.png";
 const char BOSS1_IMAGE[] = "pictures\\boss1.png";
+const char BOSS1Projectile_IMAGE[] = "pictures\\boss1Projectile.png";
 
 
 //ENVIRONMENT 

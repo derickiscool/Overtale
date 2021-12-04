@@ -4,6 +4,7 @@
 
 #include "entity.h"
 #include "constants.h"
+#include "projectile.h"
 
 namespace boss1NS
 {
@@ -13,7 +14,7 @@ namespace boss1NS
     const int Y = GAME_HEIGHT / 6;
     const int   TEXTURE_COLS = 0;           // texture has 8 columns
     const int   START_FRAME = 0;      // starts at frame 0
-    const int   END_FRAME = 5;        // animation frames 0,1,2,3,4,5
+    const int   END_FRAME = 5;        // animation frames 0,1,2,3,4
     const float ANIMATION_DELAY = 0.2f;    // time between frames
     
 }
@@ -21,6 +22,7 @@ namespace boss1NS
 // inherits from Entity class
 class Boss1 : public Entity
 {
+    
 
 public:
     // constructor
@@ -31,6 +33,7 @@ public:
     virtual bool initialize(Game* gamePtr, int width, int height, int ncols,
         TextureManager* textureM);
     void update(float frameTime);
+    void spawnProjectiles(Projectile projectiles[]);
 };
 #endif
 

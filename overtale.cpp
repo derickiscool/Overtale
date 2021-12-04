@@ -22,7 +22,7 @@ Overtale::~Overtale()
 void Overtale::initialize(HWND hwnd)
 {
     Game::initialize(hwnd); // throws GameError
-
+    bossType = BossType::bossType1;
    
     //floor texture
     if (!floorTexture.initialize(graphics, FLOOR_IMAGE))
@@ -35,15 +35,6 @@ void Overtale::initialize(HWND hwnd)
     // main game textures
     if (!gameTextures.initialize(graphics, TEXTURES_IMAGE))
         throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing game textures"));
-
-    //boss 1 textures
-    if (!boss1Texture.initialize(graphics, BOSS1_IMAGE))
-        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing game textures"));
-
-    if (!boss1.initialize(this, boss1NS::WIDTH, boss1NS::HEIGHT, boss1NS::TEXTURE_COLS, &boss1Texture))
-        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing boss1"));
-    boss1.setFrames(boss1NS::START_FRAME, boss1NS::END_FRAME);
-    boss1.setCurrentFrame(boss1NS::START_FRAME);
 
     // ship
     if (!ship1.initialize(this, playerNS::WIDTH, playerNS::HEIGHT, playerNS::TEXTURE_COLS, &gameTextures))
@@ -61,9 +52,23 @@ void Overtale::initialize(HWND hwnd)
     if (!crateEnvironment.initialize(this, boundaryEnvironmentNS::WIDTH, boundaryEnvironmentNS::HEIGHT, 0, &crateTexture))
         throw(GameError(gameErrorNS::FATAL_ERROR, "Error intialzing boundary crates"));
 
+    
     generateFloor();
     generateBoundary();
 
+
+    switch (bossType)
+    {
+    case Overtale::bossType1:
+        boss1Setup();
+        break;
+    case Overtale::bossType2:
+        break;
+    case Overtale::bossType3:
+        break;
+    default:
+        break;
+    }
     return;
 }
 
@@ -105,7 +110,31 @@ void Overtale::update()
     if (ship1.getY() < boundaryEnvironmentNS::MIN_Y)        
         ship1.setY((float)boundaryEnvironmentNS::MIN_Y);          
     ship1.update(frameTime);
-    boss1.update(frameTime);
+   
+
+
+    switch (bossType)
+    {
+    case BossType::bossType1:
+        boss1.update(frameTime);
+        for (int i = 0; i < MAX_PROJECTILES; ++i)
+        {
+            projectiles[i].update(frameTime);
+        }
+
+        break;
+    case BossType::bossType2:
+        break;
+    case BossType::bossType3:
+        break;
+    default:
+        break;
+    }
+
+    
+    
+   
+
 }
 
 //=============================================================================
@@ -138,8 +167,9 @@ void Overtale::render()
     {
         e.draw();
     }
-    ship1.draw();                           //add ship to scene
     boss1.draw();
+    projectiles[0].draw();
+    ship1.draw();                           //add ship to scene
     graphics->spriteEnd();                  // end drawing sprites
 }
 
@@ -255,3 +285,34 @@ void Overtale::generateBoundary()
     
 
 }
+
+
+
+void Overtale::boss1Setup()
+{
+    //boss 1 textures
+    if (!boss1Texture.initialize(graphics, BOSS1_IMAGE))
+        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing game textures"));
+
+    //Boss 1 projectile Textures
+    if (!boss1ProjectileTexture.initialize(graphics, BOSS1Projectile_IMAGE))
+        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing boss1projectile texture"));
+
+
+    //boss1 initialization 
+    if (!boss1.initialize(this, boss1NS::WIDTH, boss1NS::HEIGHT, boss1NS::TEXTURE_COLS, &boss1Texture))
+        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing boss1"));
+    boss1.setFrames(boss1NS::START_FRAME, boss1NS::END_FRAME);
+    boss1.setCurrentFrame(boss1NS::START_FRAME);
+
+    //boss1 projectile initialization 
+    if (!boss1Projectile.initialize(this, boss1ProjectileNS::WIDTH, boss1ProjectileNS::HEIGHT, boss1ProjectileNS::TEXTURE_COLS, &boss1ProjectileTexture))
+        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing boss1"));
+    boss1Projectile.setFrames(boss1ProjectileNS::START_FRAME, boss1ProjectileNS::END_FRAME);
+    boss1Projectile.setCurrentFrame(boss1ProjectileNS::START_FRAME);
+    projectiles[0] = boss1Projectile;
+
+
+}
+
+

@@ -9,25 +9,46 @@
 #include "player.h"
 #include "environment.h"
 #include "boss1.h"
-
+#include "projectile.h"
 //=============================================================================
 // Create game class
 //=============================================================================
 class Overtale : public Game
 {
 private:
+
+    enum BossType
+    {
+        bossType1,
+        bossType2,
+        bossType3
+    };
+    BossType bossType;
+
+
+
     // variables
     TextureManager gameTextures;    // game texture
     TextureManager floorTexture;    //floor texture
     TextureManager crateTexture;    //crate texture
     TextureManager boss1Texture;    //boss1 texture 
-    Boss1 boss1;
+    TextureManager boss1ProjectileTexture; //projectile texture for boss1
     Player    ship1;          // spaceship
     Environment floorEnvironment; //floor tile environment placeholder
     Environment fullFloorRow[FLOOR_ROW_LENGTH];  //Creating Singular Row
     Environment fullFloor[FLOOR_ROW_LENGTH*FLOOR_COLUMN_LENGTH]; //Creating whole floor
     Environment crateEnvironment; //Crate environment placeholder
     Environment fullCrateEnvironment[(8 * (FLOOR_ROW_LENGTH / 2 + 1))]; //Create array of crate environment;
+    Projectile projectiles[MAX_PROJECTILES];
+
+
+
+    //Boss 1
+    Projectile boss1Projectile;
+    Boss1 boss1;
+    
+
+    
     
 
 public:
@@ -46,7 +67,8 @@ public:
     void releaseAll();
     void resetAll();
     void generateFloor(); //used to generate the floor of the game
-    void generateBoundary();
+    void generateBoundary(); //generating the boundaries of the box
+    void boss1Setup();     //setup first boss
 };
 
 #endif

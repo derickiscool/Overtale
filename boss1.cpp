@@ -12,6 +12,8 @@ Boss1::Boss1()
 	spriteData.rect.bottom = boss1NS::HEIGHT;    // rectangle to select parts of an image
 	spriteData.rect.right = boss1NS::WIDTH;
 	currentFrame = startFrame;
+	
+
 }
 bool Boss1::initialize(Game* gamePtr, int width, int height, int ncols,
 	TextureManager* textureM)

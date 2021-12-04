@@ -97,6 +97,7 @@
     <ClCompile Include="input.cpp" />
     <ClCompile Include="overtale.cpp" />
     <ClCompile Include="player.cpp" />
+    <ClCompile Include="projectile.cpp" />
     <ClCompile Include="textureManager.cpp" />
     <ClCompile Include="winmain.cpp" />
   </ItemGroup>
@@ -112,6 +113,7 @@
     <ClInclude Include="input.h" />
     <ClInclude Include="overtale.h" />
     <ClInclude Include="player.h" />
+    <ClInclude Include="projectile.h" />
     <ClInclude Include="textureManager.h" />
   </ItemGroup>
   <ItemGroup>

@@ -1,11 +1,4 @@
-﻿  boss1.cpp
-D:\GPP Assignment\Overtale\constants.h(60,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
-D:\GPP Assignment\Overtale\constants.h(60,30): warning C4309: 'initializing': truncation of constant value
-  overtale.cpp
-D:\GPP Assignment\Overtale\constants.h(60,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
-D:\GPP Assignment\Overtale\constants.h(60,30): warning C4309: 'initializing': truncation of constant value
-  winmain.cpp
-D:\GPP Assignment\Overtale\constants.h(60,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
-D:\GPP Assignment\Overtale\constants.h(60,30): warning C4309: 'initializing': truncation of constant value
-  Generating Code...
+﻿  overtale.cpp
+D:\GPP Assignment\Overtale\constants.h(62,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
+D:\GPP Assignment\Overtale\constants.h(62,30): warning C4309: 'initializing': truncation of constant value
   Overtale.vcxproj -> D:\GPP Assignment\Overtale\Debug\Overtale.exe
