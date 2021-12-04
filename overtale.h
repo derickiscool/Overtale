@@ -24,6 +24,7 @@ private:
     Environment fullFloorRow[FLOOR_ROW_LENGTH];  //Creating Singular Row
     Environment fullFloor[FLOOR_ROW_LENGTH*FLOOR_COLUMN_LENGTH]; //Creating whole floor
     Environment crateEnvironment; //Crate environment placeholder
+    Environment fullCrateEnvironment[(8 * (FLOOR_ROW_LENGTH / 2 + 1))]; //Create array of crate environment;
     
 
 public:
