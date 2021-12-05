@@ -26,11 +26,10 @@ namespace boss1NS
 class Boss1 : public Entity
 {
 protected:
-    float projectileAngle; //angle of projectile, in radian
-    float angleFacing; //angle between current pos of boss vs player
-    int projectileXSpeed; //speed of projetile in vector.x
-    int projectileYSpeed; //speed of projetile in vector.y
-    bool bounce; //bounce off the boundary if true
+    float projectileAngle; //angle the projectile needs to curve, to hit the player
+    float projectileSpeed; //speed of projectile 
+    float spawnRate; //spawnRate of projectiles in seconds
+    bool bounceBool; //bounce off the boundary if true
 
 public:
     // constructor
@@ -41,9 +40,19 @@ public:
     virtual bool initialize(Game* gamePtr, int width, int height, int ncols,
         TextureManager* textureM);
     void update(float frameTime, Projectile projectiles[]);
-    void setupProjectile(Projectile *projectile, Player ship);//Setting up initial velocity + angle of projectiles
+    void setupProjectile(Projectile *projectile, Player ship);//Setting up velocity + angle of projectiles
+    void bounceOff(Projectile projectiles[]); //removes entities when touching boundaries
 
-   
+    //get setters
+    void setX(float x) { spriteData.x = x; };
+
+    float getX() { return spriteData.x; };
+
+
+
+    void setY(float y) { spriteData.y = y; };
+
+    float getY() { return spriteData.y; };
 };
 #endif
 

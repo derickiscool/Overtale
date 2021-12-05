@@ -15,10 +15,14 @@ namespace boss1ProjectileNS
     const int   START_FRAME = 0;      // starts at frame 0
     const int   END_FRAME = 4;        // animation frames 0,1,2,3,4
     const float ANIMATION_DELAY = 0.2f;    // time between frames
-    const float PROJECTILE_EASY_SPEED = 100.0f;
-    const float PROJECTILE_MEDIUM_SPEED = 150.0f;
-    const float PROJECTILE_HARD_SPEED = 200.0f;
-
+    
+    
+    const float PROJECTILE_EASY_SPEED = 0.5f; //projectile speed rate 
+    const float PROJECTILE_MEDIUM_SPEED = 0.75f;
+    const float PROJECTILE_HARD_SPEED = 1.0f; 
+    const float PROJECTILE_EASY_SPAWN = 1.0f; //projectile spawn rate
+    const float PROJECTILE_MEDIUM_SPAWN = 0.75f;
+    const float PROJECTILE_HARD_SPAWN = 0.5f;
 
 }
 

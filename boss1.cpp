@@ -15,7 +15,9 @@ Boss1::Boss1()
 	currentFrame = startFrame;
 
 	//boss variables
-	bounce = false;
+	bounceBool = false;
+	projectileSpeed = boss1ProjectileNS::PROJECTILE_EASY_SPEED;
+	spawnRate = boss1ProjectileNS::PROJECTILE_EASY_SPAWN;
 
 	
 	
@@ -24,6 +26,7 @@ Boss1::Boss1()
 bool Boss1::initialize(Game* gamePtr, int width, int height, int ncols,
 	TextureManager* textureM)
 {
+
 
 	return(Entity::initialize(gamePtr, width, height, ncols, textureM));
 }
@@ -35,43 +38,49 @@ void Boss1::draw()
 void Boss1::update(float frameTime, Projectile projectiles[])
 {
 	Entity::update(frameTime);
-	if (!bounce)
+
+
+	if (!bounceBool)
 	{
-		for (int i = 0; i < MAX_PROJECTILES; ++i)
-		{
-			if (projectiles[i].getX() > boundaryEnvironmentNS::MAX_X - boundaryEnvironmentNS::WIDTH)    //if touching boundary      
-				projectiles[i].setActive(false);
-
-			if (projectiles[i].getX() < boundaryEnvironmentNS::MIN_X)
-				projectiles[i].setActive(false);
-
-
-			if (projectiles[i].getY() > boundaryEnvironmentNS::MAX_Y - boundaryEnvironmentNS::HEIGHT)
-				projectiles[i].setActive(false);
-		}
+		bounceOff(projectiles);
 	}
 	
 }
 
 void Boss1::setupProjectile(Projectile *projectile, Player ship) //setup projectiles to shoot towards the player
 {
+	projectile->setX(getX());
+	projectile->setY(getY());
+	D3DXVECTOR2 shipVector = VECTOR2(ship.getX(),ship.getY());
+	D3DXVECTOR2 bossVector = VECTOR2(getX(), getY());
+	D3DXVECTOR2 lineVector = VECTOR2(getX() - 1, getY());
+	D3DXVECTOR2 horizontalVector = VECTOR2(lineVector - bossVector);
+	D3DXVECTOR2 diagonalVector = VECTOR2(shipVector - bossVector);
+	graphics->Vector2Normalize(&horizontalVector);
+	graphics->Vector2Normalize(&diagonalVector);
+	float dotProduct = graphics->Vector2Dot(&horizontalVector, &diagonalVector);
+	float angle = acos(dotProduct);
+	projectileAngle = (360 * (PI / 180)) - angle;
 
 
-	
-	//angle facing is determined by the angle between the player and the boss at any given time , use dot product
-	/*D3DXVECTOR2 bossVector = VECTOR2(30,50);
-	D3DXVECTOR2 shipVector = VECTOR2(30,50);
-	graphics->Vector2Normalize(&bossVector);
-	graphics->Vector2Normalize(&shipVector);
-	angleFacing = graphics->Vector2Dot(&bossVector, &shipVector);*/
-	angleFacing = 110;
-	projectileAngle = roundf((90 - angleFacing) * (PI / 180.0) * 100) / 100; //need to round to two decimal places as cos is dumb on c++
-	projectileYSpeed = boss1ProjectileNS::PROJECTILE_EASY_SPEED; 
-	projectileXSpeed = projectileYSpeed * tan(projectileAngle);//use pythagoras to determine x speed
-	D3DXVECTOR2 velocity = VECTOR2(projectileXSpeed, projectileYSpeed);
-	projectile->setAngle(angleFacing * (PI/180));
-	projectile->setVelocity(velocity);
+	D3DXVECTOR2 velocity = VECTOR2(ship.getX()-getX(),ship.getY()-getY());
+	projectile->setVelocity(velocity * projectileSpeed);
+	projectile->setAngle(projectileAngle);
 }
 
+void Boss1::bounceOff(Projectile projectiles[])
+{
+	for (int i = 0; i < MAX_PROJECTILES; ++i)
+	{
+		if (projectiles[i].getX() > boundaryEnvironmentNS::MAX_X - boundaryEnvironmentNS::WIDTH)    //if touching boundary      
+			projectiles[i].setActive(false);
 
+		if (projectiles[i].getX() < boundaryEnvironmentNS::MIN_X)
+			projectiles[i].setActive(false);
+
+
+		if (projectiles[i].getY() > boundaryEnvironmentNS::MAX_Y - boundaryEnvironmentNS::HEIGHT)
+			projectiles[i].setActive(false);
+	}
+}
 

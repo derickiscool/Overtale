@@ -31,6 +31,7 @@ const UINT GAME_HEIGHT = 1080;               // height of game in pixels
  
 // game
 const double PI = 3.14159265;
+const double NINETY_DEGREE_RAD = 90 * (PI / 180);  //90 degrees in radian
 const float FRAME_RATE  = 200.0f;               // the target frame rate (frames/sec)
 const float MIN_FRAME_RATE = 10.0f;             // the minimum frame rate
 const float MIN_FRAME_TIME = 1.0f/FRAME_RATE;   // minimum desired time for 1 frame

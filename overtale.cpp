@@ -41,7 +41,7 @@ void Overtale::initialize(HWND hwnd)
         throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing ship1"));
     ship1.setFrames(playerNS::SHIP1_START_FRAME, playerNS::SHIP1_END_FRAME);
     ship1.setCurrentFrame(playerNS::SHIP1_START_FRAME);
-    ship1.setX(GAME_WIDTH / 2 - playerNS::WIDTH / 2); //Set ship to center 
+    ship1.setX(GAME_WIDTH / 2 - playerNS::WIDTH /2); //Set ship to center 
     ship1.setY(GAME_HEIGHT / 2 - playerNS::HEIGHT / 2); //Set ship to center 
 
 
@@ -336,8 +336,6 @@ void Overtale::boss1Setup()
         projectiles[i] = boss1Projectile;
     }
     projectiles[0].setActive(true);
-    
-    
 
 }
 
