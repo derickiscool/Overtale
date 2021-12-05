@@ -26,8 +26,8 @@
 const char CLASS_NAME[] = "Spacewar";
 const char GAME_TITLE[] = "Overtale";
 const bool FULLSCREEN = false;              // windowed or fullscreen
-const UINT GAME_WIDTH =  640;               // width of game in pixels
-const UINT GAME_HEIGHT = 480;               // height of game in pixels
+const UINT GAME_WIDTH =  1920;               // width of game in pixels
+const UINT GAME_HEIGHT = 1080;               // height of game in pixels
  
 // game
 const double PI = 3.14159265;
@@ -39,6 +39,12 @@ const float MAX_FRAME_TIME = 1.0f/MIN_FRAME_RATE; // maximum time used in calcul
 // graphic images
 const char NEBULA_IMAGE[] = "pictures\\orion.jpg";     // placeholder for background
 const char TEXTURES_IMAGE[] = "pictures\\textures.png";  // placeholder for ship
+const char FLOOR_IMAGE[] = "pictures\\floor.png";
+
+
+//ENVIRONMENT 
+const int ENVIRONMENT_ROW_LENGTH = 31; //Must be odd numbers for true center square value
+const int ENVIRONMENT_COLUMN_LENGTH = 31;
 
 // key mappings
 // In this game simple constants are used for key mappings. If variables were used
