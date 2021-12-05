@@ -30,6 +30,7 @@ protected:
     float projectileSpeed; //speed of projectile 
     float spawnRate; //spawnRate of projectiles in seconds
     bool bounceBool; //bounce off the boundary if true
+    float spawnTimer; //timer to track spawning
 
 public:
     // constructor
@@ -39,9 +40,10 @@ public:
     virtual void draw();
     virtual bool initialize(Game* gamePtr, int width, int height, int ncols,
         TextureManager* textureM);
-    void update(float frameTime, Projectile projectiles[]);
+    void update(float frameTime, Projectile projectiles[], Player ship);
     void setupProjectile(Projectile *projectile, Player ship);//Setting up velocity + angle of projectiles
     void bounceOff(Projectile projectiles[]); //removes entities when touching boundaries
+    void spawnProjectiles(Projectile projectiles[], float frameTime, Player ship);
 
     //get setters
     void setX(float x) { spriteData.x = x; };

@@ -20,9 +20,9 @@ namespace boss1ProjectileNS
     const float PROJECTILE_EASY_SPEED = 0.5f; //projectile speed rate 
     const float PROJECTILE_MEDIUM_SPEED = 0.75f;
     const float PROJECTILE_HARD_SPEED = 1.0f; 
-    const float PROJECTILE_EASY_SPAWN = 1.0f; //projectile spawn rate
-    const float PROJECTILE_MEDIUM_SPAWN = 0.75f;
-    const float PROJECTILE_HARD_SPAWN = 0.5f;
+    const float PROJECTILE_EASY_SPAWN = 0.5f; //projectile spawn rate
+    const float PROJECTILE_MEDIUM_SPAWN = 0.4f;
+    const float PROJECTILE_HARD_SPAWN = 0.3f;
 
 }
 

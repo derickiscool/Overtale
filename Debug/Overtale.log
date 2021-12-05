@@ -1,8 +1,8 @@
 ﻿  boss1.cpp
 D:\GPP Assignment\Overtale\constants.h(63,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
 D:\GPP Assignment\Overtale\constants.h(63,30): warning C4309: 'initializing': truncation of constant value
-D:\GPP Assignment\Overtale\boss1.cpp(61,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-D:\GPP Assignment\Overtale\boss1.cpp(62,39): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\GPP Assignment\Overtale\boss1.cpp(63,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\GPP Assignment\Overtale\boss1.cpp(64,39): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   overtale.cpp
 D:\GPP Assignment\Overtale\constants.h(63,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
 D:\GPP Assignment\Overtale\constants.h(63,30): warning C4309: 'initializing': truncation of constant value

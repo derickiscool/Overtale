@@ -18,6 +18,7 @@ Boss1::Boss1()
 	bounceBool = false;
 	projectileSpeed = boss1ProjectileNS::PROJECTILE_EASY_SPEED;
 	spawnRate = boss1ProjectileNS::PROJECTILE_EASY_SPAWN;
+	spawnTimer = 0;
 
 	
 	
@@ -35,11 +36,11 @@ void Boss1::draw()
 	Image::draw();
 }
 
-void Boss1::update(float frameTime, Projectile projectiles[])
+void Boss1::update(float frameTime, Projectile projectiles[], Player ship)
 {
 	Entity::update(frameTime);
 
-
+	spawnProjectiles(projectiles,frameTime,ship);
 	if (!bounceBool)
 	{
 		bounceOff(projectiles);
@@ -81,6 +82,23 @@ void Boss1::bounceOff(Projectile projectiles[])
 
 		if (projectiles[i].getY() > boundaryEnvironmentNS::MAX_Y - boundaryEnvironmentNS::HEIGHT)
 			projectiles[i].setActive(false);
+	}
+}
+void Boss1::spawnProjectiles(Projectile projectiles[], float frameTime, Player ship)
+{
+	spawnTimer += frameTime;
+	if (spawnTimer > spawnRate)
+	{
+		for (int i = 0; i < MAX_PROJECTILES; ++i)
+		{
+			if (projectiles[i].getActive() == false)
+			{
+				setupProjectile(&projectiles[i], ship);
+				projectiles[i].setActive(true);
+				break;
+			}
+		}
+		spawnTimer -=spawnRate;
 	}
 }
 

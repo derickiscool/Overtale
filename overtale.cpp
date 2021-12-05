@@ -119,7 +119,7 @@ void Overtale::update()
         {
             projectiles[i].update(frameTime);
         }
-        boss1.update(frameTime,projectiles);
+        boss1.update(frameTime,projectiles, ship1);
         break;
         
     case BossType::bossType2:
@@ -329,13 +329,12 @@ void Overtale::boss1Setup()
     boss1Projectile.setFrames(boss1ProjectileNS::START_FRAME, boss1ProjectileNS::END_FRAME);
     boss1Projectile.setCurrentFrame(boss1ProjectileNS::START_FRAME);
     boss1Projectile.setActive(false);
-    boss1.setupProjectile(&boss1Projectile, ship1);
+
     //projectile array initialization 
     for (int i = 0; i < MAX_PROJECTILES; ++i)
     {
         projectiles[i] = boss1Projectile;
     }
-    projectiles[0].setActive(true);
 
 }
 
