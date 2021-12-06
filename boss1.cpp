@@ -16,14 +16,15 @@ Boss1::Boss1()
 	currentFrame = startFrame;
 
 	//boss variables
-	bounceBool = false;
 	projectileSpeed = boss1ProjectileNS::PROJECTILE_EASY_SPEED;
 	spawnRate = boss1ProjectileNS::PROJECTILE_EASY_SPAWN;
 	timer = 0;
 	spawnTimer = 0;
-	waveValue = Wave::wave1;
+	waveValue = Wave::wave3;
 	activeProjectiles = 0;
 	spawnBool = true;
+	bossSpeed = 2.0f;
+	bossMovementEnum = 3;
 
 
 	
@@ -65,10 +66,12 @@ void Boss1::projectileInitialization(Projectile *projectile)//Initialize project
 	projectile->setCurrentFrame(startFrame);
 	projectile->setCollisionType(entityNS::CIRCLE);
 	projectile->setLoop(false);
+	projectile->setCollisionRadius(boss1ProjectileNS::WIDTH / 4);
 	projectile->setProjectileDamage(0);
 	projectile->setFrames(boss1ProjectileNS::START_FRAME, boss1ProjectileNS::END_FRAME);
 	projectile->setCurrentFrame(boss1ProjectileNS::START_FRAME);
 	projectile->setActive(false);
+	projectile->setMass(300.0f);
 }
 
 void Boss1::setupProjectile(Projectile *projectile, Player ship) //setup projectiles to shoot towards the player
@@ -153,33 +156,33 @@ void Boss1::spawnProjectiles(Projectile projectiles[], float frameTime, Player s
 
 void Boss1::updateAbilities(Projectile projectiles[], float frameTime)
 {
-	timer += frameTime;
-	if (timer > 30.f & timer < 35.0f )
-	{
-		resetSpawn();
-		projectiles->clearProjectiles(projectiles);
-	}
-	if (timer > 60.0f & timer <65.0f)
-	{
-		resetSpawn();
-		projectiles->clearProjectiles(projectiles);
-	}
-	if (timer > 65.0f)
-	{
-		if (!spawnBool)
-		{
-			spawnBool = true;
-		}
-		waveValue = wave3;
-	}
-	else if (timer > 35.0f & timer < 60.0f)
-	{
-		if (!spawnBool)
-		{
-			spawnBool = true;
-		}
-		waveValue = wave2;
-	}
+	//timer += frameTime;
+	///*if (timer > wave2Time - 5.0f & timer < wave2Time )
+	//{
+	//	resetSpawn();
+	//	projectiles->clearProjectiles(projectiles);
+	//}*/
+	//if (timer > wave3Time - 5.0f & timer <wave3Time)
+	//{
+	//	resetSpawn();
+	//	projectiles->clearProjectiles(projectiles);
+	//}
+	//if (timer > wave3Time)
+	//{
+	//	if (!spawnBool)
+	//	{
+	//		spawnBool = true;
+	//	}
+	//	waveValue = wave3;
+	//}
+	//else if (timer > wave2Time & timer < wave3Time - 5.0f)
+	//{
+	//	if (!spawnBool)
+	//	{
+	//		spawnBool = true;
+	//	}
+	//	waveValue = wave2;
+	//}
 
 	
 	switch (waveValue)
@@ -201,67 +204,57 @@ void Boss1::updateAbilities(Projectile projectiles[], float frameTime)
 		{
 			projectiles[i].setProjectileDamage(10);
 		}
-		startBounce(projectiles);
+		
 		break;
 
 	case wave3:
 		projectileSpeed = boss1ProjectileNS::PROJECTILE_HARD_SPEED;
 		spawnRate = boss1ProjectileNS::PROJECTILE_HARD_SPAWN;
+		bossMove();
 		for (int i = 0; i < MAX_PROJECTILES; ++i)
 		{
 			projectiles[i].setProjectileDamage(15);
 		}
-		startBounce(projectiles);
 		break;
 	}
 	
 
 }
 
-void Boss1::startBounce(Projectile projectiles[]) //bounces projectiles
+void Boss1::startBounce(Projectile projectiles[], Environment crates[]) //bounces projectiles
 {
-	/*for (int i = 0; i < activeProjectiles; ++i)
+
+	VECTOR2 collisionVector;
+	for (int i = 0; i < activeProjectiles; ++i)
 	{
-		if (projectiles[i].getX() > boundaryEnvironmentNS::MAX_X - boundaryEnvironmentNS::WIDTH)
+		bool flag1 = (projectiles[i].getY() >= boundaryEnvironmentNS::MIN_Y - boundaryEnvironmentNS::HEIGHT/2); // inside box from top 
+		bool flag2 = (projectiles[i].getY() < boundaryEnvironmentNS::MAX_Y - boundaryEnvironmentNS::HEIGHT);
+		bool flag3 = (projectiles[i].getX() >= boundaryEnvironmentNS::MIN_X - boundaryEnvironmentNS::WIDTH/2);
+		bool flag4 = (projectiles[i].getX() < boundaryEnvironmentNS::MAX_X - boundaryEnvironmentNS::WIDTH);
+		if (flag1 && flag2 && flag3 && flag4) //check if projectile is current outside box
 		{
-			projectiles[i].setX(boundaryEnvironmentNS::MAX_X - boundaryEnvironmentNS::WIDTH);
-			VECTOR2 vel = projectiles[i].getVelocity();
-			vel.x = -vel.x;
-			projectiles[i].setVelocity(vel);
+			for (int j = 0; j < CRATES_NEEDED; ++j)
+			{
+				if (projectiles[i].collidesWith(crates[j], collisionVector))
+				{
+					projectiles[i].bounce(collisionVector, crates[j]);
+					VECTOR2 normalVector = VECTOR2(collisionVector.x - 16, collisionVector.y);
+					normalVector = normalVector - collisionVector;
+					graphics->Vector2Normalize(&normalVector);
+					graphics->Vector2Normalize(&collisionVector);
+
+					float dotProduct = graphics->Vector2Dot(&normalVector, &collisionVector);
+					float angle = acos(dotProduct);
+					projectiles[i].setAngle(projectiles[i].getAngle() + angle);
+
+
+
+				}
+			}
 		}
-		if (projectiles[i].getX() < boundaryEnvironmentNS::MIN_X)
-		{
+			
+	}
 
-			projectiles[i].setX(boundaryEnvironmentNS::MIN_X);
-			VECTOR2 vel = projectiles[i].getVelocity();
-			vel.x = -vel.x;
-			projectiles[i].setVelocity(vel);
-		}
-		if (projectiles[i].getY() > boundaryEnvironmentNS::MAX_Y - boundaryEnvironmentNS::HEIGHT)
-		{
-
-			projectiles[i].setY(boundaryEnvironmentNS::MAX_Y - boundaryEnvironmentNS::HEIGHT);
-			VECTOR2 vel = projectiles[i].getVelocity();
-			vel.y = -vel.y;
-			projectiles[i].setVelocity(vel);
-		}
-		if (projectiles[i].getY() < boundaryEnvironmentNS::MIN_Y)
-		{
-
-			projectiles[i].setY(boundaryEnvironmentNS::MIN_Y);
-			VECTOR2 vel = projectiles[i].getVelocity();
-			vel.y = -vel.y;
-			projectiles[i].setVelocity(vel);
-		}
-
-
-
-	}*/
-
-
-
-
-	
 	
 }
 void Boss1::resetSpawn()
@@ -269,6 +262,89 @@ void Boss1::resetSpawn()
 	spawnBool = false;
 	spawnTimer = 0;
 	activeProjectiles = 0;
+}
+
+
+void Boss1::bossMove()
+{
+	
+	if (spriteData.x >= boss1NS::MAX_X && spriteData.y <= boss1NS::MIN_Y) //top right checkpoint
+	{
+		srand(time(NULL));
+		int random = rand() % 2;
+		if (random == 0)
+		{
+			bossMovementEnum = 2;
+		}
+		else
+		{
+			bossMovementEnum = 1;
+		}
+	}
+	else if (spriteData.x >= boss1NS::MAX_X && spriteData.y >= boss1NS::MAX_Y) //bottom right checkpoint
+	{
+		srand(time(NULL));
+		int random = rand() % 2;
+		if (random == 0)
+		{
+			bossMovementEnum = 0;
+		}
+		else
+		{
+			bossMovementEnum = 2;
+		}
+	}
+	else if (spriteData.x <= boss1NS::MIN_X && spriteData.y >= boss1NS::MAX_Y) //bottom left
+	{
+		srand(time(NULL));
+		int random = rand() % 2;
+		if (random == 0)
+		{
+			bossMovementEnum = 3;
+		}
+		else
+		{
+			bossMovementEnum = 1;
+		}
+	}
+	else if (spriteData.x <= boss1NS::MIN_X && spriteData.y <= boss1NS::MIN_Y) //top left
+	{
+		srand(time(NULL));
+		int random = rand() % 2;
+		if (random == 0)
+		{
+			bossMovementEnum = 3;
+		}
+		else
+		{
+			bossMovementEnum = 2;
+		}
+	}
+
+
+	switch (bossMovementEnum)
+	{
+	case 0: //up
+		spriteData.y -= bossSpeed;
+		break;
+	case 1:
+		spriteData.y += bossSpeed;
+		break;
+	case 2:
+		spriteData.x -= bossSpeed;
+		break;
+	case 3:
+		spriteData.x += bossSpeed;
+		break;
+	default:
+		break;
+	}
+	
+
+
+	
+	
+
 }
 
 

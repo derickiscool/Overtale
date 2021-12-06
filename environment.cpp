@@ -7,7 +7,9 @@ Environment::Environment():Entity()
 	spriteData.height = floorEnvironmentNS::HEIGHT;		 
     spriteData.x = floorEnvironmentNS::START_LOCATION_X;                   // location on screen
     spriteData.y = floorEnvironmentNS::START_LOCATION_Y;
-    collisionType = entityNS::BOX;
+    radius = boundaryEnvironmentNS::WIDTH;
+    collisionType = entityNS::CIRCLE;
+    mass = 500.0f;
 
 }   
 

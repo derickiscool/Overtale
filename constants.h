@@ -5,6 +5,8 @@
 
 #include <windows.h>
 
+
+
 //-----------------------------------------------
 // Useful macros
 //-----------------------------------------------
@@ -38,6 +40,7 @@ const float MIN_FRAME_TIME = 1.0f/FRAME_RATE;   // minimum desired time for 1 fr
 const float MAX_FRAME_TIME = 1.0f/MIN_FRAME_RATE; // maximum time used in calculations
 const int MAX_PROJECTILES = 100;
 
+
 // graphic images
 const char NEBULA_IMAGE[] = "pictures\\orion.jpg";     // placeholder for background
 const char TEXTURES_IMAGE[] = "pictures\\textures.png";  // placeholder for ship
@@ -50,6 +53,8 @@ const char BOSS1Projectile_IMAGE[] = "pictures\\boss1Projectile.png";
 //ENVIRONMENT 
 const int FLOOR_ROW_LENGTH = 31; //Must be odd numbers for true center square value
 const int FLOOR_COLUMN_LENGTH = 31;
+const int CRATES_NEEDED = (8 * (FLOOR_ROW_LENGTH / 2 + 1));
+
 
 // key mappings
 // In this game simple constants are used for key mappings. If variables were used

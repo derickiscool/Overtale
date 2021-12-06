@@ -14,6 +14,12 @@ namespace boss1NS
     const int HEIGHT = 85;                  // image height
     const int X = GAME_WIDTH / 2 - WIDTH / 2;   // location on screen
     const int Y = GAME_HEIGHT / 10;
+    const int MAX_X = boundaryEnvironmentNS::MAX_X + boss1NS::WIDTH;
+    const int MAX_Y = boundaryEnvironmentNS::MAX_Y + boss1NS::HEIGHT;
+    const int MIN_X = boundaryEnvironmentNS::MIN_X - boss1NS::WIDTH;
+    const int MIN_Y = GAME_HEIGHT / 10;
+
+
     const int   TEXTURE_COLS = 0;           // texture has 8 columns
     const int   START_FRAME = 0;      // starts at frame 0
     const int   END_FRAME = 5;        // animation frames 0,1,2,3,4
@@ -34,15 +40,26 @@ protected:
         wave3
         
     };
+    enum BossMovement
+    {
+        up,
+        down,
+        left,
+        right
+    };
+
     Wave waveValue; //current wave
     float projectileAngle; //angle the projectile needs to curve, to hit the player
     float projectileSpeed; //speed of projectile 
     float spawnRate; //spawnRate of projectiles in seconds
-    bool bounceBool; //bounce off the boundary if true
     float spawnTimer; //timer to track spawning
     float timer;      //timer to keep track of boss;
     int activeProjectiles; //Number of active projectiles;
     bool spawnBool; //true if want to spawn projectiles, false if projectiles should not spawn
+    float bossSpeed; //speed of boss when moving
+    int bossMovementEnum; 
+    const float wave2Time = 5.0f;   //When should wave 2 start
+    const float wave3Time = 65.0f;
 
 
 
@@ -63,9 +80,12 @@ public:
     void spawnProjectiles(Projectile projectiles[], float frameTime, Player ship);  //spawning of projectiles
     void updateAbilities(Projectile projectiles[], float frameTime);
     void resetSpawn();
+   
 
     //Abilities
-    void startBounce(Projectile projectiles[]);
+    void startBounce(Projectile projectiles[], Environment crates[]);
+    void bossMove();
+
 
 
 
@@ -86,7 +106,11 @@ public:
 
     int getWaveValue() { return waveValue; };
 
+    void setActiveProjectiles(int newActiveProjectiles) { activeProjectiles = newActiveProjectiles; };
+
     int getActiveProjectiles() { return activeProjectiles; };
+
+    int getBossMovementEnum() { return bossMovementEnum; };
     
 };
 #endif

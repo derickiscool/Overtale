@@ -133,10 +133,39 @@ void Overtale::collisions()
         if (projectiles[i].collidesWith(ship1, collisionVector))
         {
             projectiles[i].setActive(false);
+            boss1.setActiveProjectiles(boss1.getActiveProjectiles() - 1);
             ship1.setHealth(ship1.getHealth() - projectiles[i].getProjectileDamage());
             break;
         }
     }
+
+    switch (bossType)
+    {
+    case BossType::bossType1:
+        switch (boss1.getWaveValue())
+        {
+        case 0:
+            break;
+        case 1:                                //Bounce Collisions
+            boss1.startBounce(projectiles, fullCrateEnvironment);
+            break;
+        case 2:
+            boss1.startBounce(projectiles, fullCrateEnvironment);
+            break;
+        default:
+            break;
+        }
+        
+        break;
+
+    case BossType::bossType2:
+        break;
+    case BossType::bossType3:
+        break;
+    default:
+        break;
+    }
+
   
     
 }
@@ -148,9 +177,9 @@ void Overtale::render()
 {
     graphics->spriteBegin();                // begin drawing sprites
     dxFontSmall->setFontColor(graphicsNS::WHITE);
-    dxFontSmall->print("Current Wave: "+ std::to_string(boss1.getWaveValue() + 1), 0, 0);
-    dxFontSmall->print("Timer: " + std::to_string(boss1.getTimer()), 0, 40);
-    dxFontSmall->print("Spawn Timer: " + std::to_string(boss1.getSpawnTimer()), 0, 80);
+    dxFontSmall->print("BOSS Y "+ std::to_string(boss1.getY()), 0, 0);
+    dxFontSmall->print("BOSS X " + std::to_string(boss1.getX()), 0, 40);
+    dxFontSmall->print("MOVEMENT ENUM: " + std::to_string(boss1.getBossMovementEnum()), 0, 80);
     dxFontSmall->print("Active Projectiles : " + std::to_string(boss1.getActiveProjectiles()), 0, 120);
     dxFontSmall->print("Health : " + std::to_string(ship1.getHealth()), 0, 180);
 

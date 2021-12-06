@@ -1,36 +1,16 @@
 ﻿  boss1.cpp
-D:\GPP Assignment\Overtale\constants.h(63,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
-D:\GPP Assignment\Overtale\constants.h(63,30): warning C4309: 'initializing': truncation of constant value
-D:\GPP Assignment\Overtale\boss1.cpp(87,39): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-D:\GPP Assignment\Overtale\boss1.cpp(157,35): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
-D:\GPP Assignment\Overtale\boss1.cpp(162,34): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
-D:\GPP Assignment\Overtale\boss1.cpp(175,40): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
-  entity.cpp
-D:\GPP Assignment\Overtale\constants.h(63,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
-D:\GPP Assignment\Overtale\constants.h(63,30): warning C4309: 'initializing': truncation of constant value
-D:\GPP Assignment\Overtale\entity.cpp(331,48): warning C4244: 'argument': conversion from 'double' to 'FLOAT', possible loss of data
-D:\GPP Assignment\Overtale\entity.cpp(331,25): warning C4244: 'argument': conversion from 'double' to 'FLOAT', possible loss of data
-D:\GPP Assignment\Overtale\entity.cpp(332,49): warning C4244: 'argument': conversion from 'double' to 'FLOAT', possible loss of data
-D:\GPP Assignment\Overtale\entity.cpp(332,22): warning C4244: 'argument': conversion from 'double' to 'FLOAT', possible loss of data
-D:\GPP Assignment\Overtale\entity.cpp(434,52): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-  environment.cpp
-D:\GPP Assignment\Overtale\constants.h(63,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
-D:\GPP Assignment\Overtale\constants.h(63,30): warning C4309: 'initializing': truncation of constant value
-  image.cpp
-D:\GPP Assignment\Overtale\constants.h(63,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
-D:\GPP Assignment\Overtale\constants.h(63,30): warning C4309: 'initializing': truncation of constant value
+D:\GPP Assignment\Overtale\constants.h(68,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
+D:\GPP Assignment\Overtale\constants.h(68,30): warning C4309: 'initializing': truncation of constant value
+D:\GPP Assignment\Overtale\boss1.cpp(90,39): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\GPP Assignment\Overtale\boss1.cpp(273,13): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+D:\GPP Assignment\Overtale\boss1.cpp(286,13): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+D:\GPP Assignment\Overtale\boss1.cpp(299,13): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+D:\GPP Assignment\Overtale\boss1.cpp(312,13): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   overtale.cpp
-D:\GPP Assignment\Overtale\constants.h(63,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
-D:\GPP Assignment\Overtale\constants.h(63,30): warning C4309: 'initializing': truncation of constant value
-  player.cpp
-D:\GPP Assignment\Overtale\constants.h(63,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
-D:\GPP Assignment\Overtale\constants.h(63,30): warning C4309: 'initializing': truncation of constant value
-  projectile.cpp
-D:\GPP Assignment\Overtale\constants.h(63,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
-D:\GPP Assignment\Overtale\constants.h(63,30): warning C4309: 'initializing': truncation of constant value
+D:\GPP Assignment\Overtale\constants.h(68,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
+D:\GPP Assignment\Overtale\constants.h(68,30): warning C4309: 'initializing': truncation of constant value
   winmain.cpp
-D:\GPP Assignment\Overtale\constants.h(63,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
-D:\GPP Assignment\Overtale\constants.h(63,30): warning C4309: 'initializing': truncation of constant value
+D:\GPP Assignment\Overtale\constants.h(68,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
+D:\GPP Assignment\Overtale\constants.h(68,30): warning C4309: 'initializing': truncation of constant value
   Generating Code...
-boss1.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
   Overtale.vcxproj -> D:\GPP Assignment\Overtale\Debug\Overtale.exe
