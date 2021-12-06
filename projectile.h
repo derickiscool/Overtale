@@ -50,9 +50,7 @@ public:
 
 
     void setProjectileDamage(int newDamage) { damage = newDamage; };
-
     int getProjectileDamage() { return damage; };
-
 };
 #endif
 

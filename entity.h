@@ -116,6 +116,8 @@ public:
     ////////////////////////////////////////
 
     // Set velocity.
+    virtual void  setCollisionType(entityNS::COLLISION_TYPE type) { collisionType = type; };
+
     virtual void  setVelocity(VECTOR2 v) { velocity = v; }
 
     // Set delta velocity. Added to velocity in update().

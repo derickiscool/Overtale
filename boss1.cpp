@@ -51,6 +51,25 @@ void Boss1::update(float frameTime, Projectile projectiles[], Player ship)
 	
 	
 }
+void Boss1::projectileInitialization(Projectile *projectile)//Initialize projectiles
+{
+	projectile->setWidth(boss1ProjectileNS::WIDTH);
+	projectile->setHeight(boss1ProjectileNS::HEIGHT);
+	projectile->setX(getX());
+	projectile->setX(getY());
+	projectile->setFrameDelay(boss1ProjectileNS::ANIMATION_DELAY);
+	projectile->setStartFrame(boss1ProjectileNS::START_FRAME);
+	projectile->setEndFrame(boss1ProjectileNS::END_FRAME);
+	projectile->setRectBottom(boss1ProjectileNS::HEIGHT);
+	projectile->setRectRight(boss1ProjectileNS::WIDTH);
+	projectile->setCurrentFrame(startFrame);
+	projectile->setCollisionType(entityNS::CIRCLE);
+	projectile->setLoop(false);
+	projectile->setProjectileDamage(0);
+	projectile->setFrames(boss1ProjectileNS::START_FRAME, boss1ProjectileNS::END_FRAME);
+	projectile->setCurrentFrame(boss1ProjectileNS::START_FRAME);
+	projectile->setActive(false);
+}
 
 void Boss1::setupProjectile(Projectile *projectile, Player ship) //setup projectiles to shoot towards the player
 {
@@ -201,7 +220,7 @@ void Boss1::updateAbilities(Projectile projectiles[], float frameTime)
 
 void Boss1::startBounce(Projectile projectiles[]) //bounces projectiles
 {
-	for (int i = 0; i < activeProjectiles; ++i)
+	/*for (int i = 0; i < activeProjectiles; ++i)
 	{
 		if (projectiles[i].getX() > boundaryEnvironmentNS::MAX_X - boundaryEnvironmentNS::WIDTH)
 		{
@@ -237,7 +256,11 @@ void Boss1::startBounce(Projectile projectiles[]) //bounces projectiles
 
 
 
-	}
+	}*/
+
+
+
+
 	
 	
 }

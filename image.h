@@ -94,6 +94,17 @@ public:
     //           Set functions            //
     ////////////////////////////////////////
 
+    virtual void setHeight(int newHeight) { spriteData.height = newHeight; };
+
+    virtual void setWidth(int newWidth) { spriteData.width = newWidth; };
+
+    virtual void setStartFrame(int newStartFrame) { startFrame = newStartFrame; };
+
+    virtual void setEndFrame(int newEndFrame) { startFrame = newEndFrame; };
+
+    virtual void setRectBottom(int newRectBottom) { spriteData.rect.bottom = newRectBottom; };
+
+    virtual void setRectRight(int newRectRight) { spriteData.rect.right = newRectRight; };
     // Set X location.
     virtual void setX(float newX) { spriteData.x = newX; }
 

@@ -2,7 +2,8 @@
 
 Projectile::Projectile()
 {
-	spriteData.width = boss1ProjectileNS::WIDTH;           // size of tiles
+	//default values set to first boss
+	spriteData.width = boss1ProjectileNS::WIDTH;   
 	spriteData.height = boss1ProjectileNS::HEIGHT;
 	spriteData.x = boss1ProjectileNS::X;                   // location on screen
 	spriteData.y = boss1ProjectileNS::Y;

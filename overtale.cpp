@@ -32,7 +32,7 @@ void Overtale::initialize(HWND hwnd)
         throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing DirectX font"));
     
     
-    bossType = BossType::bossType1;
+    bossType = BossType::bossType1;  //Change me if you want to test out ur own project
    
 
     //floor texture
@@ -102,7 +102,6 @@ void Overtale::update()
         }
         boss1.update(frameTime,projectiles, ship1);
         break;
-        
     case BossType::bossType2:
         break;
     case BossType::bossType3:
@@ -321,9 +320,7 @@ void Overtale::boss1Setup()
     //boss1 projectile initialization 
     if (!boss1Projectile.initialize(this, boss1ProjectileNS::WIDTH, boss1ProjectileNS::HEIGHT, boss1ProjectileNS::TEXTURE_COLS, &boss1ProjectileTexture))
         throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing boss1"));
-    boss1Projectile.setFrames(boss1ProjectileNS::START_FRAME, boss1ProjectileNS::END_FRAME);
-    boss1Projectile.setCurrentFrame(boss1ProjectileNS::START_FRAME);
-    boss1Projectile.setActive(false);
+    boss1.projectileInitialization(&boss1Projectile);
 
     //projectile array initialization 
     for (int i = 0; i < MAX_PROJECTILES; ++i)
