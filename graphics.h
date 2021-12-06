@@ -1,3 +1,8 @@
+// Programming 2D Games
+// Copyright (c) 2011 by:
+// Charles Kelly
+// graphics.h v1.0
+
 #ifndef _GRAPHICS_H             // Prevent multiple definitions if this 
 #define _GRAPHICS_H             // file is included in more than one place
 #define WIN32_LEAN_AND_MEAN
@@ -16,6 +21,9 @@
 #define LP_3DDEVICE LPDIRECT3DDEVICE9
 #define LP_3D       LPDIRECT3D9
 #define VECTOR2     D3DXVECTOR2
+#define LP_VERTEXBUFFER LPDIRECT3DVERTEXBUFFER9
+#define LP_DXFONT   LPD3DXFONT
+#define LP_VERTEXBUFFER LPDIRECT3DVERTEXBUFFER9
 
 // Color defines
 #define COLOR_ARGB DWORD
@@ -53,6 +61,18 @@ namespace graphicsNS
 
     enum DISPLAY_MODE { TOGGLE, FULLSCREEN, WINDOW };
 }
+
+struct VertexC              // Vertex with Color
+{
+    float x, y, z;          // vertex location
+    float rhw;              // reciprocal homogeneous W (set to 1)
+    unsigned long color;    // vertex color
+};
+
+// Flexible Vertex Format Codes
+// D3DFVF_XYZRHW = The verticies are transformed
+// D3DFVF_DIFFUSE = The verticies contain diffuse color data 
+#define D3DFVF_VERTEX (D3DFVF_XYZRHW | D3DFVF_DIFFUSE)
 
 // SpriteData: The properties required by Graphics::drawSprite to draw a sprite
 struct SpriteData
@@ -109,6 +129,18 @@ public:
     //      fullscreen = true for full screen, false for window
     void    initialize(HWND hw, int width, int height, bool fullscreen);
 
+    // Create a vertex buffer.
+    // Pre: verts[] contains vertex data.
+    //      size = size of verts[]
+    // Post: &vertexBuffer points to buffer if successful.
+    HRESULT createVertexBuffer(VertexC verts[], UINT size, LP_VERTEXBUFFER& vertexBuffer);
+
+    // Display a quad (rectangle) with alpha transparency.
+    // Pre: createVertexBuffer was used to create vertexBuffer containing four
+    //      vertices defining the quad in clockwise order.
+    //      g3ddev->BeginScene was called
+    bool    drawQuad(LP_VERTEXBUFFER vertexBuffer);
+
     // Load the texture into default D3D memory (normal texture use)
     // For internal engine use only. Use the TextureManager class to load game textures.
     // Pre: filename = name of texture file.
@@ -116,6 +148,14 @@ public:
     // Post: width and height = size of texture
     //       texture points to texture
     HRESULT loadTexture(const char* filename, COLOR_ARGB transcolor, UINT& width, UINT& height, LP_TEXTURE& texture);
+
+    // Load the texture into system memory (system memory is lockable)
+    // Provides direct access to pixel data. Use the TextureManager class to load textures for display.
+    // Pre: filename = name of texture file.
+    //      transcolor = transparent color
+    // Post: width and height = size of texture
+    //       texture points to texture
+    HRESULT loadTextureSystemMem(const char* filename, COLOR_ARGB transcolor, UINT& width, UINT& height, LP_TEXTURE& texture);
 
     // Display the offscreen backbuffer to the screen.
     HRESULT showBackbuffer();
@@ -222,5 +262,4 @@ public:
 };
 
 #endif
-
 

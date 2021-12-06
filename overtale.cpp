@@ -5,7 +5,10 @@
 // Constructor
 //=============================================================================
 Overtale::Overtale()
-{}
+{
+
+    dxFontSmall = new TextDX();     // DirectX fonts
+}
 
 //=============================================================================
 // Destructor
@@ -13,6 +16,7 @@ Overtale::Overtale()
 Overtale::~Overtale()
 {
     releaseAll();           // call onLostDevice() for every graphics item
+    SAFE_DELETE(dxFontSmall);
 }
 
 //=============================================================================
@@ -22,8 +26,15 @@ Overtale::~Overtale()
 void Overtale::initialize(HWND hwnd)
 {
     Game::initialize(hwnd); // throws GameError
+    
+    
+    if (dxFontSmall->initialize(graphics, 50, true, true, "Arial") == false)
+        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing DirectX font"));
+    
+    
     bossType = BossType::bossType1;
    
+
     //floor texture
     if (!floorTexture.initialize(graphics, FLOOR_IMAGE))
         throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing floor texture"));
@@ -157,7 +168,9 @@ void Overtale::collisions()
 void Overtale::render()
 {
     graphics->spriteBegin();                // begin drawing sprites
-
+    dxFontSmall->setFontColor(graphicsNS::WHITE);
+    dxFontSmall->print("Current Wave: "+ std::to_string(boss1.getWaveValue()), 0, 0);
+    dxFontSmall->print("Timer: " + std::to_string(boss1.getTimer()), 0, 40);
 
     for (Environment e : fullFloor)
     {

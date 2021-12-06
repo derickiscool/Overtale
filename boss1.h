@@ -26,11 +26,26 @@ namespace boss1NS
 class Boss1 : public Entity
 {
 protected:
+
+    enum Wave
+    {
+        wave1,
+        wave2,
+        wave3
+        
+    };
+    Wave waveValue; //current wave
     float projectileAngle; //angle the projectile needs to curve, to hit the player
     float projectileSpeed; //speed of projectile 
     float spawnRate; //spawnRate of projectiles in seconds
     bool bounceBool; //bounce off the boundary if true
     float spawnTimer; //timer to track spawning
+    float timer;      //timer to keep track of boss;
+    Projectile activeProjectiles[MAX_PROJECTILES];
+
+
+
+
 
 public:
     // constructor
@@ -43,7 +58,13 @@ public:
     void update(float frameTime, Projectile projectiles[], Player ship);
     void setupProjectile(Projectile *projectile, Player ship);//Setting up velocity + angle of projectiles
     void bounceOff(Projectile projectiles[]); //removes entities when touching boundaries
-    void spawnProjectiles(Projectile projectiles[], float frameTime, Player ship);
+    void spawnProjectiles(Projectile projectiles[], float frameTime, Player ship);  //spawning of projectiles
+    void updateAbilities(Projectile projectiles[], float frameTime);
+
+
+    //Abilities
+    void startBounce();
+
 
     //get setters
     void setX(float x) { spriteData.x = x; };
@@ -55,6 +76,13 @@ public:
     void setY(float y) { spriteData.y = y; };
 
     float getY() { return spriteData.y; };
+
+    float getSpawnTimer() { return spawnTimer ;};
+
+    float getTimer() { return timer; };
+
+    int getWaveValue() { return waveValue; };
+    
 };
 #endif
 

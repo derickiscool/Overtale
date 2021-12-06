@@ -10,6 +10,7 @@
 #include "environment.h"
 #include "boss1.h"
 #include "projectile.h"
+#include "textDX.h"
 //=============================================================================
 // Create game class
 //=============================================================================
@@ -25,6 +26,8 @@ private:
     };
     BossType bossType;
 
+    //text variables
+    TextDX* dxFontSmall;       // DirectX fonts
 
 
     // variables
@@ -40,8 +43,9 @@ private:
     Environment crateEnvironment; //Crate environment placeholder
     Environment fullCrateEnvironment[(8 * (FLOOR_ROW_LENGTH / 2 + 1))]; //Create array of crate environment;
     Projectile projectiles[MAX_PROJECTILES];
+    
 
-
+   
 
     //Boss 1
     Projectile boss1Projectile;

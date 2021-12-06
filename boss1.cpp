@@ -18,7 +18,9 @@ Boss1::Boss1()
 	bounceBool = false;
 	projectileSpeed = boss1ProjectileNS::PROJECTILE_EASY_SPEED;
 	spawnRate = boss1ProjectileNS::PROJECTILE_EASY_SPAWN;
+	timer = 0;
 	spawnTimer = 0;
+	waveValue = Wave::wave1;
 
 	
 	
@@ -38,13 +40,11 @@ void Boss1::draw()
 
 void Boss1::update(float frameTime, Projectile projectiles[], Player ship)
 {
+	
 	Entity::update(frameTime);
-
+	updateAbilities(projectiles, frameTime);
 	spawnProjectiles(projectiles,frameTime,ship);
-	if (!bounceBool)
-	{
-		bounceOff(projectiles);
-	}
+	
 	
 }
 
@@ -95,10 +95,52 @@ void Boss1::spawnProjectiles(Projectile projectiles[], float frameTime, Player s
 			{
 				setupProjectile(&projectiles[i], ship);
 				projectiles[i].setActive(true);
+				
 				break;
 			}
 		}
 		spawnTimer -=spawnRate;
 	}
+}
+
+void Boss1::updateAbilities(Projectile projectiles[], float frameTime)
+{
+	timer += frameTime;
+	if (timer > 30.0f)
+	{
+		waveValue = wave3;
+	}
+	else if (timer > 15.0f)
+	{
+		waveValue = wave2;
+	}
+	
+	switch (waveValue)
+	{
+	case wave1:
+		projectileSpeed = boss1ProjectileNS::PROJECTILE_EASY_SPAWN;
+		spawnRate = boss1ProjectileNS::PROJECTILE_EASY_SPEED;
+		bounceOff(projectiles);
+		break;
+		
+	case wave2:
+		projectileSpeed = boss1ProjectileNS::PROJECTILE_MEDIUM_SPEED;
+		spawnRate = boss1ProjectileNS::PROJECTILE_MEDIUM_SPAWN;
+		startBounce();
+		break;
+
+	case wave3:
+		projectileSpeed = boss1ProjectileNS::PROJECTILE_HARD_SPEED;
+		spawnRate = boss1ProjectileNS::PROJECTILE_HARD_SPAWN;
+		break;
+	}
+	
+
+}
+
+void Boss1::startBounce()
+
+{
+
 }
 
