@@ -26,19 +26,30 @@
 const char CLASS_NAME[] = "Spacewar";
 const char GAME_TITLE[] = "Overtale";
 const bool FULLSCREEN = false;              // windowed or fullscreen
-const UINT GAME_WIDTH =  640;               // width of game in pixels
-const UINT GAME_HEIGHT = 480;               // height of game in pixels
+const UINT GAME_WIDTH =  1920;               // width of game in pixels
+const UINT GAME_HEIGHT = 1080;               // height of game in pixels
  
 // game
 const double PI = 3.14159265;
+const double NINETY_DEGREE_RAD = 90 * (PI / 180);  //90 degrees in radian
 const float FRAME_RATE  = 200.0f;               // the target frame rate (frames/sec)
 const float MIN_FRAME_RATE = 10.0f;             // the minimum frame rate
 const float MIN_FRAME_TIME = 1.0f/FRAME_RATE;   // minimum desired time for 1 frame
 const float MAX_FRAME_TIME = 1.0f/MIN_FRAME_RATE; // maximum time used in calculations
+const int MAX_PROJECTILES = 100;
 
 // graphic images
 const char NEBULA_IMAGE[] = "pictures\\orion.jpg";     // placeholder for background
 const char TEXTURES_IMAGE[] = "pictures\\textures.png";  // placeholder for ship
+const char FLOOR_IMAGE[] = "pictures\\floor.png";
+const char CRATE_IMAGE[] = "pictures\\crate.png";
+const char BOSS1_IMAGE[] = "pictures\\boss1.png";
+const char BOSS1Projectile_IMAGE[] = "pictures\\boss1Projectile.png";
+
+
+//ENVIRONMENT 
+const int FLOOR_ROW_LENGTH = 31; //Must be odd numbers for true center square value
+const int FLOOR_COLUMN_LENGTH = 31;
 
 // key mappings
 // In this game simple constants are used for key mappings. If variables were used
