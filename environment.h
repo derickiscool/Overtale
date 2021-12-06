@@ -9,7 +9,7 @@ namespace floorEnvironmentNS
 {
     const int WIDTH = 16;                   // image width
     const int HEIGHT = 16;                  // image height
-    const int START_LOCATION_X = GAME_WIDTH / 2 - WIDTH / 2;   // location on screen to start texture rendering from
+    const int START_LOCATION_X = GAME_WIDTH / 2 - WIDTH / 2;   // location on screen to start rendering
     const int START_LOCATION_Y = GAME_HEIGHT / 2 - HEIGHT / 2;
 
 

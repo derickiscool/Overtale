@@ -30,7 +30,7 @@ protected:
     VECTOR2 velocity;       // velocity
     VECTOR2 deltaV;         // added to velocity during next call to update()
     float   mass;           // Mass of entity
-    float   health;         // health 0 to 100
+    int   health;         // health 0 to 100
     float   rr;             // Radius squared variable
     float   force;          // Force of gravity
     float   gravity;        // gravitational constant of the game universe
@@ -106,7 +106,7 @@ public:
     virtual float getGravity()        const { return gravity; }
 
     // Return health;
-    virtual float getHealth()         const { return health; }
+    virtual int getHealth()         const { return health; }
 
     // Return collision type (NONE, CIRCLE, BOX, ROTATED_BOX)
     virtual entityNS::COLLISION_TYPE getCollisionType() { return collisionType; }
@@ -125,7 +125,7 @@ public:
     virtual void  setActive(bool a) { active = a; }
 
     // Set health.
-    virtual void setHealth(float h) { health = h; }
+    virtual void setHealth(int h) { health = h; }
 
     // Set mass.
     virtual void  setMass(float m) { mass = m; }

@@ -29,7 +29,7 @@ namespace boss1ProjectileNS
 // inherits from Entity class
 class Projectile : public Entity
 {
-
+    int damage; //projectileDamage
 
 public:
     // constructor
@@ -48,6 +48,10 @@ public:
     void setAngle(float angle) { spriteData.angle = angle; };
     float getAngle() { return spriteData.angle; };
 
+
+    void setProjectileDamage(int newDamage) { damage = newDamage; };
+
+    int getProjectileDamage() { return damage; };
 
 };
 #endif

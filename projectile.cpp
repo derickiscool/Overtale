@@ -13,6 +13,7 @@ Projectile::Projectile()
 	spriteData.rect.right = boss1ProjectileNS::WIDTH;
 	currentFrame = startFrame;
 	collisionType = entityNS::CIRCLE;
+	damage = 0;
 	loop = false;
 
 }

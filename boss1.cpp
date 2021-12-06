@@ -168,18 +168,30 @@ void Boss1::updateAbilities(Projectile projectiles[], float frameTime)
 	case wave1:
 		projectileSpeed = boss1ProjectileNS::PROJECTILE_EASY_SPEED;
 		spawnRate = boss1ProjectileNS::PROJECTILE_EASY_SPAWN;
+		for (int i = 0; i < MAX_PROJECTILES; ++i)
+		{
+			projectiles[i].setProjectileDamage(5);
+		}
 		bounceOff(projectiles);
 		break;
 		
 	case wave2:
 		projectileSpeed = boss1ProjectileNS::PROJECTILE_MEDIUM_SPEED;
 		spawnRate = boss1ProjectileNS::PROJECTILE_MEDIUM_SPAWN;
+		for (int i = 0; i < MAX_PROJECTILES; ++i)
+		{
+			projectiles[i].setProjectileDamage(10);
+		}
 		startBounce(projectiles);
 		break;
 
 	case wave3:
 		projectileSpeed = boss1ProjectileNS::PROJECTILE_HARD_SPEED;
 		spawnRate = boss1ProjectileNS::PROJECTILE_HARD_SPAWN;
+		for (int i = 0; i < MAX_PROJECTILES; ++i)
+		{
+			projectiles[i].setProjectileDamage(15);
+		}
 		startBounce(projectiles);
 		break;
 	}

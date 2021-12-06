@@ -1,13 +1,4 @@
-﻿  entity.cpp
+﻿  player.cpp
 D:\GPP Assignment\Overtale\constants.h(63,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
 D:\GPP Assignment\Overtale\constants.h(63,30): warning C4309: 'initializing': truncation of constant value
-D:\GPP Assignment\Overtale\entity.cpp(331,48): warning C4244: 'argument': conversion from 'double' to 'FLOAT', possible loss of data
-D:\GPP Assignment\Overtale\entity.cpp(331,25): warning C4244: 'argument': conversion from 'double' to 'FLOAT', possible loss of data
-D:\GPP Assignment\Overtale\entity.cpp(332,49): warning C4244: 'argument': conversion from 'double' to 'FLOAT', possible loss of data
-D:\GPP Assignment\Overtale\entity.cpp(332,22): warning C4244: 'argument': conversion from 'double' to 'FLOAT', possible loss of data
-D:\GPP Assignment\Overtale\entity.cpp(434,52): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-  overtale.cpp
-D:\GPP Assignment\Overtale\constants.h(63,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
-D:\GPP Assignment\Overtale\constants.h(63,30): warning C4309: 'initializing': truncation of constant value
-  Generating Code...
   Overtale.vcxproj -> D:\GPP Assignment\Overtale\Debug\Overtale.exe

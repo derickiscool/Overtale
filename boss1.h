@@ -13,7 +13,7 @@ namespace boss1NS
     const int WIDTH = 126;                   // image width
     const int HEIGHT = 85;                  // image height
     const int X = GAME_WIDTH / 2 - WIDTH / 2;   // location on screen
-    const int Y = GAME_HEIGHT / 6;
+    const int Y = GAME_HEIGHT / 10;
     const int   TEXTURE_COLS = 0;           // texture has 8 columns
     const int   START_FRAME = 0;      // starts at frame 0
     const int   END_FRAME = 5;        // animation frames 0,1,2,3,4

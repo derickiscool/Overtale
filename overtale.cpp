@@ -87,26 +87,7 @@ void Overtale::initialize(HWND hwnd)
 //=============================================================================
 void Overtale::update()
 {
-    if (input->isKeyDown(SHIP1_RIGHT_KEY))            // if move right
-    {
-        ship1.setX(ship1.getX() + playerNS::SPEED);
-    }
-
-    if (input->isKeyDown(SHIP1_LEFT_KEY))            // if move left
-    {
-        ship1.setX(ship1.getX() - playerNS::SPEED);
-    }
-
-    if (input->isKeyDown(SHIP1_UP_KEY))            // if move up
-    {
-        ship1.setY(ship1.getY() - playerNS::SPEED);
-    }
-
-    if (input->isKeyDown(SHIP1_DOWN_KEY))            // if move down
-    {
-        ship1.setY(ship1.getY() + playerNS::SPEED);
-    }
-
+    
 
   
     ship1.update(frameTime);
@@ -147,6 +128,16 @@ void Overtale::ai()
 //=============================================================================
 void Overtale::collisions()
 {
+    VECTOR2 collisionVector;
+    for (int i = 0; i < boss1.getActiveProjectiles(); ++i)
+    {
+        if (projectiles[i].collidesWith(ship1, collisionVector))
+        {
+            projectiles[i].setActive(false);
+            ship1.setHealth(ship1.getHealth() - projectiles[i].getProjectileDamage());
+            break;
+        }
+    }
   
     
 }
@@ -162,6 +153,8 @@ void Overtale::render()
     dxFontSmall->print("Timer: " + std::to_string(boss1.getTimer()), 0, 40);
     dxFontSmall->print("Spawn Timer: " + std::to_string(boss1.getSpawnTimer()), 0, 80);
     dxFontSmall->print("Active Projectiles : " + std::to_string(boss1.getActiveProjectiles()), 0, 120);
+    dxFontSmall->print("Health : " + std::to_string(ship1.getHealth()), 0, 180);
+
     for (Environment e : fullFloor)
     {
         e.draw();

@@ -32,8 +32,9 @@ namespace playerNS
 class Player : public Entity
 {
 private:
-    bool    shieldOn;
-    Image   shield;
+
+
+
 public:
     // constructor
     Player();
@@ -43,6 +44,9 @@ public:
     virtual bool initialize(Game* gamePtr, int width, int height, int ncols,
         TextureManager* textureM);
     void update(float frameTime);
+
+    //Get Setters
+
 };
 #endif
 

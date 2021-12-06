@@ -11,16 +11,13 @@ Player::Player() : Entity()
     spriteData.y = playerNS::Y;
     spriteData.rect.bottom = playerNS::HEIGHT;    // rectangle to select parts of an image
     spriteData.rect.right = playerNS::WIDTH;
-    //velocity.x = 0;                             // velocity X
-    //velocity.y = 0;                             // velocity Y
     frameDelay = playerNS::SHIP_ANIMATION_DELAY;
     startFrame = playerNS::SHIP1_START_FRAME;     // first frame of ship animation
     endFrame = playerNS::SHIP1_END_FRAME;     // last frame of ship animation
     currentFrame = startFrame;
-    shieldOn = false;
-   /* radius = playerNS::WIDTH / 2.0;
-    mass = playerNS::MASS;
-    collisionType = entityNS::CIRCLE;*/
+    health = 100;
+    radius = playerNS::WIDTH / 2.0;
+    collisionType = entityNS::CIRCLE;
 }
 
 //=============================================================================
@@ -59,6 +56,28 @@ void Player::draw()
 void Player::update(float frameTime)
 {
     Entity::update(frameTime);
+
+
+    if (input->isKeyDown(SHIP1_RIGHT_KEY))            // if move right
+    {
+        spriteData.x = spriteData.x + playerNS::SPEED;
+    }
+
+    if (input->isKeyDown(SHIP1_LEFT_KEY))            // if move left
+    {
+        spriteData.x = spriteData.x - playerNS::SPEED;
+    }
+
+    if (input->isKeyDown(SHIP1_UP_KEY))            // if move up
+    {
+        spriteData.y = spriteData.y - playerNS::SPEED;
+    }
+
+    if (input->isKeyDown(SHIP1_DOWN_KEY))            // if move down
+    {
+        spriteData.y = spriteData.y + playerNS::SPEED;
+    }
+
 
     if (spriteData.x > boundaryEnvironmentNS::MAX_X - boundaryEnvironmentNS::WIDTH)    //if touching boundary      
         spriteData.x = (boundaryEnvironmentNS::MAX_X - boundaryEnvironmentNS::WIDTH);
