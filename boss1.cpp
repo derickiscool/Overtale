@@ -1,4 +1,5 @@
 #include "boss1.h"
+#include<iostream>
 
 Boss1::Boss1()
 {
@@ -21,6 +22,9 @@ Boss1::Boss1()
 	timer = 0;
 	spawnTimer = 0;
 	waveValue = Wave::wave1;
+	activeProjectiles = 0;
+	spawnBool = true;
+
 
 	
 	
@@ -71,76 +75,165 @@ void Boss1::setupProjectile(Projectile *projectile, Player ship) //setup project
 
 void Boss1::bounceOff(Projectile projectiles[])
 {
-	for (int i = 0; i < MAX_PROJECTILES; ++i)
+	for (int i = 0; i < activeProjectiles; ++i)
 	{
-		if (projectiles[i].getX() > boundaryEnvironmentNS::MAX_X - boundaryEnvironmentNS::WIDTH)    //if touching boundary      
-			projectiles[i].setActive(false);
+		if (projectiles[i].getActive())
+		{
+			if (projectiles[i].getX() > boundaryEnvironmentNS::MAX_X - boundaryEnvironmentNS::WIDTH)    //if touching boundary      
+			{
+				projectiles[i].setActive(false);
+				activeProjectiles -= 1;
+				break;
+			}
 
-		if (projectiles[i].getX() < boundaryEnvironmentNS::MIN_X)
-			projectiles[i].setActive(false);
+
+			if (projectiles[i].getX() < boundaryEnvironmentNS::MIN_X)
+
+			{
+				projectiles[i].setActive(false);
+				activeProjectiles -= 1;
+				break;
+			}
 
 
-		if (projectiles[i].getY() > boundaryEnvironmentNS::MAX_Y - boundaryEnvironmentNS::HEIGHT)
-			projectiles[i].setActive(false);
+			if (projectiles[i].getY() > boundaryEnvironmentNS::MAX_Y - boundaryEnvironmentNS::HEIGHT)
+			{
+				projectiles[i].setActive(false);
+				activeProjectiles -= 1;
+				break;
+			}
+
+		}
+			
 	}
 }
 void Boss1::spawnProjectiles(Projectile projectiles[], float frameTime, Player ship)
 {
-	spawnTimer += frameTime;
-	if (spawnTimer > spawnRate)
+	
+	if (spawnBool)
 	{
-		for (int i = 0; i < MAX_PROJECTILES; ++i)
+		spawnTimer += frameTime;
+		if (spawnTimer > spawnRate)
 		{
-			if (projectiles[i].getActive() == false)
+			for (int i = 0; i < MAX_PROJECTILES; ++i)
 			{
-				setupProjectile(&projectiles[i], ship);
-				projectiles[i].setActive(true);
-				
-				break;
+				if (projectiles[i].getActive() == false)
+				{
+					setupProjectile(&projectiles[i], ship);
+					projectiles[i].setActive(true);
+					activeProjectiles += 1;
+
+					break;
+				}
 			}
+			spawnTimer -= spawnRate;
 		}
-		spawnTimer -=spawnRate;
+
 	}
 }
 
 void Boss1::updateAbilities(Projectile projectiles[], float frameTime)
 {
 	timer += frameTime;
-	if (timer > 30.0f)
+	if (timer > 30.f & timer < 35.0f )
 	{
+		resetSpawn();
+		projectiles->clearProjectiles(projectiles);
+	}
+	if (timer > 60.0f & timer <65.0f)
+	{
+		resetSpawn();
+		projectiles->clearProjectiles(projectiles);
+	}
+	if (timer > 65.0f)
+	{
+		if (!spawnBool)
+		{
+			spawnBool = true;
+		}
 		waveValue = wave3;
 	}
-	else if (timer > 15.0f)
+	else if (timer > 35.0f & timer < 60.0f)
 	{
+		if (!spawnBool)
+		{
+			spawnBool = true;
+		}
 		waveValue = wave2;
 	}
+
 	
 	switch (waveValue)
 	{
 	case wave1:
-		projectileSpeed = boss1ProjectileNS::PROJECTILE_EASY_SPAWN;
-		spawnRate = boss1ProjectileNS::PROJECTILE_EASY_SPEED;
+		projectileSpeed = boss1ProjectileNS::PROJECTILE_EASY_SPEED;
+		spawnRate = boss1ProjectileNS::PROJECTILE_EASY_SPAWN;
 		bounceOff(projectiles);
 		break;
 		
 	case wave2:
 		projectileSpeed = boss1ProjectileNS::PROJECTILE_MEDIUM_SPEED;
 		spawnRate = boss1ProjectileNS::PROJECTILE_MEDIUM_SPAWN;
-		startBounce();
+		startBounce(projectiles);
 		break;
 
 	case wave3:
 		projectileSpeed = boss1ProjectileNS::PROJECTILE_HARD_SPEED;
 		spawnRate = boss1ProjectileNS::PROJECTILE_HARD_SPAWN;
+		startBounce(projectiles);
 		break;
 	}
 	
 
 }
 
-void Boss1::startBounce()
-
+void Boss1::startBounce(Projectile projectiles[]) //bounces projectiles
 {
+	for (int i = 0; i < activeProjectiles; ++i)
+	{
+		if (projectiles[i].getX() > boundaryEnvironmentNS::MAX_X - boundaryEnvironmentNS::WIDTH)
+		{
+			projectiles[i].setX(boundaryEnvironmentNS::MAX_X - boundaryEnvironmentNS::WIDTH);
+			VECTOR2 vel = projectiles[i].getVelocity();
+			vel.x = -vel.x;
+			projectiles[i].setVelocity(vel);
+		}
+		if (projectiles[i].getX() < boundaryEnvironmentNS::MIN_X)
+		{
 
+			projectiles[i].setX(boundaryEnvironmentNS::MIN_X);
+			VECTOR2 vel = projectiles[i].getVelocity();
+			vel.x = -vel.x;
+			projectiles[i].setVelocity(vel);
+		}
+		if (projectiles[i].getY() > boundaryEnvironmentNS::MAX_Y - boundaryEnvironmentNS::HEIGHT)
+		{
+
+			projectiles[i].setY(boundaryEnvironmentNS::MAX_Y - boundaryEnvironmentNS::HEIGHT);
+			VECTOR2 vel = projectiles[i].getVelocity();
+			vel.y = -vel.y;
+			projectiles[i].setVelocity(vel);
+		}
+		if (projectiles[i].getY() < boundaryEnvironmentNS::MIN_Y)
+		{
+
+			projectiles[i].setY(boundaryEnvironmentNS::MIN_Y);
+			VECTOR2 vel = projectiles[i].getVelocity();
+			vel.y = -vel.y;
+			projectiles[i].setVelocity(vel);
+		}
+
+
+
+	}
+	
+	
 }
+void Boss1::resetSpawn()
+{
+	spawnBool = false;
+	spawnTimer = 0;
+	activeProjectiles = 0;
+}
+
 

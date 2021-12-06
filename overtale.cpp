@@ -108,18 +108,7 @@ void Overtale::update()
     }
 
 
-    if (ship1.getX() > boundaryEnvironmentNS::MAX_X - boundaryEnvironmentNS::WIDTH)    //if touching boundary      
-        ship1.setX(boundaryEnvironmentNS::MAX_X - boundaryEnvironmentNS::WIDTH);
-                                                                                       
-    if (ship1.getX() < boundaryEnvironmentNS::MIN_X)        
-        ship1.setX((float)boundaryEnvironmentNS::MIN_X); 
-
-
-
-    if (ship1.getY() > boundaryEnvironmentNS::MAX_Y - boundaryEnvironmentNS::HEIGHT)              
-        ship1.setY((float)boundaryEnvironmentNS::MAX_Y - boundaryEnvironmentNS::HEIGHT);     
-    if (ship1.getY() < boundaryEnvironmentNS::MIN_Y)        
-        ship1.setY((float)boundaryEnvironmentNS::MIN_Y);          
+  
     ship1.update(frameTime);
 
     switch (bossType)
@@ -158,7 +147,7 @@ void Overtale::ai()
 //=============================================================================
 void Overtale::collisions()
 {
-
+  
     
 }
 
@@ -169,9 +158,10 @@ void Overtale::render()
 {
     graphics->spriteBegin();                // begin drawing sprites
     dxFontSmall->setFontColor(graphicsNS::WHITE);
-    dxFontSmall->print("Current Wave: "+ std::to_string(boss1.getWaveValue()), 0, 0);
+    dxFontSmall->print("Current Wave: "+ std::to_string(boss1.getWaveValue() + 1), 0, 0);
     dxFontSmall->print("Timer: " + std::to_string(boss1.getTimer()), 0, 40);
-
+    dxFontSmall->print("Spawn Timer: " + std::to_string(boss1.getSpawnTimer()), 0, 80);
+    dxFontSmall->print("Active Projectiles : " + std::to_string(boss1.getActiveProjectiles()), 0, 120);
     for (Environment e : fullFloor)
     {
         e.draw();
@@ -279,7 +269,6 @@ void Overtale::generateBoundary()
 {
     crateEnvironment.setX(boundaryEnvironmentNS::MIN_X - boundaryEnvironmentNS::WIDTH/2); //Set position at minimum x position, left most boundary
     crateEnvironment.setY(boundaryEnvironmentNS::MIN_Y - boundaryEnvironmentNS::HEIGHT/2);
-    crateEnvironment.updateBlockMovement(true);
     fullCrateEnvironment[0] = crateEnvironment; //Start from top left, min x, min y ;
     int counter = 0; //array counter
     //Generate from top left to bottom left

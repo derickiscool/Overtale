@@ -44,6 +44,13 @@ void Projectile::spawnProjectiles(Projectile projectiles[])
 		}
 	}
 }
+void Projectile::clearProjectiles(Projectile projectiles[])
+{
+	for (int i = 0; i < MAX_PROJECTILES; ++i)
+	{
+		projectiles[i].setActive(false);
+	}
+}
 
 
 

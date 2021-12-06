@@ -17,12 +17,12 @@ namespace boss1ProjectileNS
     const float ANIMATION_DELAY = 0.2f;    // time between frames
     
     
-    const float PROJECTILE_EASY_SPEED = 0.5f; //projectile speed rate 
-    const float PROJECTILE_MEDIUM_SPEED = 0.75f;
-    const float PROJECTILE_HARD_SPEED = 1.0f; 
-    const float PROJECTILE_EASY_SPAWN = 0.5f; //projectile spawn rate
-    const float PROJECTILE_MEDIUM_SPAWN = 0.4f;
-    const float PROJECTILE_HARD_SPAWN = 0.3f;
+    const float PROJECTILE_EASY_SPEED = 1.0f; //projectile speed rate 
+    const float PROJECTILE_MEDIUM_SPEED = 0.25f;
+    const float PROJECTILE_HARD_SPEED = 0.5f; 
+    const float PROJECTILE_EASY_SPAWN = 0.25f; //projectile spawn rate
+    const float PROJECTILE_MEDIUM_SPAWN = 1.0f;
+    const float PROJECTILE_HARD_SPAWN = 1.0f;
 
 }
 
@@ -41,6 +41,7 @@ public:
         TextureManager* textureM);
     void update(float frameTime);
     void spawnProjectiles(Projectile projectiles[]);
+    void clearProjectiles(Projectile projectiles[]);
 
 
     //get set

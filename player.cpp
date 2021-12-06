@@ -60,6 +60,16 @@ void Player::update(float frameTime)
 {
     Entity::update(frameTime);
 
+    if (spriteData.x > boundaryEnvironmentNS::MAX_X - boundaryEnvironmentNS::WIDTH)    //if touching boundary      
+        spriteData.x = (boundaryEnvironmentNS::MAX_X - boundaryEnvironmentNS::WIDTH);
+
+    if (spriteData.x < boundaryEnvironmentNS::MIN_X)
+        spriteData.x = ((float)boundaryEnvironmentNS::MIN_X);
+
+    if (spriteData.y > boundaryEnvironmentNS::MAX_Y - boundaryEnvironmentNS::HEIGHT)
+        spriteData.y = ((float)boundaryEnvironmentNS::MAX_Y - boundaryEnvironmentNS::HEIGHT);
+    if (spriteData.y < boundaryEnvironmentNS::MIN_Y)
+        spriteData.y = ((float)boundaryEnvironmentNS::MIN_Y);
 
 
     

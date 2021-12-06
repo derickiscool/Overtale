@@ -41,7 +41,8 @@ protected:
     bool bounceBool; //bounce off the boundary if true
     float spawnTimer; //timer to track spawning
     float timer;      //timer to keep track of boss;
-    Projectile activeProjectiles[MAX_PROJECTILES];
+    int activeProjectiles; //Number of active projectiles;
+    bool spawnBool; //true if want to spawn projectiles, false if projectiles should not spawn
 
 
 
@@ -60,10 +61,11 @@ public:
     void bounceOff(Projectile projectiles[]); //removes entities when touching boundaries
     void spawnProjectiles(Projectile projectiles[], float frameTime, Player ship);  //spawning of projectiles
     void updateAbilities(Projectile projectiles[], float frameTime);
-
+    void resetSpawn();
 
     //Abilities
-    void startBounce();
+    void startBounce(Projectile projectiles[]);
+
 
 
     //get setters
@@ -82,6 +84,8 @@ public:
     float getTimer() { return timer; };
 
     int getWaveValue() { return waveValue; };
+
+    int getActiveProjectiles() { return activeProjectiles; };
     
 };
 #endif

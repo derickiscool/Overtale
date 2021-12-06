@@ -31,7 +31,6 @@ class Environment : public Entity
 {
 
 protected:
-    bool blockMovement;
 
 public:
     // constructor
@@ -41,7 +40,6 @@ public:
     virtual void draw();
     virtual bool initialize(Game* gamePtr, int width, int height, int ncols,
         TextureManager* textureM);
-    void updateBlockMovement(bool move);
 };
 #endif
 
