@@ -304,7 +304,7 @@ void Boss1::bossMove()
 		}
 		else
 		{
-			bossMovementEnum = 1;
+			bossMovementEnum = 0;
 		}
 	}
 	else if (spriteData.x <= boss1NS::MIN_X && spriteData.y <= boss1NS::MIN_Y) //top left
@@ -317,7 +317,7 @@ void Boss1::bossMove()
 		}
 		else
 		{
-			bossMovementEnum = 2;
+			bossMovementEnum = 1;
 		}
 	}
 
