@@ -238,6 +238,11 @@ void Overtale::resetAll()
     return;
 }
 
+//  Module:             Gameplay Programming
+//  Assignment1:        Overtale
+//  Student Name:       Derick Lee 
+//  Student Number:     S10196689
+
 void Overtale::generateFloor()
 {
     fullFloorRow[0] = floorEnvironment; //fullFloor [0] refers to center of the square. We start to generate more textures from this center point

@@ -1,3 +1,8 @@
+//  Module:             Gameplay Programming
+//  Assignment1:        Overtale
+//  Student Name:       Derick Lee 
+//  Student Number:     S10196689
+
 #include "projectile.h"
 
 Projectile::Projectile()

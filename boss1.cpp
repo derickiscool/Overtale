@@ -1,3 +1,9 @@
+	//  Module:             Gameplay Programming
+	//  Assignment1:        Overtale
+	//  Student Name:       Derick Lee 
+	//  Student Number:     S10196689
+
+
 #include "boss1.h"
 #include<iostream>
 
@@ -95,7 +101,7 @@ void Boss1::setupProjectile(Projectile *projectile, Player ship) //setup project
 	projectile->setAngle(projectileAngle);
 }
 
-void Boss1::bounceOff(Projectile projectiles[])
+void Boss1::bounceOff(Projectile projectiles[]) //delete projectiles when hit on wall
 {
 	for (int i = 0; i < activeProjectiles; ++i)
 	{
@@ -129,7 +135,7 @@ void Boss1::bounceOff(Projectile projectiles[])
 			
 	}
 }
-void Boss1::spawnProjectiles(Projectile projectiles[], float frameTime, Player ship)
+void Boss1::spawnProjectiles(Projectile projectiles[], float frameTime, Player ship) //projectile spawning
 {
 	
 	if (spawnBool)
@@ -156,6 +162,8 @@ void Boss1::spawnProjectiles(Projectile projectiles[], float frameTime, Player s
 
 void Boss1::updateAbilities(Projectile projectiles[], float frameTime)
 {
+
+	//timer
 	timer += frameTime;
 	if (timer > boss1NS::wave2Time - 5.0f & timer < boss1NS::wave2Time )
 	{
@@ -185,7 +193,7 @@ void Boss1::updateAbilities(Projectile projectiles[], float frameTime)
 	}
 
 	
-	switch (waveValue)
+	switch (waveValue) //Setting projectile data and abilities based on wave
 	{
 	case wave1:
 		projectileSpeed = boss1ProjectileNS::PROJECTILE_EASY_SPEED;
