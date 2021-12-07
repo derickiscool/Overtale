@@ -13,17 +13,19 @@ namespace boss1NS
     const int WIDTH = 126;                   // image width
     const int HEIGHT = 85;                  // image height
     const int X = GAME_WIDTH / 2 - WIDTH / 2;   // location on screen
-    const int Y = GAME_HEIGHT / 10;
+    const int Y = boss1NS::HEIGHT;
     const int MAX_X = boundaryEnvironmentNS::MAX_X + boss1NS::WIDTH;
     const int MAX_Y = boundaryEnvironmentNS::MAX_Y + boss1NS::HEIGHT;
     const int MIN_X = boundaryEnvironmentNS::MIN_X - boss1NS::WIDTH;
-    const int MIN_Y = GAME_HEIGHT / 10;
+    const int MIN_Y = boss1NS::HEIGHT;
 
 
     const int   TEXTURE_COLS = 0;           // texture has 8 columns
     const int   START_FRAME = 0;      // starts at frame 0
     const int   END_FRAME = 5;        // animation frames 0,1,2,3,4
     const float ANIMATION_DELAY = 0.2f;    // time between frames
+    const float wave2Time = 30.0f;   //When should wave 2 start
+    const float wave3Time = 65.0f;
   
     
 }
@@ -58,8 +60,7 @@ protected:
     bool spawnBool; //true if want to spawn projectiles, false if projectiles should not spawn
     float bossSpeed; //speed of boss when moving
     int bossMovementEnum; 
-    const float wave2Time = 5.0f;   //When should wave 2 start
-    const float wave3Time = 65.0f;
+   
 
 
 

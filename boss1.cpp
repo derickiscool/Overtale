@@ -20,7 +20,7 @@ Boss1::Boss1()
 	spawnRate = boss1ProjectileNS::PROJECTILE_EASY_SPAWN;
 	timer = 0;
 	spawnTimer = 0;
-	waveValue = Wave::wave3;
+	waveValue = Wave::wave1;
 	activeProjectiles = 0;
 	spawnBool = true;
 	bossSpeed = 2.0f;
@@ -156,33 +156,33 @@ void Boss1::spawnProjectiles(Projectile projectiles[], float frameTime, Player s
 
 void Boss1::updateAbilities(Projectile projectiles[], float frameTime)
 {
-	//timer += frameTime;
-	///*if (timer > wave2Time - 5.0f & timer < wave2Time )
-	//{
-	//	resetSpawn();
-	//	projectiles->clearProjectiles(projectiles);
-	//}*/
-	//if (timer > wave3Time - 5.0f & timer <wave3Time)
-	//{
-	//	resetSpawn();
-	//	projectiles->clearProjectiles(projectiles);
-	//}
-	//if (timer > wave3Time)
-	//{
-	//	if (!spawnBool)
-	//	{
-	//		spawnBool = true;
-	//	}
-	//	waveValue = wave3;
-	//}
-	//else if (timer > wave2Time & timer < wave3Time - 5.0f)
-	//{
-	//	if (!spawnBool)
-	//	{
-	//		spawnBool = true;
-	//	}
-	//	waveValue = wave2;
-	//}
+	timer += frameTime;
+	if (timer > boss1NS::wave2Time - 5.0f & timer < boss1NS::wave2Time )
+	{
+		resetSpawn();
+		projectiles->clearProjectiles(projectiles);
+	}
+	if (timer > boss1NS::wave3Time - 5.0f & timer < boss1NS::wave3Time)
+	{
+		resetSpawn();
+		projectiles->clearProjectiles(projectiles);
+	}
+	if (timer > boss1NS::wave3Time)
+	{
+		if (!spawnBool)
+		{
+			spawnBool = true;
+		}
+		waveValue = wave3;
+	}
+	else if (timer > boss1NS::wave2Time & timer < boss1NS::wave3Time - 5.0f)
+	{
+		if (!spawnBool)
+		{
+			spawnBool = true;
+		}
+		waveValue = wave2;
+	}
 
 	
 	switch (waveValue)

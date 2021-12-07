@@ -177,9 +177,8 @@ void Overtale::render()
 {
     graphics->spriteBegin();                // begin drawing sprites
     dxFontSmall->setFontColor(graphicsNS::WHITE);
-    dxFontSmall->print("BOSS Y "+ std::to_string(boss1.getY()), 0, 0);
-    dxFontSmall->print("BOSS X " + std::to_string(boss1.getX()), 0, 40);
-    dxFontSmall->print("MOVEMENT ENUM: " + std::to_string(boss1.getBossMovementEnum()), 0, 80);
+    dxFontSmall->print("Wave " + std::to_string(boss1.getWaveValue() + 1), 0, 40);
+    dxFontSmall->print("Timer: " + std::to_string(boss1.getTimer()), 0, 80);
     dxFontSmall->print("Active Projectiles : " + std::to_string(boss1.getActiveProjectiles()), 0, 120);
     dxFontSmall->print("Health : " + std::to_string(ship1.getHealth()), 0, 180);
 

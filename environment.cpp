@@ -9,7 +9,7 @@ Environment::Environment():Entity()
     spriteData.y = floorEnvironmentNS::START_LOCATION_Y;
     radius = boundaryEnvironmentNS::WIDTH;
     collisionType = entityNS::CIRCLE;
-    mass = 500.0f;
+    mass = 350.0f;
 
 }   
 
