@@ -8,6 +8,9 @@ Overtale::Overtale()
 {
 
     dxFontSmall = new TextDX();     // DirectX fonts
+    menu = new Menu();
+    levelSelect = new LevelSelect();
+    gameScene = Scene::menuScene; //start from menu 
 }
 
 //=============================================================================
@@ -25,16 +28,31 @@ Overtale::~Overtale()
 //=============================================================================
 void Overtale::initialize(HWND hwnd)
 {
+
     Game::initialize(hwnd); // throws GameError
     
-    
+    //Font Setup 
     if (dxFontSmall->initialize(graphics, 50, true, true, "Arial") == false)
         throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing DirectX font"));
     
     
-    bossType = BossType::bossType1;  //Change me if you want to test out ur own project
-   
+    //Menu Setup 
+    if (!menuBackgroundTexture.initialize(graphics,MENU_BACKGROUND_IMAGE))
+        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing menu texture"));
+    if (!menuBackground.initialize(graphics, 0, 0, 0, &menuBackgroundTexture))
+        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing menu image"));
 
+   //Level Select Setup
+    if (!levelSelectTexture.initialize(graphics,LEVEL_SELECT_BACKGROUND_IMAGE))
+        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing Screen level texture"));
+    if (!levelSelectBackground.initialize(graphics, 0,0,0 ,&levelSelectTexture))
+        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing Screen level image"));
+
+
+
+    //Game Setup
+
+    bossType = BossType::bossType1;  //Change me if you want to test out ur own project
     //floor texture
     if (!floorTexture.initialize(graphics, FLOOR_IMAGE))
         throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing floor texture"));
@@ -69,12 +87,12 @@ void Overtale::initialize(HWND hwnd)
 
     switch (bossType)
     {
-    case Overtale::bossType1:
+    case Overtale::BossType::bossType1:
         boss1Setup();
         break;
-    case Overtale::bossType2:
+    case Overtale::BossType::bossType2:
         break;
-    case Overtale::bossType3:
+    case Overtale::BossType::bossType3:
         break;
     default:
         break;
@@ -87,28 +105,67 @@ void Overtale::initialize(HWND hwnd)
 //=============================================================================
 void Overtale::update()
 {
-    
-
-  
-    ship1.update(frameTime);
-
-    switch (bossType)
+    switch (gameScene)
     {
-    case BossType::bossType1:
-
-        for (int i = 0; i < MAX_PROJECTILES; ++i)
+    case Scene::menuScene:
+    {
+        if (menu->update(input, menuBackground))
         {
-            projectiles[i].update(frameTime);
+            gameScene = Scene::levelSelectScene;
+            input->setMouseLButton(false);
         }
-        boss1.update(frameTime,projectiles, ship1);
+        
+        
+    }
+    case Scene::levelSelectScene:
+    {
+        if (levelSelect->update(input) == 1)
+        {
+            bossType = BossType::bossType1;
+            gameScene = Scene::gameScene;
+        }
+        else if (levelSelect->update(input) == 2)
+        {
+            bossType = BossType::bossType2;
+            gameScene = Scene::gameScene;
+        }
+        else if (levelSelect->update(input) == 3)
+        {
+            bossType = BossType::bossType3;
+            gameScene = Scene::gameScene;
+        }
         break;
-    case BossType::bossType2:
-        break;
-    case BossType::bossType3:
-        break;
-    default:
+
+    }
+    case Scene::gameScene:
+    {
+        ship1.update(frameTime);
+
+        switch (bossType)
+        {
+        case BossType::bossType1:
+
+            for (int i = 0; i < MAX_PROJECTILES; ++i)
+            {
+                projectiles[i].update(frameTime);
+            }
+            boss1.update(frameTime, projectiles, ship1);
+            break;
+        case BossType::bossType2:
+            break;
+        case BossType::bossType3:
+            break;
+        default:
+            break;
+        }
         break;
     }
+    default:
+        break;
+    };
+
+  
+  
     
     
     
@@ -127,44 +184,66 @@ void Overtale::ai()
 //=============================================================================
 void Overtale::collisions()
 {
-    VECTOR2 collisionVector;
-    for (int i = 0; i < boss1.getActiveProjectiles(); ++i)
-    {
-        if (projectiles[i].collidesWith(ship1, collisionVector))
-        {
-            projectiles[i].setActive(false);
-            boss1.setActiveProjectiles(boss1.getActiveProjectiles() - 1);
-            ship1.setHealth(ship1.getHealth() - projectiles[i].getProjectileDamage());
-            break;
-        }
-    }
 
-    switch (bossType)
+
+
+    switch (gameScene)
     {
-    case BossType::bossType1:
-        switch (boss1.getWaveValue())
+    case Scene::menuScene:
+    {
+        break;
+    }
+    case Scene::levelSelectScene:
+    {
+        break;
+
+    }
+    case Scene::gameScene:
+    {
+        VECTOR2 collisionVector;
+        for (int i = 0; i < boss1.getActiveProjectiles(); ++i)
         {
-        case 0:
+            if (projectiles[i].collidesWith(ship1, collisionVector))
+            {
+                projectiles[i].setActive(false);
+                boss1.setActiveProjectiles(boss1.getActiveProjectiles() - 1);
+                ship1.setHealth(ship1.getHealth() - projectiles[i].getProjectileDamage());
+                break;
+            }
+        }
+
+        switch (bossType)
+        {
+        case BossType::bossType1:
+            switch (boss1.getWaveValue())
+            {
+            case 0:
+                break;
+            case 1:                                //Bounce Collisions
+                boss1.startBounce(projectiles, fullCrateEnvironment);
+                break;
+            case 2:
+                boss1.startBounce(projectiles, fullCrateEnvironment);
+                break;
+            default:
+                break;
+            }
+
             break;
-        case 1:                                //Bounce Collisions
-            boss1.startBounce(projectiles, fullCrateEnvironment);
+
+        case BossType::bossType2:
             break;
-        case 2:
-            boss1.startBounce(projectiles, fullCrateEnvironment);
+        case BossType::bossType3:
             break;
         default:
             break;
         }
-        
-        break;
-
-    case BossType::bossType2:
-        break;
-    case BossType::bossType3:
-        break;
-    default:
         break;
     }
+    default:
+        break;
+    };
+    
 
   
     
@@ -175,45 +254,72 @@ void Overtale::collisions()
 //=============================================================================
 void Overtale::render()
 {
-    graphics->spriteBegin();                // begin drawing sprites
-    dxFontSmall->setFontColor(graphicsNS::WHITE);
-    dxFontSmall->print("Wave " + std::to_string(boss1.getWaveValue() + 1), 0, 40);
-    dxFontSmall->print("Timer: " + std::to_string(boss1.getTimer()), 0, 80);
-    dxFontSmall->print("Active Projectiles : " + std::to_string(boss1.getActiveProjectiles()), 0, 120);
-    dxFontSmall->print("Health : " + std::to_string(ship1.getHealth()), 0, 180);
 
-    for (Environment e : fullFloor)
+
+
+    switch (gameScene)
     {
-        e.draw();
+    case Scene::menuScene:
+    {
+        menu->render(graphics, dxFontSmall,menuBackground);
+        break;
     }
-    for (Environment e : fullCrateEnvironment)
+    case Scene::levelSelectScene:
     {
-        e.draw();
-    }   
-    projectiles->spawnProjectiles(projectiles);
+        graphics->spriteBegin();
+        dxFontSmall->print("Wave " + std::to_string(input->getMouseX()), 0, 40);
+        dxFontSmall->print("Wave " + std::to_string(input->getMouseY()), 0, 80);
+        levelSelect->render(graphics,dxFontSmall,levelSelectBackground);
+        break;
 
-
-
-    switch (bossType)
+    }
+    case Scene::gameScene:
     {
-    case BossType::bossType1:
+        graphics->spriteBegin();                // begin drawing sprites
+        dxFontSmall->setFontColor(graphicsNS::WHITE);
+        dxFontSmall->print("Wave " + std::to_string(boss1.getWaveValue() + 1), 0, 40);
+        dxFontSmall->print("Timer: " + std::to_string(boss1.getTimer()), 0, 80);
+        dxFontSmall->print("Active Projectiles : " + std::to_string(boss1.getActiveProjectiles()), 0, 120);
+        dxFontSmall->print("Health : " + std::to_string(ship1.getHealth()), 0, 180);
 
-        boss1.draw();
-        break;
+        for (Environment e : fullFloor)
+        {
+            e.draw();
+        }
+        for (Environment e : fullCrateEnvironment)
+        {
+            e.draw();
+        }
+        projectiles->spawnProjectiles(projectiles);
 
-    case BossType::bossType2:
+
+
+        switch (bossType)
+        {
+        case BossType::bossType1:
+
+            boss1.draw();
+            break;
+
+        case BossType::bossType2:
+            break;
+        case BossType::bossType3:
+            break;
+        default:
+            break;
+        }
+
+
+
+
+        ship1.draw();                           //add ship to scene
+        graphics->spriteEnd();                  // end drawing sprites
         break;
-    case BossType::bossType3:
-        break;
+    }
     default:
         break;
     }
-
-
- 
-   
-    ship1.draw();                           //add ship to scene
-    graphics->spriteEnd();                  // end drawing sprites
+    
 
     
 }
