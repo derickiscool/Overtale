@@ -23,11 +23,11 @@ Overtale::~Overtale()
 // Initializes the game
 // Throws GameError on error
 //=============================================================================
-void Overtale::initialize(HWND hwnd)
+void Overtale::initialize(Graphics* g, Game* gPtr)
 {
-    Game::initialize(hwnd); // throws GameError
-    
-    
+    graphics = g;
+    gamePtr = gPtr;
+       
     if (dxFontSmall->initialize(graphics, 50, true, true, "Arial") == false)
         throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing DirectX font"));
     
@@ -48,7 +48,7 @@ void Overtale::initialize(HWND hwnd)
         throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing game textures"));
 
     // ship
-    if (!ship1.initialize(this, playerNS::WIDTH, playerNS::HEIGHT, playerNS::TEXTURE_COLS, &gameTextures))
+    if (!ship1.initialize(gamePtr, playerNS::WIDTH, playerNS::HEIGHT, playerNS::TEXTURE_COLS, &gameTextures))
         throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing ship1"));
     ship1.setFrames(playerNS::SHIP1_START_FRAME, playerNS::SHIP1_END_FRAME);
     ship1.setCurrentFrame(playerNS::SHIP1_START_FRAME);
@@ -57,10 +57,10 @@ void Overtale::initialize(HWND hwnd)
 
 
     //floor object initialization 
-    if (!floorEnvironment.initialize(this, floorEnvironmentNS::WIDTH, floorEnvironmentNS::HEIGHT, 0, &floorTexture))
+    if (!floorEnvironment.initialize(gamePtr, floorEnvironmentNS::WIDTH, floorEnvironmentNS::HEIGHT, 0, &floorTexture))
         throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing floor"));
 
-    if (!crateEnvironment.initialize(this, boundaryEnvironmentNS::WIDTH, boundaryEnvironmentNS::HEIGHT, 0, &crateTexture))
+    if (!crateEnvironment.initialize(gamePtr, boundaryEnvironmentNS::WIDTH, boundaryEnvironmentNS::HEIGHT, 0, &crateTexture))
         throw(GameError(gameErrorNS::FATAL_ERROR, "Error intialzing boundary crates"));
 
     //environment generation 
@@ -85,7 +85,7 @@ void Overtale::initialize(HWND hwnd)
 //=============================================================================
 // Update all game items
 //=============================================================================
-void Overtale::update()
+void Overtale::update(float frameTime)
 {
     
 
@@ -224,7 +224,6 @@ void Overtale::render()
 //=============================================================================
 void Overtale::releaseAll()
 {
-    Game::releaseAll();
     return;
 }
 
@@ -234,7 +233,6 @@ void Overtale::releaseAll()
 //=============================================================================
 void Overtale::resetAll()
 {
-    Game::resetAll();
     return;
 }
 
@@ -346,12 +344,12 @@ void Overtale::boss1Setup()
     if (!boss1ProjectileTexture.initialize(graphics, BOSS1Projectile_IMAGE))
         throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing boss1projectile texture"));
     //boss1 initialization 
-    if (!boss1.initialize(this, boss1NS::WIDTH, boss1NS::HEIGHT, boss1NS::TEXTURE_COLS, &boss1Texture))
+    if (!boss1.initialize(gamePtr, boss1NS::WIDTH, boss1NS::HEIGHT, boss1NS::TEXTURE_COLS, &boss1Texture))
         throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing boss1"));
     boss1.setFrames(boss1NS::START_FRAME, boss1NS::END_FRAME);
     boss1.setCurrentFrame(boss1NS::START_FRAME);
     //boss1 projectile initialization 
-    if (!boss1Projectile.initialize(this, boss1ProjectileNS::WIDTH, boss1ProjectileNS::HEIGHT, boss1ProjectileNS::TEXTURE_COLS, &boss1ProjectileTexture))
+    if (!boss1Projectile.initialize(gamePtr, boss1ProjectileNS::WIDTH, boss1ProjectileNS::HEIGHT, boss1ProjectileNS::TEXTURE_COLS, &boss1ProjectileTexture))
         throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing boss1"));
     boss1.projectileInitialization(&boss1Projectile);
    

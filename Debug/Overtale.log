@@ -1,1 +1,8 @@
-﻿  Overtale.vcxproj -> C:\Users\deric\Desktop\Overtale\Overtale\Debug\Overtale.exe
+﻿  sceneManager.cpp
+C:\Users\deric\Desktop\Overtale\Overtale\constants.h(68,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
+C:\Users\deric\Desktop\Overtale\Overtale\constants.h(68,30): warning C4309: 'initializing': truncation of constant value
+  winmain.cpp
+C:\Users\deric\Desktop\Overtale\Overtale\constants.h(68,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
+C:\Users\deric\Desktop\Overtale\Overtale\constants.h(68,30): warning C4309: 'initializing': truncation of constant value
+  Generating Code...
+  Overtale.vcxproj -> C:\Users\deric\Desktop\Overtale\Overtale\Debug\Overtale.exe

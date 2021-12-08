@@ -17,9 +17,16 @@
 //=============================================================================
 // Create game class
 //=============================================================================
-class Overtale : public Game
+class Overtale
 {
 private:
+
+
+    //Game Variables
+    Graphics* graphics;
+    Game* gamePtr;
+
+
 
     enum BossType
     {
@@ -49,7 +56,7 @@ private:
     Projectile tempProjectiles[MAX_PROJECTILES]; //for initializing projectiles
     
 
-   
+  
 
     //Boss 1
     Projectile boss1Projectile;
@@ -67,8 +74,8 @@ public:
     virtual ~Overtale();
 
     // Initialize the game
-    void initialize(HWND hwnd);
-    void update();      // must override pure virtual from Game
+    void initialize(Graphics* g, Game* gPtr);
+    void update(float frameTime);      // must override pure virtual from Game
     void ai();          // "
     void collisions();  // "
     void render();      // "
