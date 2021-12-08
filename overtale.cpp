@@ -98,7 +98,7 @@ void Overtale::update()
 
         for (int i = 0; i < MAX_PROJECTILES; ++i)
         {
-            projectiles[i].update(frameTime);
+            projectiles[i]->update(frameTime);
         }
         boss1.update(frameTime,projectiles, ship1);
         break;
@@ -130,11 +130,11 @@ void Overtale::collisions()
     VECTOR2 collisionVector;
     for (int i = 0; i < boss1.getActiveProjectiles(); ++i)
     {
-        if (projectiles[i].collidesWith(ship1, collisionVector))
+        if (projectiles[i]->collidesWith(ship1, collisionVector))
         {
-            projectiles[i].setActive(false);
+            projectiles[i]->setActive(false);
             boss1.setActiveProjectiles(boss1.getActiveProjectiles() - 1);
-            ship1.setHealth(ship1.getHealth() - projectiles[i].getProjectileDamage());
+            ship1.setHealth(ship1.getHealth() - projectiles[i]->getProjectileDamage());
             break;
         }
     }
@@ -190,7 +190,7 @@ void Overtale::render()
     {
         e.draw();
     }   
-    projectiles->spawnProjectiles(projectiles);
+    projectiles[0]->spawnProjectiles(projectiles);
 
 
 
@@ -354,12 +354,18 @@ void Overtale::boss1Setup()
     if (!boss1Projectile.initialize(this, boss1ProjectileNS::WIDTH, boss1ProjectileNS::HEIGHT, boss1ProjectileNS::TEXTURE_COLS, &boss1ProjectileTexture))
         throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing boss1"));
     boss1.projectileInitialization(&boss1Projectile);
-
+   
+    
     //projectile array initialization 
     for (int i = 0; i < MAX_PROJECTILES; ++i)
     {
-        projectiles[i] = boss1Projectile;
+        Projectile projectile = boss1Projectile;
+        tempProjectiles[i] = projectile;
+
+        projectiles[i] = &tempProjectiles[i];
+
     }
+    
 
 }
 

@@ -33,6 +33,7 @@ namespace boss1ProjectileNS
 // inherits from Entity class
 class Projectile : public Entity
 {
+private:
     int damage; //projectileDamage
 
 public:
@@ -44,8 +45,8 @@ public:
     virtual bool initialize(Game* gamePtr, int width, int height, int ncols,
         TextureManager* textureM);
     void update(float frameTime);
-    void spawnProjectiles(Projectile projectiles[]);
-    void clearProjectiles(Projectile projectiles[]);
+    void spawnProjectiles(Projectile *projectiles[]);
+    void clearProjectiles(Projectile *projectiles[]);
 
 
     //get set

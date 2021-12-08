@@ -49,7 +49,7 @@ void Boss1::draw()
 	Image::draw();
 }
 
-void Boss1::update(float frameTime, Projectile projectiles[], Player ship)
+void Boss1::update(float frameTime, Projectile *projectiles[], Player ship)
 {
 	
 	Entity::update(frameTime);
@@ -64,7 +64,7 @@ void Boss1::projectileInitialization(Projectile *projectile)//Initialize project
 	projectile->setHeight(boss1ProjectileNS::HEIGHT);
 	projectile->setX(getX());
 	projectile->setX(getY());
-	projectile->setFrameDelay(boss1ProjectileNS::ANIMATION_DELAY);
+	projectile->setFrameDelay(0.2f);
 	projectile->setStartFrame(boss1ProjectileNS::START_FRAME);
 	projectile->setEndFrame(boss1ProjectileNS::END_FRAME);
 	projectile->setRectBottom(boss1ProjectileNS::HEIGHT);
@@ -101,32 +101,32 @@ void Boss1::setupProjectile(Projectile *projectile, Player ship) //setup project
 	projectile->setAngle(projectileAngle);
 }
 
-void Boss1::bounceOff(Projectile projectiles[]) //delete projectiles when hit on wall
+void Boss1::bounceOff(Projectile *projectiles[]) //delete projectiles when hit on wall
 {
 	for (int i = 0; i < activeProjectiles; ++i)
 	{
-		if (projectiles[i].getActive())
+		if (projectiles[i]->getActive())
 		{
-			if (projectiles[i].getX() > boundaryEnvironmentNS::MAX_X - boundaryEnvironmentNS::WIDTH)    //if touching boundary      
+			if (projectiles[i]->getX() > boundaryEnvironmentNS::MAX_X - boundaryEnvironmentNS::WIDTH)    //if touching boundary      
 			{
-				projectiles[i].setActive(false);
+				projectiles[i]->setActive(false);
 				activeProjectiles -= 1;
 				break;
 			}
 
 
-			if (projectiles[i].getX() < boundaryEnvironmentNS::MIN_X)
+			if (projectiles[i]->getX() < boundaryEnvironmentNS::MIN_X)
 
 			{
-				projectiles[i].setActive(false);
+				projectiles[i]->setActive(false);
 				activeProjectiles -= 1;
 				break;
 			}
 
 
-			if (projectiles[i].getY() > boundaryEnvironmentNS::MAX_Y - boundaryEnvironmentNS::HEIGHT)
+			if (projectiles[i]->getY() > boundaryEnvironmentNS::MAX_Y - boundaryEnvironmentNS::HEIGHT)
 			{
-				projectiles[i].setActive(false);
+				projectiles[i]->setActive(false);
 				activeProjectiles -= 1;
 				break;
 			}
@@ -135,7 +135,7 @@ void Boss1::bounceOff(Projectile projectiles[]) //delete projectiles when hit on
 			
 	}
 }
-void Boss1::spawnProjectiles(Projectile projectiles[], float frameTime, Player ship) //projectile spawning
+void Boss1::spawnProjectiles(Projectile *projectiles[], float frameTime, Player ship) //projectile spawning
 {
 	
 	if (spawnBool)
@@ -145,10 +145,10 @@ void Boss1::spawnProjectiles(Projectile projectiles[], float frameTime, Player s
 		{
 			for (int i = 0; i < MAX_PROJECTILES; ++i)
 			{
-				if (projectiles[i].getActive() == false)
+				if (projectiles[i]->getActive() == false)
 				{
-					setupProjectile(&projectiles[i], ship);
-					projectiles[i].setActive(true);
+					setupProjectile(projectiles[i], ship);
+					projectiles[i]->setActive(true);
 					activeProjectiles += 1;
 
 					break;
@@ -160,7 +160,7 @@ void Boss1::spawnProjectiles(Projectile projectiles[], float frameTime, Player s
 	}
 }
 
-void Boss1::updateAbilities(Projectile projectiles[], float frameTime)
+void Boss1::updateAbilities(Projectile *projectiles[], float frameTime)
 {
 
 	//timer
@@ -168,12 +168,12 @@ void Boss1::updateAbilities(Projectile projectiles[], float frameTime)
 	if (timer > boss1NS::wave2Time - 5.0f & timer < boss1NS::wave2Time )
 	{
 		resetSpawn();
-		projectiles->clearProjectiles(projectiles);
+		projectiles[0]->clearProjectiles(projectiles);
 	}
 	if (timer > boss1NS::wave3Time - 5.0f & timer < boss1NS::wave3Time)
 	{
 		resetSpawn();
-		projectiles->clearProjectiles(projectiles);
+		projectiles[0]->clearProjectiles(projectiles);
 	}
 	if (timer > boss1NS::wave3Time)
 	{
@@ -200,7 +200,7 @@ void Boss1::updateAbilities(Projectile projectiles[], float frameTime)
 		spawnRate = boss1ProjectileNS::PROJECTILE_EASY_SPAWN;
 		for (int i = 0; i < MAX_PROJECTILES; ++i)
 		{
-			projectiles[i].setProjectileDamage(5);
+			projectiles[i]->setProjectileDamage(5);
 		}
 		bounceOff(projectiles);
 		break;
@@ -210,7 +210,7 @@ void Boss1::updateAbilities(Projectile projectiles[], float frameTime)
 		spawnRate = boss1ProjectileNS::PROJECTILE_MEDIUM_SPAWN;
 		for (int i = 0; i < MAX_PROJECTILES; ++i)
 		{
-			projectiles[i].setProjectileDamage(10);
+			projectiles[i]->setProjectileDamage(10);
 		}
 		
 		break;
@@ -221,7 +221,7 @@ void Boss1::updateAbilities(Projectile projectiles[], float frameTime)
 		bossMove();
 		for (int i = 0; i < MAX_PROJECTILES; ++i)
 		{
-			projectiles[i].setProjectileDamage(15);
+			projectiles[i]->setProjectileDamage(15);
 		}
 		break;
 	}
@@ -229,23 +229,23 @@ void Boss1::updateAbilities(Projectile projectiles[], float frameTime)
 
 }
 
-void Boss1::startBounce(Projectile projectiles[], Environment crates[]) //bounces projectiles
+void Boss1::startBounce(Projectile *projectiles[], Environment crates[]) //bounces projectiles
 {
 
 	VECTOR2 collisionVector;
 	for (int i = 0; i < activeProjectiles; ++i)
 	{
-		bool flag1 = (projectiles[i].getY() >= boundaryEnvironmentNS::MIN_Y - boundaryEnvironmentNS::HEIGHT/2); // inside box from top 
-		bool flag2 = (projectiles[i].getY() < boundaryEnvironmentNS::MAX_Y - boundaryEnvironmentNS::HEIGHT);
-		bool flag3 = (projectiles[i].getX() >= boundaryEnvironmentNS::MIN_X - boundaryEnvironmentNS::WIDTH/2);
-		bool flag4 = (projectiles[i].getX() < boundaryEnvironmentNS::MAX_X - boundaryEnvironmentNS::WIDTH);
+		bool flag1 = (projectiles[i]->getY() >= boundaryEnvironmentNS::MIN_Y - boundaryEnvironmentNS::HEIGHT/2); // inside box from top 
+		bool flag2 = (projectiles[i]->getY() < boundaryEnvironmentNS::MAX_Y - boundaryEnvironmentNS::HEIGHT);
+		bool flag3 = (projectiles[i]->getX() >= boundaryEnvironmentNS::MIN_X - boundaryEnvironmentNS::WIDTH/2);
+		bool flag4 = (projectiles[i]->getX() < boundaryEnvironmentNS::MAX_X - boundaryEnvironmentNS::WIDTH);
 		if (flag1 && flag2 && flag3 && flag4) //check if projectile is current outside box
 		{
 			for (int j = 0; j < CRATES_NEEDED; ++j)
 			{
-				if (projectiles[i].collidesWith(crates[j], collisionVector))
+				if (projectiles[i]->collidesWith(crates[j], collisionVector))
 				{
-					projectiles[i].bounce(collisionVector, crates[j]);
+					projectiles[i]->bounce(collisionVector, crates[j]);
 					VECTOR2 normalVector = VECTOR2(collisionVector.x - 16, collisionVector.y);
 					normalVector = normalVector - collisionVector;
 					graphics->Vector2Normalize(&normalVector);
@@ -253,7 +253,7 @@ void Boss1::startBounce(Projectile projectiles[], Environment crates[]) //bounce
 
 					float dotProduct = graphics->Vector2Dot(&normalVector, &collisionVector);
 					float angle = acos(dotProduct);
-					projectiles[i].setAngle(projectiles[i].getAngle() + angle);
+					projectiles[i]->setAngle(projectiles[i]->getAngle() + angle);
 
 
 

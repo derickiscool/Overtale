@@ -40,22 +40,23 @@ void Projectile::update(float frameTime)
 	spriteData.y += frameTime * velocity.y;         // move ship along Y
 	Entity::update(frameTime);
 }
-void Projectile::spawnProjectiles(Projectile projectiles[])
+void Projectile::spawnProjectiles(Projectile *projectiles[])
 {
 	for (int i = 0; i < MAX_PROJECTILES; ++i)
 	{
-		if (projectiles[i].getActive() == true)
+		if (projectiles[i]->getActive())
 		{
-			projectiles[i].draw();
+			
+			projectiles[i]->draw();
 
 		}
 	}
 }
-void Projectile::clearProjectiles(Projectile projectiles[])
+void Projectile::clearProjectiles(Projectile *projectiles[])
 {
 	for (int i = 0; i < MAX_PROJECTILES; ++i)
 	{
-		projectiles[i].setActive(false);
+		projectiles[i]->setActive(false);
 	}
 }
 

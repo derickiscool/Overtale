@@ -45,7 +45,8 @@ private:
     Environment fullFloor[FLOOR_ROW_LENGTH*FLOOR_COLUMN_LENGTH]; //Creating whole floor
     Environment crateEnvironment; //Crate environment placeholder
     Environment fullCrateEnvironment[CRATES_NEEDED]; //Create array of crate environment;
-    Projectile projectiles[MAX_PROJECTILES];
+    Projectile *projectiles[MAX_PROJECTILES]; //pointer to projectiles;
+    Projectile tempProjectiles[MAX_PROJECTILES]; //for initializing projectiles
     
 
    

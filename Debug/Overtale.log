@@ -1,12 +1,1 @@
-﻿  boss1.cpp
-D:\GPP Assignment\Overtale\constants.h(68,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
-D:\GPP Assignment\Overtale\constants.h(68,30): warning C4309: 'initializing': truncation of constant value
-D:\GPP Assignment\Overtale\boss1.cpp(90,39): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-D:\GPP Assignment\Overtale\boss1.cpp(160,69): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
-D:\GPP Assignment\Overtale\boss1.cpp(165,68): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
-D:\GPP Assignment\Overtale\boss1.cpp(178,73): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
-D:\GPP Assignment\Overtale\boss1.cpp(273,13): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-D:\GPP Assignment\Overtale\boss1.cpp(286,13): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-D:\GPP Assignment\Overtale\boss1.cpp(299,13): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-D:\GPP Assignment\Overtale\boss1.cpp(312,13): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  Overtale.vcxproj -> D:\GPP Assignment\Overtale\Debug\Overtale.exe
+﻿  Overtale.vcxproj -> C:\Users\deric\Desktop\Overtale\Overtale\Debug\Overtale.exe
