@@ -6,9 +6,10 @@
 //=============================================================================
 SceneManager::SceneManager()
 {
+    menu = new Menu();
     overtale = new Overtale();
     text = new TextDX();     // DirectX fonts
-    currentScene = Scene::menu; //Set starting screen to be the current scene 
+    currentScene = Scene::menuScene; //Set starting screen to be the current scene 
 
 
 
@@ -38,6 +39,7 @@ void SceneManager::initialize(HWND hwnd)
 
 
     overtale->initialize(graphics, this); //initialize different scenes
+    menu->initialize(graphics, this);
     
 
 
@@ -49,20 +51,21 @@ void SceneManager::initialize(HWND hwnd)
 //=============================================================================
 void SceneManager::update()
 {
-    switch (gameScene)
+    switch (currentScene)
     {
-    case SceneManager::menu:
+    case SceneManager::menuScene:
+        menu->update();
         break;
-    case SceneManager::options:
+    case SceneManager::optionsScene:
         break;
-    case SceneManager::levelSelect:
+    case SceneManager::levelSelectScene:
         break;
     case SceneManager::gameScene:
         overtale->update(frameTime);
         break;
-    case SceneManager::gameWin:
+    case SceneManager::gameWinScene:
         break;
-    case SceneManager::gameLost:
+    case SceneManager::gameLostScene:
         break;
     default:
         break;
@@ -83,20 +86,20 @@ void SceneManager::ai()
 //=============================================================================
 void SceneManager::collisions()
 {
-    switch (gameScene)
+    switch (currentScene)
     {
-    case SceneManager::menu:
+    case SceneManager::menuScene:
         break;
-    case SceneManager::options:
+    case SceneManager::optionsScene:
         break;
-    case SceneManager::levelSelect:
+    case SceneManager::levelSelectScene:
         break;
     case SceneManager::gameScene:
         overtale->collisions();
         break;
-    case SceneManager::gameWin:
+    case SceneManager::gameWinScene:
         break;
-    case SceneManager::gameLost:
+    case SceneManager::gameLostScene:
         break;
     default:
         break;
@@ -110,20 +113,21 @@ void SceneManager::collisions()
 //=============================================================================
 void SceneManager::render()
 {
-    switch (gameScene)
+    switch (currentScene)
     {
-    case SceneManager::menu:
+    case SceneManager::menuScene:
+        menu->render();
         break;
-    case SceneManager::options:
+    case SceneManager::optionsScene:
         break;
-    case SceneManager::levelSelect:
+    case SceneManager::levelSelectScene:
         break;
     case SceneManager::gameScene:
         overtale->render();
         break;
-    case SceneManager::gameWin:
+    case SceneManager::gameWinScene:
         break;
-    case SceneManager::gameLost:
+    case SceneManager::gameLostScene:
         break;
     default:
         break;

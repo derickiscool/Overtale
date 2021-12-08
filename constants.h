@@ -48,6 +48,8 @@ const char FLOOR_IMAGE[] = "pictures\\floor.png";
 const char CRATE_IMAGE[] = "pictures\\crate.png";
 const char BOSS1_IMAGE[] = "pictures\\boss1.png";
 const char BOSS1Projectile_IMAGE[] = "pictures\\boss1Projectile.png";
+const char MENU_BACKGROUND_IMAGE[] = "pictures\\menuBackground.png";
+const char MENU_ARROW_IMAGE[] = "pictures\\menuArrow.png";
 
 
 //ENVIRONMENT 

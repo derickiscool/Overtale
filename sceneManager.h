@@ -6,7 +6,7 @@
 #define _SCENEMANAGER_H             // ..file is included in more than one place
 #define WIN32_LEAN_AND_MEAN
 
-
+#include "menu.h"
 #include "overtale.h"
 #include "game.h"
 #include "textDX.h"
@@ -19,16 +19,17 @@ class SceneManager : public Game //meant for managing between scenes
 protected:  
     enum Scene
     {
-        menu,
-        options,
-        levelSelect,
+        menuScene,
+        optionsScene,
+        levelSelectScene,
         gameScene,
-        gameWin,
-        gameLost,
+        gameWinScene,
+        gameLostScene,
     };
 
-
+    
     Scene currentScene;
+    Menu* menu;
     Overtale* overtale;
     TextDX* text;
 

@@ -6,13 +6,25 @@
 #define _MENU_H             // ..file is included in more than one place
 #define WIN32_LEAN_AND_MEAN
 
-
+#include "game.h"
 #include "textDX.h"
 #include "image.h"
+#include "textureManager.h"
 
 
 class Menu
 {
+
+private:
+    Graphics* graphics;
+    Game* gamePtr;
+
+
+    TextureManager menuBackgroundTexture;
+    TextureManager arrowTexture;
+    Image arrow;
+    Image menuBackground;
+    TextDX *menuText;
 
 public:
     // Constructor
@@ -22,7 +34,8 @@ public:
     virtual ~Menu();
 
     // Initialize 
-    void initialize();
+    void initialize(Graphics * g, Game* ptr);
+    void placeAssets();
     int update();      
     void render();
 
