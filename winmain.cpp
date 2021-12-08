@@ -16,8 +16,6 @@ LRESULT WINAPI WinProc(HWND, UINT, WPARAM, LPARAM);
 Overtale *game = NULL;
 HWND hwnd = NULL;
 
-
-
 //=============================================================================
 // Starting point for a Windows application
 //=============================================================================

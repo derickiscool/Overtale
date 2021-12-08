@@ -14,8 +14,6 @@
 #include "boss1.h"
 #include "projectile.h"
 #include "textDX.h"
-#include "menu.h"
-#include "levelSelect.h"
 //=============================================================================
 // Create game class
 //=============================================================================
@@ -23,48 +21,19 @@ class Overtale : public Game
 {
 private:
 
-    enum class BossType
+    enum BossType
     {
         bossType1,
         bossType2,
         bossType3
     };
-
-    enum class Scene
-    {
-        menuScene,
-        levelSelectScene,
-        gameScene
-    };
-
-   
-   
     BossType bossType;
-    Scene gameScene;
-    Menu * menu;
-    LevelSelect *levelSelect;
-
-
-
-    //Menu variables
-    TextureManager menuBackgroundTexture;
-    Image menuBackground;
-
-    //Level Select Variables
-    TextureManager levelSelectTexture;
-    Image levelSelectBackground;
-
-
-
-
-
 
     //text variables
     TextDX* dxFontSmall;       // DirectX fonts
 
 
     // variables
-    
     TextureManager gameTextures;    // game texture
     TextureManager floorTexture;    //floor texture
     TextureManager crateTexture;    //crate texture
@@ -90,8 +59,6 @@ private:
     
 
 public:
-
-
     // Constructor
     Overtale();
 
@@ -109,8 +76,6 @@ public:
     void generateFloor(); //used to generate the floor of the game
     void generateBoundary(); //generating the boundaries of the box
     void boss1Setup();     //setup first boss
-
-    void setScene(Scene scene) { gameScene = scene; };
 };
 
 #endif
