@@ -7,6 +7,10 @@
 #include "projectile.h"
 #include "environment.h"
 
+//  Module:             Gameplay Programming
+//  Assignment1:        Overtale
+//  Student Name:       Ben Chang
+//  Student Number:     S10185167
 
 namespace boss3NS
 {

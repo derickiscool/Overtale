@@ -1,6 +1,7 @@
 #include "powerup.h"
 #include<iostream>
 
+
 Powerup::Powerup()
 {
 	//animation

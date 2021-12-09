@@ -27,12 +27,6 @@ Player::Player() : Entity()
 bool Player::initialize(Game* gamePtr, int width, int height, int ncols,
     TextureManager* textureM)
 {
-    //code for shield from practical
-    //shield.initialize(gamePtr->getGraphics(), width, height, ncols, textureM);
-    //shield.setFrames(playerNS::SHIELD_START_FRAME, playerNS::SHIELD_END_FRAME);
-    //shield.setCurrentFrame(playerNS::SHIELD_START_FRAME);
-    //shield.setFrameDelay(playerNS::SHIELD_ANIMATION_DELAY);
-    //shield.setLoop(false);                  // do not loop animation
     return(Entity::initialize(gamePtr, width, height, ncols, textureM));
 }
 
@@ -42,10 +36,6 @@ bool Player::initialize(Game* gamePtr, int width, int height, int ncols,
 void Player::draw()
 {
     Image::draw();              // draw ship
-    //code for shield from practical
-    //if (shieldOn)
-    //    // draw shield using colorFilter 50% alpha
-    //    shield.draw(spriteData, graphicsNS::ALPHA50 & colorFilter);
 }
 
 //=============================================================================
@@ -90,16 +80,4 @@ void Player::update(float frameTime)
     if (spriteData.y < boundaryEnvironmentNS::MIN_Y)
         spriteData.y = ((float)boundaryEnvironmentNS::MIN_Y);
 
-
-    
-   //code for shield from practical
-   /* if (shieldOn)
-    {
-        shield.update(frameTime);
-        if (shield.getAnimationComplete())
-        {
-            shieldOn = false;
-            shield.setAnimationComplete(false);
-        }
-    }*/
 }

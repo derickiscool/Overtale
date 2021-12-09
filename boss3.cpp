@@ -1,6 +1,11 @@
 #include "boss3.h"
 #include<iostream>
 
+//  Module:             Gameplay Programming
+//  Assignment1:        Overtale
+//  Student Name:       Ben Chang
+//  Student Number:     S10185167
+
 Boss3::Boss3()
 {
 	//animation

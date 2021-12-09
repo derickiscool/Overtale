@@ -13,18 +13,12 @@ namespace playerNS
     const int X = GAME_WIDTH / 2 - WIDTH / 2;   // location on screen
     const int Y = GAME_HEIGHT / 2 - HEIGHT / 2;
     const float ROTATION_RATE = (float)PI / 4; // radians per second
-    const float SPEED = 1;                // 100 pixels per second
+    const float SPEED = 1;                // 1 pixels per second
     const float MASS = 300.0f;              // mass
-    const int   TEXTURE_COLS = 1;           // texture has 8 columns
-    const int   SHIP1_START_FRAME = 4;      // ship1 starts at frame 0
-    const int   SHIP1_END_FRAME = 7;        // ship1 animation frames 0,1,2,3
+    const int   TEXTURE_COLS = 1;           // texture has 1 columns
+    const int   SHIP1_START_FRAME = 4;      // ship1 starts at frame 4
+    const int   SHIP1_END_FRAME = 7;        // ship1 animation frames 4,5,6,7
     const float SHIP_ANIMATION_DELAY = 0.2f;    // time between frames
-
-    //code for shield from tutorial
-    //const int   SHIELD_START_FRAME = 24;    // shield start frame
-    //const int   SHIELD_END_FRAME = 27;      // shield end frame
-    //const float SHIELD_ANIMATION_DELAY = 0.1f; // time between frames
-
 
 }
 
