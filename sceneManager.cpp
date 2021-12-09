@@ -6,6 +6,8 @@
 //=============================================================================
 SceneManager::SceneManager()
 {
+
+    levelSelect = new LevelSelect();
     menu = new Menu();
     overtale = new Overtale();
     text = new TextDX();     // DirectX fonts
@@ -40,7 +42,7 @@ void SceneManager::initialize(HWND hwnd)
 
     overtale->initialize(graphics, this); //initialize different scenes
     menu->initialize(graphics, this);
-    
+    levelSelect->initialize(graphics, this);
 
 
 
@@ -54,11 +56,41 @@ void SceneManager::update()
     switch (currentScene)
     {
     case SceneManager::menuScene:
-        menu->update();
+        switch (menu->update(input))
+        {
+        case 1:
+            currentScene = Scene::levelSelectScene;
+            break;
+        case 2:
+            currentScene = Scene::optionsScene;
+            break;
+        case 3:
+            exitGame();
+            break;
+        default:
+            break;
+        }
         break;
     case SceneManager::optionsScene:
         break;
     case SceneManager::levelSelectScene:
+        switch (levelSelect->update(input))
+        {
+        case 1:
+            overtale->setBossType(Overtale::BossType::bossType1);
+            currentScene = Scene::gameScene;
+            break;
+        case 2:
+            overtale->setBossType(Overtale::BossType::bossType2);
+            currentScene = Scene::gameScene;
+            break;
+        case 3:
+            overtale->setBossType(Overtale::BossType::bossType3);
+            currentScene = Scene::gameScene;
+            break;
+        default:
+            break;
+        }
         break;
     case SceneManager::gameScene:
         overtale->update(frameTime);
@@ -121,6 +153,7 @@ void SceneManager::render()
     case SceneManager::optionsScene:
         break;
     case SceneManager::levelSelectScene:
+        levelSelect->render();
         break;
     case SceneManager::gameScene:
         overtale->render();

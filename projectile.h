@@ -50,6 +50,23 @@ namespace boss2ProjectileNS
 }
 
 
+namespace boss3ProjectileNS
+{
+    const int WIDTH = 32;                   // image width
+    const int HEIGHT = 32;                  // image height
+    const int X = GAME_WIDTH / 2 - WIDTH / 2;   // location on screen
+    const int Y = GAME_HEIGHT / 4;
+
+
+    const float PROJECTILE_EASY_SPEED = 0.7f; //projectile speed rate 
+    const float PROJECTILE_MEDIUM_SPEED = 0.5f;
+    const float PROJECTILE_HARD_SPEED = 0.25f;
+    const float PROJECTILE_EASY_SPAWN = 0.75f; //projectile spawn rate
+    const float PROJECTILE_MEDIUM_SPAWN = 1.0f;
+    const float PROJECTILE_HARD_SPAWN = 1.2f;
+
+}
+
 // inherits from Entity class
 class Projectile : public Entity
 {

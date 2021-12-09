@@ -7,9 +7,11 @@
 #define WIN32_LEAN_AND_MEAN
 
 #include "menu.h"
+#include "levelSelect.h"
 #include "overtale.h"
 #include "game.h"
 #include "textDX.h"
+
 
 //=============================================================================
 // Create game class 
@@ -29,6 +31,7 @@ protected:
 
     
     Scene currentScene;
+    LevelSelect* levelSelect;
     Menu* menu;
     Overtale* overtale;
     TextDX* text;
@@ -48,6 +51,9 @@ public:
     void render();      // "
     void releaseAll();
     void resetAll();
+
+
+
    
 };
 

@@ -143,6 +143,8 @@ public:
     // Set animation loop. lp = true to loop.
     virtual void setLoop(bool lp) { loop = lp; }
 
+    virtual void setAngle(float a) { spriteData.angle = a; };
+
     // Set animation complete Boolean.
     virtual void setAnimationComplete(bool a) { animComplete = a; };
 

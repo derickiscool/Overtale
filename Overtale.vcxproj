@@ -21,12 +21,12 @@
     <ConfigurationType>Application</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -96,8 +96,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="asteroid.cpp" />
     <ClCompile Include="boss1.cpp" />
     <ClCompile Include="boss2.cpp" />
+    <ClCompile Include="boss3.cpp" />
     <ClCompile Include="entity.cpp" />
     <ClCompile Include="environment.cpp" />
     <ClCompile Include="game.cpp" />
@@ -107,6 +109,7 @@
     <ClCompile Include="menu.cpp" />
     <ClCompile Include="overtale.cpp" />
     <ClCompile Include="player.cpp" />
+    <ClCompile Include="powerup.cpp" />
     <ClCompile Include="projectile.cpp" />
     <ClCompile Include="sceneManager.cpp" />
     <ClCompile Include="textDX.cpp" />
@@ -114,8 +117,10 @@
     <ClCompile Include="winmain.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="asteroid.h" />
     <ClInclude Include="boss1.h" />
     <ClInclude Include="boss2.h" />
+    <ClInclude Include="boss3.h" />
     <ClInclude Include="constants.h" />
     <ClInclude Include="entity.h" />
     <ClInclude Include="environment.h" />
@@ -127,6 +132,7 @@
     <ClInclude Include="menu.h" />
     <ClInclude Include="overtale.h" />
     <ClInclude Include="player.h" />
+    <ClInclude Include="powerup.h" />
     <ClInclude Include="projectile.h" />
     <ClInclude Include="sceneManager.h" />
     <ClInclude Include="textDX.h" />

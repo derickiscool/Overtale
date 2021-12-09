@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿  boss1.cpp
 C:\Users\pegas\source\repos\Overtale\constants.h(70,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
 C:\Users\pegas\source\repos\Overtale\constants.h(70,30): warning C4309: 'initializing': truncation of constant value
@@ -68,3 +69,6 @@ C:\Users\pegas\source\repos\Overtale\constants.h(70,30): warning C4309: 'initial
 boss1.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
 LINK : warning LNK4031: no subsystem specified; CONSOLE assumed
   Overtale.vcxproj -> C:\Users\pegas\source\repos\Overtale\Debug\Overtale.exe
+=======
+﻿  Overtale.vcxproj -> C:\Users\deric\Desktop\Overtale\Overtale\Debug\Overtale.exe
+>>>>>>> 6d24e37d44984ae023b5a624c0b8a031e5cb3a1c

@@ -75,6 +75,7 @@ void Overtale::initialize(Graphics* g, Game* gPtr)
     case Overtale::bossType2:
         break;
     case Overtale::bossType3:
+        boss3Setup();
         break;
     default:
         break;
@@ -105,6 +106,15 @@ void Overtale::update(float frameTime)
     case BossType::bossType2:
         break;
     case BossType::bossType3:
+        for (int i = 0; i < MAX_PROJECTILES; i += 1)
+        {
+            projectiles[i]->update(frameTime);
+        }
+        boss3.update(frameTime, projectiles);
+        asteroid1.update(frameTime);
+        asteroid2.update(frameTime);
+        asteroid3.update(frameTime);
+        asteroid4.update(frameTime);
         break;
     default:
         break;
@@ -137,6 +147,55 @@ void Overtale::collisions()
             ship1.setHealth(ship1.getHealth() - projectiles[i]->getProjectileDamage());
             break;
         }
+    }
+
+    for (int i = 0; i < boss3.getActiveProjectiles(); ++i)
+    {
+        if (projectiles[i]->collidesWith(ship1, collisionVector))
+        {
+            projectiles[i]->setActive(false);
+            ship1.setHealth(ship1.getHealth() - projectiles[i]->getProjectileDamage());
+            break;
+        }
+    }
+
+    if (ship1.collidesWith(boss3, collisionVector))
+    {
+        ship1.bounce(collisionVector, boss3);
+        ship1.setHealth(ship1.getHealth() - boss3NS::DAMAGE);
+    }
+
+    if (ship1.collidesWith(asteroid1, collisionVector))
+    {
+        ship1.bounce(collisionVector, asteroid1);
+        ship1.setHealth(ship1.getHealth() - asteroidNS::DAMAGE);
+    }
+    if (ship1.collidesWith(asteroid2, collisionVector))
+    {
+        ship1.bounce(collisionVector, asteroid2);
+        ship1.setHealth(ship1.getHealth() - asteroidNS::DAMAGE);
+    }
+    if (ship1.collidesWith(asteroid3, collisionVector))
+    {
+        ship1.bounce(collisionVector, asteroid3);
+        ship1.setHealth(ship1.getHealth() - asteroidNS::DAMAGE);
+    }
+    if (ship1.collidesWith(asteroid4, collisionVector))
+    {
+        ship1.bounce(collisionVector, asteroid4);
+        ship1.setHealth(ship1.getHealth() - asteroidNS::DAMAGE);
+    }
+
+    if (ship1.collidesWith(healPowerup1, collisionVector))
+    {
+        healPowerup1.deletePowerup();
+        ship1.setHealth(ship1.getHealth() + PowerUpNS::heal);
+    }
+
+    if (ship1.collidesWith(healPowerup2, collisionVector))
+    {
+        healPowerup2.deletePowerup();
+        ship1.setHealth(ship1.getHealth() + PowerUpNS::heal);
     }
 
     switch (bossType)
@@ -178,6 +237,7 @@ void Overtale::collisions()
 
 
     case BossType::bossType3:
+        //no special collision methods
         break;
     default:
         break;
@@ -193,11 +253,7 @@ void Overtale::collisions()
 void Overtale::render()
 {
     graphics->spriteBegin();                // begin drawing sprites
-    dxFontSmall->setFontColor(graphicsNS::WHITE);
-    dxFontSmall->print("Wave " + std::to_string(boss1.getWaveValue() + 1), 0, 40);
-    dxFontSmall->print("Timer: " + std::to_string(boss1.getTimer()), 0, 80);
-    dxFontSmall->print("Active Projectiles : " + std::to_string(boss1.getActiveProjectiles()), 0, 120);
-    dxFontSmall->print("Health : " + std::to_string(ship1.getHealth()), 0, 180);
+   
 
     for (Environment e : fullFloor)
     {
@@ -214,13 +270,30 @@ void Overtale::render()
     switch (bossType)
     {
     case BossType::bossType1:
-
+        dxFontSmall->setFontColor(graphicsNS::WHITE);
+        dxFontSmall->print("Wave " + std::to_string(boss1.getWaveValue() + 1), 0, 40);
+        dxFontSmall->print("Timer: " + std::to_string(boss1.getTimer()), 0, 80);
+        dxFontSmall->print("Active Projectiles : " + std::to_string(boss1.getActiveProjectiles()), 0, 120);
+        dxFontSmall->print("Health : " + std::to_string(ship1.getHealth()), 0, 180);
         boss1.draw();
         break;
 
     case BossType::bossType2:
         break;
     case BossType::bossType3:
+        dxFontSmall->setFontColor(graphicsNS::WHITE);
+        dxFontSmall->print("Wave " + std::to_string(boss3.getWaveValue() + 1), 0, 40);
+        dxFontSmall->print("Timer: " + std::to_string(boss3.getTimer()), 0, 80);
+        dxFontSmall->print("Active Projectiles : " + std::to_string(boss3.getActiveProjectiles()), 0, 120);
+        dxFontSmall->print("Health : " + std::to_string(ship1.getHealth()), 0, 180);
+        boss3.draw();
+        asteroid1.draw();
+        asteroid2.draw();
+        asteroid3.draw();
+        asteroid4.draw();
+        healPowerup1.draw();
+        healPowerup2.draw();
+        shieldPowerup.draw();
         break;
     default:
         break;
@@ -228,7 +301,7 @@ void Overtale::render()
 
 
  
-   
+
     ship1.draw();                           //add ship to scene
     graphics->spriteEnd();                  // end drawing sprites
 
@@ -383,5 +456,90 @@ void Overtale::boss1Setup()
     
 
 }
+
+void Overtale::boss3Setup()
+{
+    //boss 3 textures
+    if (!boss3Texture.initialize(graphics, BOSS3_IMAGE))
+        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing boss3 textures"));
+    //Boss 3 projectile Textures
+    if (!boss3ProjectileTexture.initialize(graphics, BOSS3Projectile_IMAGE))
+        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing boss3projectile texture"));
+
+    //asteroid textures
+    if (!asteroidTexture.initialize(graphics, ASTEROID_IMAGE))
+        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing asteroid textures"));
+
+
+    //boss3 initialization 
+    if (!boss3.initialize(gamePtr, boss3NS::WIDTH, boss3NS::HEIGHT, boss3NS::TEXTURE_COLS, &boss3Texture))
+        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing boss3"));
+    boss3.setFrames(boss3NS::START_FRAME, boss3NS::END_FRAME);
+    boss3.setCurrentFrame(boss3NS::START_FRAME);
+
+    //boss3 projectile initialization 
+    if (!boss3Projectile.initialize(gamePtr, boss3ProjectileNS::WIDTH, boss3ProjectileNS::HEIGHT, 0, &boss3ProjectileTexture))
+        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing boss3 projectiles"));
+    boss3Projectile.setActive(false);
+
+    boss3.projectileInitialization(&boss3Projectile);
+ 
+      //asteroid1 initialization
+    if (!asteroid1.initialize(gamePtr, asteroidNS::WIDTH, asteroidNS::HEIGHT, 0, &asteroidTexture))
+        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing asteroid1"));
+    asteroid1.setX(GAME_WIDTH / 2 - GAME_WIDTH / 3);
+    asteroid1.setY(GAME_HEIGHT / 3 - GAME_HEIGHT / 3);
+
+    //asteroid2 initialization
+    if (!asteroid2.initialize(gamePtr, asteroidNS::WIDTH, asteroidNS::HEIGHT, 0, &asteroidTexture))
+        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing asteroid2"));
+    asteroid2.setX(GAME_WIDTH / 3 - GAME_WIDTH);
+    asteroid2.setY(GAME_HEIGHT / 3 - GAME_HEIGHT / 2);
+
+    //asteroid3 initialization
+    if (!asteroid3.initialize(gamePtr, asteroidNS::WIDTH, asteroidNS::HEIGHT, 0, &asteroidTexture))
+        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing asteroid3"));
+
+    //asteroid4 initialization
+    if (!asteroid4.initialize(gamePtr, asteroidNS::WIDTH, asteroidNS::HEIGHT, 0, &asteroidTexture))
+        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing asteroid4"));
+    
+    //heal power up (copy paste to add to level)
+    //healpowerup textures
+    if (!healPowerupTexture.initialize(graphics, HEAL_IMAGE))
+        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing healpowerup textures"));
+
+    //heal powerup1
+    if (!healPowerup1.initialize(gamePtr, PowerUpNS::WIDTH, PowerUpNS::HEIGHT, 0, &healPowerupTexture))
+        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing heal power up1"));
+    healPowerup1.setX(GAME_WIDTH / 2.3);
+    healPowerup1.setY(GAME_HEIGHT / 3);
+
+    //heal powerup2
+    if (!healPowerup2.initialize(gamePtr, PowerUpNS::WIDTH, PowerUpNS::HEIGHT, 0, &healPowerupTexture))
+        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing heal power up2"));
+    healPowerup2.setX(GAME_WIDTH / 1.7);
+    healPowerup2.setY(GAME_HEIGHT / 2);
+
+    //set velocity
+    boss3.setVelocity(VECTOR2(boss3NS::SPEED, -boss3NS::SPEED));
+    asteroid1.setVelocity(VECTOR2(-asteroidNS::SPEED, asteroidNS::SPEED));
+    asteroid2.setVelocity(VECTOR2(asteroidNS::SPEED, -asteroidNS::SPEED));
+    asteroid3.setVelocity(VECTOR2(-asteroidNS::SPEED, -asteroidNS::SPEED));
+    asteroid4.setVelocity(VECTOR2(asteroidNS::SPEED, asteroidNS::SPEED));
+
+    //projectile array initialization 
+    for (int i = 0; i < MAX_PROJECTILES; i++)
+    {
+        Projectile projectile = boss3Projectile;
+        tempProjectiles[i] = projectile;
+        projectiles[i] = &tempProjectiles[i];
+
+    }
+
+}
+
+
+
 
 
