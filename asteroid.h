@@ -18,7 +18,7 @@ namespace asteroidNS
     const int   COLLISION_RADIUS = 120 / 2;   // for circular collision
     const int   X = GAME_WIDTH / 2 - WIDTH / 3; // location on screen
     const int   Y = GAME_HEIGHT / 3 - HEIGHT / 3;
-    const float MASS = 1.0e14f;         // mass
+    const float MASS = 1000.0f;         // mass
     const float SPEED = 120;                // 120 pixels per second
     const float DAMAGE = 0.1;
 }
