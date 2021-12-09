@@ -2,4 +2,5 @@
 C:\Users\deric\Desktop\Overtale\Overtale\menu.cpp(1,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 C:\Users\deric\Desktop\Overtale\Overtale\constants.h(70,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
 C:\Users\deric\Desktop\Overtale\Overtale\constants.h(70,30): warning C4309: 'initializing': truncation of constant value
+C:\Users\deric\Desktop\Overtale\Overtale\menu.cpp(61,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   Overtale.vcxproj -> C:\Users\deric\Desktop\Overtale\Overtale\Debug\Overtale.exe

@@ -12,6 +12,34 @@
 #include "textureManager.h"
 
 
+class ArrowXY
+{
+private:
+    int xVal;
+    int yVal;
+public:
+
+    ArrowXY();
+    ArrowXY(int x, int y);
+
+    int getX() { return xVal; };
+    int getY() { return yVal; };
+
+};
+
+
+namespace arrowNS {
+    const int PLAY_OPTION_POSITON_X = 700;
+    const int PLAY_OPTION_POSITON_Y = 500;
+    const int OPTIONS_OPTION_POSITON_X = 600;
+    const int OPTIONS_OPTION_POSITON_Y = 625;
+    const int QUIT_OPTION_POSITON_X = 700;
+    const int QUIT_OPTION_POSITON_Y = 765;
+
+
+    
+}
+
 class Menu
 {
 
@@ -20,6 +48,10 @@ private:
     Game* gamePtr;
 
 
+   
+
+    int counter;
+    ArrowXY *arrowPositions[3];
     TextureManager menuBackgroundTexture;
     TextureManager arrowTexture;
     Image arrow;
