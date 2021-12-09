@@ -54,7 +54,20 @@ void SceneManager::update()
     switch (currentScene)
     {
     case SceneManager::menuScene:
-        menu->update();
+        switch (menu->update(input))
+        {
+        case 1:
+            currentScene = Scene::gameScene;
+            break;
+        case 2:
+            currentScene = Scene::optionsScene;
+            break;
+        case 3:
+            exitGame();
+            break;
+        default:
+            break;
+        }
         break;
     case SceneManager::optionsScene:
         break;

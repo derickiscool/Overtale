@@ -43,14 +43,15 @@ void Menu::initialize(Graphics *g, Game* ptr)
 	if (!arrow.initialize(g, 0, 0, 0, &arrowTexture))
 		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing arrow image texture"));
 
-	if (!menuText->initialize(g, 15,0,0,"Arial"))
+	if (!menuText->initialize(g, 100,0,0,"Arial"))
 		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing arrow image texture"));
-
 	
+
+
 	//initialize ArrowPositions
-	arrowPositions[0] = &ArrowXY(arrowNS::PLAY_OPTION_POSITON_X, arrowNS::PLAY_OPTION_POSITON_Y);
-	arrowPositions[1] = &ArrowXY(arrowNS::OPTIONS_OPTION_POSITON_X, arrowNS::OPTIONS_OPTION_POSITON_Y);
-	arrowPositions[2] = &ArrowXY(arrowNS::QUIT_OPTION_POSITON_X, arrowNS::QUIT_OPTION_POSITON_Y);
+	arrowPositions[0] = new ArrowXY(arrowNS::PLAY_OPTION_POSITON_X, arrowNS::PLAY_OPTION_POSITON_Y);
+	arrowPositions[1] = new ArrowXY(arrowNS::OPTIONS_OPTION_POSITON_X, arrowNS::OPTIONS_OPTION_POSITON_Y);
+	arrowPositions[2] = new ArrowXY(arrowNS::QUIT_OPTION_POSITON_X, arrowNS::QUIT_OPTION_POSITON_Y);
 	placeAssets();
 }
 
@@ -65,12 +66,30 @@ void Menu::placeAssets()
 
 }
 
-int Menu::update()
+int Menu::update(Input *input)
 {
+	
+	if (input->isKeyDown('S') && counter <2)
+	{
+		counter++;
+		input->clearAll();
+	}
+	if (input->isKeyDown('W') && counter > 0)
+	{
+		
+		counter--;
+		input->clearAll();
+		
+		
 
+	}
+	arrow.setX(arrowPositions[counter]->getX());
+	arrow.setY(arrowPositions[counter]->getY());
+	if (input->isKeyDown(VK_SPACE))
+	{
+		return counter+1;
+	}
 	
-	
-	return 0;
 }
 void Menu::render()
 {

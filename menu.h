@@ -68,7 +68,7 @@ public:
     // Initialize 
     void initialize(Graphics * g, Game* ptr);
     void placeAssets();
-    int update();      
+    int update(Input *input);      
     void render();
 
 
