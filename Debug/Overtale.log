@@ -1,5 +1,70 @@
-﻿  menu.cpp
-C:\Users\deric\Desktop\Overtale\Overtale\menu.cpp(1,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-C:\Users\deric\Desktop\Overtale\Overtale\constants.h(70,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
-C:\Users\deric\Desktop\Overtale\Overtale\constants.h(70,30): warning C4309: 'initializing': truncation of constant value
-  Overtale.vcxproj -> C:\Users\deric\Desktop\Overtale\Overtale\Debug\Overtale.exe
+﻿  boss1.cpp
+C:\Users\pegas\source\repos\Overtale\constants.h(70,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
+C:\Users\pegas\source\repos\Overtale\constants.h(70,30): warning C4309: 'initializing': truncation of constant value
+C:\Users\pegas\source\repos\Overtale\boss1.cpp(96,39): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\pegas\source\repos\Overtale\boss1.cpp(168,69): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
+C:\Users\pegas\source\repos\Overtale\boss1.cpp(173,68): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
+C:\Users\pegas\source\repos\Overtale\boss1.cpp(186,73): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
+C:\Users\pegas\source\repos\Overtale\boss1.cpp(281,13): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\pegas\source\repos\Overtale\boss1.cpp(294,13): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\pegas\source\repos\Overtale\boss1.cpp(307,13): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\pegas\source\repos\Overtale\boss1.cpp(320,13): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  boss2.cpp
+C:\Users\pegas\source\repos\Overtale\constants.h(70,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
+C:\Users\pegas\source\repos\Overtale\constants.h(70,30): warning C4309: 'initializing': truncation of constant value
+C:\Users\pegas\source\repos\Overtale\boss2.cpp(16,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\pegas\source\repos\Overtale\boss2.cpp(21,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\pegas\source\repos\Overtale\boss2.cpp(106,39): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\pegas\source\repos\Overtale\boss2.cpp(178,68): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
+  entity.cpp
+C:\Users\pegas\source\repos\Overtale\constants.h(70,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
+C:\Users\pegas\source\repos\Overtale\constants.h(70,30): warning C4309: 'initializing': truncation of constant value
+C:\Users\pegas\source\repos\Overtale\entity.cpp(331,48): warning C4244: 'argument': conversion from 'double' to 'FLOAT', possible loss of data
+C:\Users\pegas\source\repos\Overtale\entity.cpp(331,25): warning C4244: 'argument': conversion from 'double' to 'FLOAT', possible loss of data
+C:\Users\pegas\source\repos\Overtale\entity.cpp(332,49): warning C4244: 'argument': conversion from 'double' to 'FLOAT', possible loss of data
+C:\Users\pegas\source\repos\Overtale\entity.cpp(332,22): warning C4244: 'argument': conversion from 'double' to 'FLOAT', possible loss of data
+C:\Users\pegas\source\repos\Overtale\entity.cpp(434,52): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  environment.cpp
+C:\Users\pegas\source\repos\Overtale\constants.h(70,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
+C:\Users\pegas\source\repos\Overtale\constants.h(70,30): warning C4309: 'initializing': truncation of constant value
+  game.cpp
+C:\Users\pegas\source\repos\Overtale\constants.h(70,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
+C:\Users\pegas\source\repos\Overtale\constants.h(70,30): warning C4309: 'initializing': truncation of constant value
+  graphics.cpp
+C:\Users\pegas\source\repos\Overtale\constants.h(70,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
+C:\Users\pegas\source\repos\Overtale\constants.h(70,30): warning C4309: 'initializing': truncation of constant value
+  image.cpp
+C:\Users\pegas\source\repos\Overtale\constants.h(70,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
+C:\Users\pegas\source\repos\Overtale\constants.h(70,30): warning C4309: 'initializing': truncation of constant value
+  input.cpp
+C:\Users\pegas\source\repos\Overtale\constants.h(70,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
+C:\Users\pegas\source\repos\Overtale\constants.h(70,30): warning C4309: 'initializing': truncation of constant value
+  menu.cpp
+C:\Users\pegas\source\repos\Overtale\menu.cpp(1,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\pegas\source\repos\Overtale\constants.h(70,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
+C:\Users\pegas\source\repos\Overtale\constants.h(70,30): warning C4309: 'initializing': truncation of constant value
+  overtale.cpp
+C:\Users\pegas\source\repos\Overtale\constants.h(70,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
+C:\Users\pegas\source\repos\Overtale\constants.h(70,30): warning C4309: 'initializing': truncation of constant value
+  player.cpp
+C:\Users\pegas\source\repos\Overtale\constants.h(70,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
+C:\Users\pegas\source\repos\Overtale\constants.h(70,30): warning C4309: 'initializing': truncation of constant value
+  projectile.cpp
+C:\Users\pegas\source\repos\Overtale\constants.h(70,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
+C:\Users\pegas\source\repos\Overtale\constants.h(70,30): warning C4309: 'initializing': truncation of constant value
+  sceneManager.cpp
+C:\Users\pegas\source\repos\Overtale\constants.h(70,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
+C:\Users\pegas\source\repos\Overtale\constants.h(70,30): warning C4309: 'initializing': truncation of constant value
+  textDX.cpp
+C:\Users\pegas\source\repos\Overtale\constants.h(70,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
+C:\Users\pegas\source\repos\Overtale\constants.h(70,30): warning C4309: 'initializing': truncation of constant value
+  textureManager.cpp
+C:\Users\pegas\source\repos\Overtale\constants.h(70,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
+C:\Users\pegas\source\repos\Overtale\constants.h(70,30): warning C4309: 'initializing': truncation of constant value
+  winmain.cpp
+C:\Users\pegas\source\repos\Overtale\constants.h(70,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
+C:\Users\pegas\source\repos\Overtale\constants.h(70,30): warning C4309: 'initializing': truncation of constant value
+  Generating Code...
+boss1.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
+LINK : warning LNK4031: no subsystem specified; CONSOLE assumed
+  Overtale.vcxproj -> C:\Users\pegas\source\repos\Overtale\Debug\Overtale.exe

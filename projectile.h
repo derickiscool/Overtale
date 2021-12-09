@@ -29,6 +29,26 @@ namespace boss1ProjectileNS
     const float PROJECTILE_HARD_SPAWN = 0.75f;
 
 }
+namespace boss2ProjectileNS
+{
+    const int WIDTH = 64;                   // image width
+    const int HEIGHT = 64;                  // image height
+    const int X = GAME_WIDTH / 2 - WIDTH / 2;   // location on screen
+    const int Y = GAME_HEIGHT / 4;
+    const int   TEXTURE_COLS = 0;           // texture has 8 columns
+    const int   START_FRAME = 0;      // starts at frame 0
+    const int   END_FRAME = 4;        // animation frames 0,1,2,3,4
+    const float ANIMATION_DELAY = 0.2f;    // time between frames
+
+
+    const float PROJECTILE_EASY_SPEED = 0.75f; //projectile speed rate 
+    const float PROJECTILE_MEDIUM_SPEED = 1.0f;
+    const float PROJECTILE_HARD_SPEED = 1.0f;
+    const float PROJECTILE_EASY_SPAWN = 0.25f; //projectile spawn rate
+    const float PROJECTILE_MEDIUM_SPAWN = 0.5f;
+    const float PROJECTILE_HARD_SPAWN = 0.75f;
+}
+
 
 // inherits from Entity class
 class Projectile : public Entity

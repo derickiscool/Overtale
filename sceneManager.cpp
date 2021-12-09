@@ -9,7 +9,7 @@ SceneManager::SceneManager()
     menu = new Menu();
     overtale = new Overtale();
     text = new TextDX();     // DirectX fonts
-    currentScene = Scene::menuScene; //Set starting screen to be the current scene 
+    currentScene = Scene::gameScene; //Set starting screen to be the current scene 
 
 
 

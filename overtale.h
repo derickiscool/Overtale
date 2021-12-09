@@ -12,6 +12,7 @@
 #include "player.h"
 #include "environment.h"
 #include "boss1.h"
+#include "boss2.h"
 #include "projectile.h"
 #include "textDX.h"
 //=============================================================================
@@ -61,10 +62,9 @@ private:
     //Boss 1
     Projectile boss1Projectile;
     Boss1 boss1;
+    Boss2 boss2;
     
 
-    
-    
 
 public:
     // Constructor

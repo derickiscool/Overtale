@@ -158,8 +158,25 @@ void Overtale::collisions()
         
         break;
 
+
     case BossType::bossType2:
+        switch (boss2.getWaveValue())
+        {
+        case 0:
+            break;
+        case 1:                                //Bounce Collisions
+            boss2.startBounce(projectiles, fullCrateEnvironment);
+            break;
+        case 2:
+            boss2.startBounce(projectiles, fullCrateEnvironment);
+            break;
+        default:
+            break;
+        }
         break;
+
+
+
     case BossType::bossType3:
         break;
     default:
