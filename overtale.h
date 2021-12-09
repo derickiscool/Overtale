@@ -12,6 +12,7 @@
 #include "player.h"
 #include "environment.h"
 #include "boss1.h"
+#include "boss2.h"
 #include "projectile.h"
 #include "textDX.h"
 #include "boss3.h"
@@ -77,9 +78,10 @@ private:
     Powerup healPowerup1;
     Powerup healPowerup2;
 
+    
     Powerup shieldPowerup;
-    
-    
+    Boss2 boss2;
+
 
 public:
     enum BossType
