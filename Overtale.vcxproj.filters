@@ -60,10 +60,13 @@
     <ClCompile Include="menu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="levelSelect.cpp">
+    <ClCompile Include="boss3.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="arrow.cpp">
+    <ClCompile Include="asteroid.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="powerup.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -116,10 +119,13 @@
     <ClInclude Include="menu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="levelSelect.h">
+    <ClInclude Include="boss3.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="arrow.h">
+    <ClInclude Include="asteroid.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="powerup.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

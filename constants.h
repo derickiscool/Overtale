@@ -38,7 +38,7 @@ const float FRAME_RATE  = 200.0f;               // the target frame rate (frames
 const float MIN_FRAME_RATE = 10.0f;             // the minimum frame rate
 const float MIN_FRAME_TIME = 1.0f/FRAME_RATE;   // minimum desired time for 1 frame
 const float MAX_FRAME_TIME = 1.0f/MIN_FRAME_RATE; // maximum time used in calculations
-const int MAX_PROJECTILES = 100;
+const int MAX_PROJECTILES = 5000;
 
 
 // graphic images
@@ -50,8 +50,11 @@ const char BOSS1_IMAGE[] = "pictures\\boss1.png";
 const char BOSS1Projectile_IMAGE[] = "pictures\\boss1Projectile.png";
 const char MENU_BACKGROUND_IMAGE[] = "pictures\\menuBackground.png";
 const char MENU_ARROW_IMAGE[] = "pictures\\menuArrow.png";
-const char LEVEL_SELECT_BACKGROUND[] = "pictures\\levelSelectBackground.png";
-
+const char BOSS3_IMAGE[] = "pictures\\boss3.png";
+const char BOSS3Projectile_IMAGE[] = "pictures\\boss3Projectile.png";
+const char ASTEROID_IMAGE[] = "pictures\\asteroids.png";
+const char HEAL_IMAGE[] = "pictures\\heal.png";
+const char SHIELD_IMAGE[] = "pictures\\shield.png";
 
 //ENVIRONMENT 
 const int FLOOR_ROW_LENGTH = 31; //Must be odd numbers for true center square value

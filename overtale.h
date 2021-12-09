@@ -14,6 +14,9 @@
 #include "boss1.h"
 #include "projectile.h"
 #include "textDX.h"
+#include "boss3.h"
+#include "asteroid.h"
+#include "powerup.h"
 //=============================================================================
 // Create game class
 //=============================================================================
@@ -40,6 +43,11 @@ private:
     TextureManager crateTexture;    //crate texture
     TextureManager boss1Texture;    //boss1 texture 
     TextureManager boss1ProjectileTexture; //projectile texture for boss1
+    TextureManager boss3Texture;    //boss3 texture 
+    TextureManager boss3ProjectileTexture; //projectile texture for boss3
+    TextureManager asteroidTexture; //asteroid texture
+    TextureManager healPowerupTexture; //healpowerup texture
+    TextureManager shieldPowerupTexture; //shieldpowerup texture
     Player    ship1;          // spaceship
     Environment floorEnvironment; //floor tile environment placeholder
     Environment fullFloorRow[FLOOR_ROW_LENGTH];  //Creating Singular Row
@@ -56,7 +64,19 @@ private:
     Projectile boss1Projectile;
     Boss1 boss1;
     
+    //Boss 3
+    Projectile boss3Projectile;
+    Boss3 boss3;
+    Asteroid asteroid1;
+    Asteroid asteroid2;
+    Asteroid asteroid3;
+    Asteroid asteroid4;
 
+    //powerup
+    Powerup healPowerup1;
+    Powerup healPowerup2;
+
+    Powerup shieldPowerup;
     
     
 
@@ -87,10 +107,11 @@ public:
     void generateFloor(); //used to generate the floor of the game
     void generateBoundary(); //generating the boundaries of the box
     void boss1Setup();     //setup first boss
-
-
+    void boss3Setup();     //setup third boss
 
     void setBossType(BossType type) { bossType = type; };
+
+
 };
 
 #endif
