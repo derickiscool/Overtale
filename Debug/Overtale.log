@@ -1,1 +1,31 @@
-﻿  Overtale.vcxproj -> C:\Users\deric\Desktop\Overtale\Overtale\Debug\Overtale.exe
+﻿  asteroid.cpp
+C:\Users\user\Desktop\Overtale Gpp1\constants.h(74,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
+C:\Users\user\Desktop\Overtale Gpp1\constants.h(74,30): warning C4309: 'initializing': truncation of constant value
+C:\Users\user\Desktop\Overtale Gpp1\asteroid.h(19,29): warning C4305: 'initializing': truncation from 'double' to 'float'
+  overtale.cpp
+C:\Users\user\Desktop\Overtale Gpp1\constants.h(74,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
+C:\Users\user\Desktop\Overtale Gpp1\constants.h(74,30): warning C4309: 'initializing': truncation of constant value
+C:\Users\user\Desktop\Overtale Gpp1\boss3.h(23,29): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\user\Desktop\Overtale Gpp1\asteroid.h(19,29): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\user\Desktop\Overtale Gpp1\overtale.cpp(165,43): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\user\Desktop\Overtale Gpp1\overtale.cpp(171,43): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\user\Desktop\Overtale Gpp1\overtale.cpp(176,43): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\user\Desktop\Overtale Gpp1\overtale.cpp(181,43): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\user\Desktop\Overtale Gpp1\overtale.cpp(186,43): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\user\Desktop\Overtale Gpp1\overtale.cpp(192,43): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\user\Desktop\Overtale Gpp1\overtale.cpp(198,43): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\user\Desktop\Overtale Gpp1\overtale.cpp(480,53): warning C4305: 'argument': truncation from 'UINT' to 'float'
+C:\Users\user\Desktop\Overtale Gpp1\overtale.cpp(498,39): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\user\Desktop\Overtale Gpp1\overtale.cpp(504,39): warning C4305: 'argument': truncation from 'double' to 'float'
+  sceneManager.cpp
+C:\Users\user\Desktop\Overtale Gpp1\constants.h(74,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
+C:\Users\user\Desktop\Overtale Gpp1\constants.h(74,30): warning C4309: 'initializing': truncation of constant value
+C:\Users\user\Desktop\Overtale Gpp1\boss3.h(23,29): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\user\Desktop\Overtale Gpp1\asteroid.h(19,29): warning C4305: 'initializing': truncation from 'double' to 'float'
+  winmain.cpp
+C:\Users\user\Desktop\Overtale Gpp1\constants.h(74,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
+C:\Users\user\Desktop\Overtale Gpp1\constants.h(74,30): warning C4309: 'initializing': truncation of constant value
+C:\Users\user\Desktop\Overtale Gpp1\boss3.h(23,29): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\user\Desktop\Overtale Gpp1\asteroid.h(19,29): warning C4305: 'initializing': truncation from 'double' to 'float'
+  Generating Code...
+  Overtale.vcxproj -> C:\Users\user\Desktop\Overtale Gpp1\Debug\Overtale.exe
