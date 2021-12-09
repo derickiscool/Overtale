@@ -28,13 +28,7 @@ private:
 
 
 
-    enum BossType
-    {
-        bossType1,
-        bossType2,
-        bossType3
-    };
-    BossType bossType;
+   
 
     //text variables
     TextDX* dxFontSmall;       // DirectX fonts
@@ -67,6 +61,15 @@ private:
     
 
 public:
+    enum BossType
+    {
+        bossType1,
+        bossType2,
+        bossType3
+    };
+
+    BossType bossType;
+
     // Constructor
     Overtale();
 
@@ -84,6 +87,10 @@ public:
     void generateFloor(); //used to generate the floor of the game
     void generateBoundary(); //generating the boundaries of the box
     void boss1Setup();     //setup first boss
+
+
+
+    void setBossType(BossType type) { bossType = type; };
 };
 
 #endif

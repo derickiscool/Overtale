@@ -50,6 +50,7 @@ const char BOSS1_IMAGE[] = "pictures\\boss1.png";
 const char BOSS1Projectile_IMAGE[] = "pictures\\boss1Projectile.png";
 const char MENU_BACKGROUND_IMAGE[] = "pictures\\menuBackground.png";
 const char MENU_ARROW_IMAGE[] = "pictures\\menuArrow.png";
+const char LEVEL_SELECT_BACKGROUND[] = "pictures\\levelSelectBackground.png";
 
 
 //ENVIRONMENT 
