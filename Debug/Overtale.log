@@ -1,1 +1,19 @@
-﻿  Overtale.vcxproj -> C:\Users\deric\Desktop\Overtale\Overtale\Debug\Overtale.exe
+﻿  overtale.cpp
+C:\Users\deric\Desktop\Overtale\Overtale\constants.h(77,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
+C:\Users\deric\Desktop\Overtale\Overtale\constants.h(77,30): warning C4309: 'initializing': truncation of constant value
+C:\Users\deric\Desktop\Overtale\Overtale\boss3.h(27,29): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\deric\Desktop\Overtale\Overtale\asteroid.h(23,29): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\deric\Desktop\Overtale\Overtale\overtale.cpp(174,43): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\deric\Desktop\Overtale\Overtale\overtale.cpp(180,43): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\deric\Desktop\Overtale\Overtale\overtale.cpp(185,43): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\deric\Desktop\Overtale\Overtale\overtale.cpp(190,43): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\deric\Desktop\Overtale\Overtale\overtale.cpp(195,43): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\deric\Desktop\Overtale\Overtale\overtale.cpp(201,43): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\deric\Desktop\Overtale\Overtale\overtale.cpp(207,43): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\deric\Desktop\Overtale\Overtale\overtale.cpp(445,39): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\deric\Desktop\Overtale\Overtale\overtale.cpp(451,39): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\deric\Desktop\Overtale\Overtale\overtale.cpp(504,53): warning C4305: 'argument': truncation from 'UINT' to 'float'
+C:\Users\deric\Desktop\Overtale\Overtale\overtale.cpp(522,39): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\deric\Desktop\Overtale\Overtale\overtale.cpp(528,39): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\deric\Desktop\Overtale\Overtale\overtale.cpp(136): warning C4715: 'Overtale::update': not all control paths return a value
+  Overtale.vcxproj -> C:\Users\deric\Desktop\Overtale\Overtale\Debug\Overtale.exe

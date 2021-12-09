@@ -108,6 +108,8 @@ public:
 
     float getSpawnTimer() { return spawnTimer ;};
 
+    void setTimer(float t) { timer = t; };
+
     float getTimer() { return timer; };
 
     int getWaveValue() { return waveValue; };

@@ -6,7 +6,7 @@
 //=============================================================================
 SceneManager::SceneManager()
 {
-
+    gameOver = new GameOver();
     levelSelect = new LevelSelect();
     menu = new Menu();
     overtale = new Overtale();
@@ -43,6 +43,7 @@ void SceneManager::initialize(HWND hwnd)
     overtale->initialize(graphics, this); //initialize different scenes
     menu->initialize(graphics, this);
     levelSelect->initialize(graphics, this);
+    gameOver->initialize(graphics, this);
 
 
 
@@ -78,6 +79,7 @@ void SceneManager::update()
         {
         case 1:
             overtale->setBossType(Overtale::BossType::bossType1);
+            overtale->boss1Setup();
             currentScene = Scene::gameScene;
             break;
         case 2:
@@ -86,6 +88,7 @@ void SceneManager::update()
             break;
         case 3:
             overtale->setBossType(Overtale::BossType::bossType3);
+            overtale->boss3Setup();
             currentScene = Scene::gameScene;
             break;
         default:
@@ -93,11 +96,37 @@ void SceneManager::update()
         }
         break;
     case SceneManager::gameScene:
-        overtale->update(frameTime);
+        switch (overtale->update(frameTime))
+        {
+        case 1:
+            gameOver->setGameOutcome(false);
+            currentScene = Scene::gameOverScene;
+            break;
+        case 2:
+            gameOver->setGameOutcome(true);
+            currentScene = Scene::gameOverScene;
+            break;
+        default:
+            break;
+        }
+
         break;
-    case SceneManager::gameWinScene:
-        break;
-    case SceneManager::gameLostScene:
+    case SceneManager::gameOverScene:
+        switch (gameOver->update(input))
+        {
+        case 1:
+            currentScene = Scene::gameScene;
+            break;
+        case 2:
+            currentScene = Scene::levelSelectScene;
+            break;
+        case 3:
+            currentScene = Scene::menuScene;
+            break;
+        case 4:
+            exitGame();
+            break;
+        };
         break;
     default:
         break;
@@ -120,22 +149,12 @@ void SceneManager::collisions()
 {
     switch (currentScene)
     {
-    case SceneManager::menuScene:
-        break;
-    case SceneManager::optionsScene:
-        break;
-    case SceneManager::levelSelectScene:
-        break;
     case SceneManager::gameScene:
         overtale->collisions();
         break;
-    case SceneManager::gameWinScene:
-        break;
-    case SceneManager::gameLostScene:
-        break;
-    default:
-        break;
     }
+
+ 
     
 
 }
@@ -158,9 +177,8 @@ void SceneManager::render()
     case SceneManager::gameScene:
         overtale->render();
         break;
-    case SceneManager::gameWinScene:
-        break;
-    case SceneManager::gameLostScene:
+    case SceneManager::gameOverScene:
+        gameOver->render();
         break;
     default:
         break;

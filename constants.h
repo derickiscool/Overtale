@@ -55,6 +55,9 @@ const char BOSS3Projectile_IMAGE[] = "pictures\\boss3Projectile.png";
 const char ASTEROID_IMAGE[] = "pictures\\asteroids.png";
 const char HEAL_IMAGE[] = "pictures\\heal.png";
 const char SHIELD_IMAGE[] = "pictures\\shield.png";
+const char LEVEL_SELECT_BACKGROUND[] = "pictures\\levelSelectBackground.png";
+const char GAME_LOST_BACKGROUND[] = "pictures\\gameLostBackground.png";
+const char GAME_WON_BACKGROUND[] = "pictures\\gameWonBackground.png";
 
 //ENVIRONMENT 
 const int FLOOR_ROW_LENGTH = 31; //Must be odd numbers for true center square value

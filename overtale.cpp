@@ -66,31 +66,24 @@ void Overtale::initialize(Graphics* g, Game* gPtr)
     //environment generation 
     generateFloor();
     generateBoundary();
-
-    switch (bossType)
-    {
-    case Overtale::bossType1:
-        boss1Setup();
-        break;
-    case Overtale::bossType2:
-        break;
-    case Overtale::bossType3:
-        boss3Setup();
-        break;
-    default:
-        break;
-    }
-    return;
+       
+   
 }
 
 //=============================================================================
 // Update all game items
 //=============================================================================
-void Overtale::update(float frameTime)
+int Overtale::update(float frameTime)
 {
-    
-
   
+    if (ship1.getHealth() == 0)
+    {
+        projectiles[0]->clearProjectiles(projectiles);
+        boss1.setTimer(0);
+        ship1.setHealth(100);
+        return 1;
+    }
+    
     ship1.update(frameTime);
 
     switch (bossType)
@@ -102,6 +95,15 @@ void Overtale::update(float frameTime)
             projectiles[i]->update(frameTime);
         }
         boss1.update(frameTime,projectiles, ship1);
+        if (boss1.getTimer() > 90.0f)
+        {
+            projectiles[0]->clearProjectiles(projectiles);
+            boss1.setTimer(0);
+            ship1.setHealth(100);
+            return 2;
+        }
+
+
         break;
     case BossType::bossType2:
         break;
@@ -115,6 +117,13 @@ void Overtale::update(float frameTime)
         asteroid2.update(frameTime);
         asteroid3.update(frameTime);
         asteroid4.update(frameTime);
+        if (boss3.getTimer() > 90.0f)
+        {
+            projectiles[0]->clearProjectiles(projectiles);
+            ship1.setHealth(100);
+            boss3.setTimer(0);
+            return 2;
+        }
         break;
     default:
         break;
@@ -254,21 +263,21 @@ void Overtale::render()
     {
     case BossType::bossType1:
         dxFontSmall->setFontColor(graphicsNS::WHITE);
-        dxFontSmall->print("Wave " + std::to_string(boss1.getWaveValue() + 1), 0, 40);
+        dxFontSmall->print("Current Wave " + std::to_string(boss1.getWaveValue() + 1), 0, 40);
         dxFontSmall->print("Timer: " + std::to_string(boss1.getTimer()), 0, 80);
-        dxFontSmall->print("Active Projectiles : " + std::to_string(boss1.getActiveProjectiles()), 0, 120);
-        dxFontSmall->print("Health : " + std::to_string(ship1.getHealth()), 0, 180);
+        dxFontSmall->print("Health : " + std::to_string(ship1.getHealth()), 0, 120);
         boss1.draw();
+        healPowerup1.draw();
+        healPowerup2.draw();
         break;
 
     case BossType::bossType2:
         break;
     case BossType::bossType3:
         dxFontSmall->setFontColor(graphicsNS::WHITE);
-        dxFontSmall->print("Wave " + std::to_string(boss3.getWaveValue() + 1), 0, 40);
+        dxFontSmall->print("Current Wave " + std::to_string(boss3.getWaveValue() + 1), 0, 40);
         dxFontSmall->print("Timer: " + std::to_string(boss3.getTimer()), 0, 80);
-        dxFontSmall->print("Active Projectiles : " + std::to_string(boss3.getActiveProjectiles()), 0, 120);
-        dxFontSmall->print("Health : " + std::to_string(ship1.getHealth()), 0, 180);
+        dxFontSmall->print("Health : " + std::to_string(ship1.getHealth()), 0, 120);
         boss3.draw();
         asteroid1.draw();
         asteroid2.draw();
@@ -425,7 +434,22 @@ void Overtale::boss1Setup()
     if (!boss1Projectile.initialize(gamePtr, boss1ProjectileNS::WIDTH, boss1ProjectileNS::HEIGHT, boss1ProjectileNS::TEXTURE_COLS, &boss1ProjectileTexture))
         throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing boss1"));
     boss1.projectileInitialization(&boss1Projectile);
-   
+    //heal power up (copy paste to add to level)
+  //healpowerup textures
+    if (!healPowerupTexture.initialize(graphics, HEAL_IMAGE))
+        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing healpowerup textures"));
+
+    //heal powerup1
+    if (!healPowerup1.initialize(gamePtr, PowerUpNS::WIDTH, PowerUpNS::HEIGHT, 0, &healPowerupTexture))
+        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing heal power up1"));
+    healPowerup1.setX(GAME_WIDTH / 2.3);
+    healPowerup1.setY(GAME_HEIGHT / 3);
+
+    //heal powerup2
+    if (!healPowerup2.initialize(gamePtr, PowerUpNS::WIDTH, PowerUpNS::HEIGHT, 0, &healPowerupTexture))
+        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing heal power up2"));
+    healPowerup2.setX(GAME_WIDTH / 1.7);
+    healPowerup2.setY(GAME_HEIGHT / 2);
     
     //projectile array initialization 
     for (int i = 0; i < MAX_PROJECTILES; ++i)

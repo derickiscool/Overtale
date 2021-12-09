@@ -19,14 +19,14 @@ void LevelSelect::initialize(Graphics* g, Game* ptr)
 
 	//Background texture
 	if (!levelSelectBackgroundTexture.initialize(g, LEVEL_SELECT_BACKGROUND))
-		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing menu background texture"));
+		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing level select background texture"));
 
 	//arrow texture
 	if (!arrowTexture.initialize(g, MENU_ARROW_IMAGE))
-		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing menu arrow texture"));
+		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing level select arrow texture"));
 
 	if (!levelSelectBackground.initialize(g, 0, 0, 0, &levelSelectBackgroundTexture))
-		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing menu image texture"));
+		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing level select background image "));
 
 	if (!arrow.initialize(g, 0, 0, 0, &arrowTexture))
 		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing arrow image texture"));

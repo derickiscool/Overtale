@@ -17,6 +17,7 @@
 #include "boss3.h"
 #include "asteroid.h"
 #include "powerup.h"
+#include "gameOver.h"
 //=============================================================================
 // Create game class
 //=============================================================================
@@ -98,7 +99,7 @@ public:
 
     // Initialize the game
     void initialize(Graphics* g, Game* gPtr);
-    void update(float frameTime);      // must override pure virtual from Game
+    int update(float frameTime);      // must override pure virtual from Game
     void ai();          // "
     void collisions();  // "
     void render();      // "

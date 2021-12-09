@@ -11,6 +11,7 @@
 #include "overtale.h"
 #include "game.h"
 #include "textDX.h"
+#include "gameOver.h"
 
 
 //=============================================================================
@@ -25,13 +26,13 @@ protected:
         optionsScene,
         levelSelectScene,
         gameScene,
-        gameWinScene,
-        gameLostScene,
+        gameOverScene
     };
 
     
     Scene currentScene;
     LevelSelect* levelSelect;
+    GameOver* gameOver;
     Menu* menu;
     Overtale* overtale;
     TextDX* text;
