@@ -62,5 +62,3 @@ void Projectile::clearProjectiles(Projectile *projectiles[])
 
 
 
-
-

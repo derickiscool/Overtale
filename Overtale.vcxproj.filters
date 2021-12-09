@@ -60,7 +60,6 @@
     <ClCompile Include="menu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="boss2.cpp">
     <ClCompile Include="boss3.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -127,9 +126,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="menu.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="boss2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="boss3.h">

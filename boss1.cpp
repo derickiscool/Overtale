@@ -212,6 +212,7 @@ void Boss1::updateAbilities(Projectile *projectiles[], float frameTime)
 		{
 			projectiles[i]->setProjectileDamage(10);
 		}
+		
 		break;
 
 	case wave3:
@@ -222,7 +223,6 @@ void Boss1::updateAbilities(Projectile *projectiles[], float frameTime)
 		{
 			projectiles[i]->setProjectileDamage(15);
 		}
-		
 		break;
 	}
 	
