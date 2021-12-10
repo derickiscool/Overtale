@@ -76,7 +76,7 @@ void Overtale::initialize(Graphics* g, Game* gPtr)
 int Overtale::update(float frameTime)
 {
   
-    if (ship1.getHealth() == 0)
+    if (ship1.getHealth() <= 0)
     {
         projectiles[0]->clearProjectiles(projectiles);
         boss1.setTimer(0);
