@@ -4,12 +4,9 @@
 // Student Number: S10196491
 
 
-
-
 #include "boss2.h"
 #include<iostream>
 #include <random>
-
 
 
 using namespace std;
@@ -64,7 +61,7 @@ void Boss2::update(float frameTime, Projectile* projectiles[], Player ship)
 {
 	Entity::update(frameTime);
 	updateAbilities(projectiles, frameTime);
-	spawnProjectileRandom(projectiles, frameTime, ship);
+	spawnProjectiles(projectiles, frameTime, ship);
 }
 
 
@@ -100,12 +97,8 @@ void Boss2::setupProjectile(Projectile* projectile, Player ship) //setup project
 	ran2 = rand() % (boundaryEnvironmentNS::MAX_Y - boundaryEnvironmentNS::MIN_Y + 1) + boundaryEnvironmentNS::MIN_Y;
 	projectile->setX(ran1);
 	projectile->setY(ran2);
-
-
 	D3DXVECTOR2 velocity1 = VECTOR2(-getX(), 0);
 	D3DXVECTOR2 velocity2 = VECTOR2(getX(), 0);
-	/*projectile1->setVelocity(velocity1 * projectileSpeed);
-	projectile2->setVelocity(velocity2 * projectileSpeed);*/
 	D3DXVECTOR2 shipVector = VECTOR2(ship.getX(), ship.getY());
 	D3DXVECTOR2 bossVector = VECTOR2(getX(), getY());
 	D3DXVECTOR2 lineVector = VECTOR2(getX() - 1, getY());
@@ -168,7 +161,7 @@ void Boss2::bounceOff(Projectile* projectiles[]) //delete projectiles when hit o
 
 
 
-void Boss2::spawnProjectileRandom(Projectile* projectiles[], float frameTime, Player ship)//Spawn from any of the map border
+void Boss2::spawnProjectiles(Projectile* projectiles[], float frameTime, Player ship)//Spawn from any of the map border
 {
 	if (spawnBool)
 	{
@@ -226,6 +219,7 @@ void Boss2::updateAbilities(Projectile* projectiles[], float frameTime)
 	switch (waveValue) //Setting projectile data and abilities based on wave
 	{
 	case wave1:
+		/*spawnProjectiles(projectiles,frameTime)*/
 		projectileSpeed = boss2ProjectileNS::PROJECTILE_EASY_SPEED;
 		spawnRate = boss2ProjectileNS::PROJECTILE_EASY_SPAWN;
 		for (int i = 0; i < MAX_PROJECTILES; ++i)

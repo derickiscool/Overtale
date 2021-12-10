@@ -35,18 +35,12 @@ namespace boss2NS
 	const float ANIMATION_DELAY = 0.2f; // time between frames
 	const float wave2Time = 30.0f; //When should wave 2 start
 
-
-
 }
-
-
 
 // inherits from Entity class
 class Boss2 : public Entity
 {
 protected:
-
-
 
 	enum Wave
 	{
@@ -66,14 +60,9 @@ protected:
 	bool spawnBool; //true if want to spawn projectiles, false if projectiles should not spawn
 
 
-
-
-
 public:
 	// constructor
 	Boss2();
-
-
 
 	// inherited member functions
 	virtual void draw();
@@ -81,13 +70,11 @@ public:
 		TextureManager* textureM);
 	void update(float frameTime, Projectile* projectiles[], Player ship);
 	void projectileInitialization(Projectile* projectile);
-	void setupProjectile(Projectile* projectile1, Projectile* projectile2, Player ship);
 	void setupProjectile(Projectile* projectile, Player ship);//Setting up velocity + angle of projectiles
 	void bounceOff(Projectile* projectiles[]); //removes entities when touching boundaries
-	void spawnProjectileRandom(Projectile* projectiles[], float frameTime, Player ship);
+	void spawnProjectiles(Projectile* projectiles[], float frameTime, Player ship);
 	void updateAbilities(Projectile* projectiles[], float frameTime);
 	void resetSpawn();
-
 
 
 	//get setters
@@ -113,7 +100,7 @@ public:
 
 	float getTimer() { return timer; };
 
-
+	void setTimer(float t) { timer = t; };
 
 	int getWaveValue() { return waveValue; };
 

@@ -84,6 +84,7 @@ void SceneManager::update()
             break;
         case 2:
             overtale->setBossType(Overtale::BossType::bossType2);
+            overtale->boss2Setup();
             currentScene = Scene::gameScene;
             break;
         case 3:

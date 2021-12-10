@@ -106,6 +106,19 @@ int Overtale::update(float frameTime)
 
         break;
     case BossType::bossType2:
+        for (int i = 0; i < MAX_PROJECTILES; ++i)
+        {
+            projectiles[i]->update(frameTime);
+        }
+        boss2.update(frameTime, projectiles, ship1);
+        if (boss2.getTimer() > 90.0f)
+        {
+            projectiles[0]->clearProjectiles(projectiles);
+            boss2.setTimer(0);
+            ship1.setHealth(100);
+            return 2;
+        }
+
         break;
     case BossType::bossType3:
         for (int i = 0; i < MAX_PROJECTILES; i += 1)
@@ -153,6 +166,17 @@ void Overtale::collisions()
         {
             projectiles[i]->setActive(false);
             boss1.setActiveProjectiles(boss1.getActiveProjectiles() - 1);
+            ship1.setHealth(ship1.getHealth() - projectiles[i]->getProjectileDamage());
+            break;
+        }
+    }
+
+    for (int i = 0; i < boss2.getActiveProjectiles(); ++i)
+    {
+        if (projectiles[i]->collidesWith(ship1, collisionVector))
+        {
+            projectiles[i]->setActive(false);
+            boss2.setActiveProjectiles(boss1.getActiveProjectiles() - 1);
             ship1.setHealth(ship1.getHealth() - projectiles[i]->getProjectileDamage());
             break;
         }
@@ -272,6 +296,11 @@ void Overtale::render()
         break;
 
     case BossType::bossType2:
+        dxFontSmall->setFontColor(graphicsNS::WHITE);
+        dxFontSmall->print("Current Wave " + std::to_string(boss2.getWaveValue() + 1), 0, 40);
+        dxFontSmall->print("Timer: " + std::to_string(boss2.getTimer()), 0, 80);
+        dxFontSmall->print("Health : " + std::to_string(ship1.getHealth()), 0, 120);
+        boss2.draw();
         break;
     case BossType::bossType3:
         dxFontSmall->setFontColor(graphicsNS::WHITE);
@@ -460,6 +489,53 @@ void Overtale::boss1Setup()
 
     }
     
+
+}
+
+void Overtale::boss2Setup()
+{
+    //boss 2 textures
+    if (!boss2Texture.initialize(graphics, BOSS1_IMAGE))
+        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing game textures"));
+    //Boss 2 projectile Textures
+    if (!boss2ProjectileTexture.initialize(graphics, BOSS1Projectile_IMAGE))
+        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing boss1projectile texture"));
+    //boss1 initialization 
+    if (!boss2.initialize(gamePtr, boss2NS::WIDTH, boss2NS::HEIGHT, boss2NS::TEXTURE_COLS, &boss2Texture))
+        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing boss1"));
+    boss2.setFrames(boss2NS::START_FRAME, boss2NS::END_FRAME);
+    boss2.setCurrentFrame(boss2NS::START_FRAME);
+    //boss2 projectile initialization 
+    if (!boss2Projectile.initialize(gamePtr, boss2ProjectileNS::WIDTH, boss2ProjectileNS::HEIGHT, boss2ProjectileNS::TEXTURE_COLS, &boss2ProjectileTexture))
+        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing boss1"));
+    boss2.projectileInitialization(&boss2Projectile);
+    //heal power up (copy paste to add to level)
+  //healpowerup textures
+    if (!healPowerupTexture.initialize(graphics, HEAL_IMAGE))
+        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing healpowerup textures"));
+
+    //heal powerup1
+    if (!healPowerup1.initialize(gamePtr, PowerUpNS::WIDTH, PowerUpNS::HEIGHT, 0, &healPowerupTexture))
+        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing heal power up1"));
+    healPowerup1.setX(GAME_WIDTH / 2.3);
+    healPowerup1.setY(GAME_HEIGHT / 3);
+
+    //heal powerup2
+    if (!healPowerup2.initialize(gamePtr, PowerUpNS::WIDTH, PowerUpNS::HEIGHT, 0, &healPowerupTexture))
+        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing heal power up2"));
+    healPowerup2.setX(GAME_WIDTH / 1.7);
+    healPowerup2.setY(GAME_HEIGHT / 2);
+
+    //projectile array initialization 
+    for (int i = 0; i < MAX_PROJECTILES; ++i)
+    {
+        Projectile projectile = boss1Projectile;
+        tempProjectiles[i] = projectile;
+
+        projectiles[i] = &tempProjectiles[i];
+
+    }
+
 
 }
 

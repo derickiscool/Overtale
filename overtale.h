@@ -45,6 +45,8 @@ private:
     TextureManager crateTexture;    //crate texture
     TextureManager boss1Texture;    //boss1 texture 
     TextureManager boss1ProjectileTexture; //projectile texture for boss1
+    TextureManager boss2Texture;    //boss2 texture 
+    TextureManager boss2ProjectileTexture; //projectile texture for boss2
     TextureManager boss3Texture;    //boss3 texture 
     TextureManager boss3ProjectileTexture; //projectile texture for boss3
     TextureManager asteroidTexture; //asteroid texture
@@ -113,6 +115,7 @@ public:
     void generateFloor(); //used to generate the floor of the game
     void generateBoundary(); //generating the boundaries of the box
     void boss1Setup();     //setup first boss
+    void boss2Setup();     //setup second boss
     void boss3Setup();     //setup third boss
 
     void setBossType(BossType type) { bossType = type; };

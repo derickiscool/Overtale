@@ -1,4 +1,8 @@
-﻿  projectile.cpp
+﻿  boss2.cpp
 C:\Users\user\Desktop\Overtale final\constants.h(80,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
 C:\Users\user\Desktop\Overtale final\constants.h(80,30): warning C4309: 'initializing': truncation of constant value
+C:\Users\user\Desktop\Overtale final\boss2.cpp(98,19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\user\Desktop\Overtale final\boss2.cpp(99,19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\user\Desktop\Overtale final\boss2.cpp(111,39): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\user\Desktop\Overtale final\boss2.cpp(201,68): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
   Overtale.vcxproj -> C:\Users\user\Desktop\Overtale final\Debug\Overtale.exe
