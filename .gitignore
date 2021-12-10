@@ -14,8 +14,6 @@
 *.userprefs
 
 # Build results
-[Dd]ebug/
-[Dd]ebugPublic/
 [Rr]elease/
 [Rr]eleases/
 x64/
@@ -44,7 +42,6 @@ Generated\ Files/
 TestResult.xml
 
 # Build Results of an ATL Project
-[Dd]ebugPS/
 [Rr]eleasePS/
 dlldata.c
 
