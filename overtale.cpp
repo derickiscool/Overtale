@@ -285,7 +285,6 @@ void Overtale::render()
         asteroid4.draw();
         healPowerup1.draw();
         healPowerup2.draw();
-        shieldPowerup.draw();
         break;
     default:
         break;
