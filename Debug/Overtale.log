@@ -1,8 +1,21 @@
-﻿  boss2.cpp
-C:\Users\user\Desktop\Overtale final\constants.h(80,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
-C:\Users\user\Desktop\Overtale final\constants.h(80,30): warning C4309: 'initializing': truncation of constant value
-C:\Users\user\Desktop\Overtale final\boss2.cpp(98,19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\user\Desktop\Overtale final\boss2.cpp(99,19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\user\Desktop\Overtale final\boss2.cpp(111,39): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\user\Desktop\Overtale final\boss2.cpp(201,68): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
-  Overtale.vcxproj -> C:\Users\user\Desktop\Overtale final\Debug\Overtale.exe
+﻿  overtale.cpp
+C:\Users\user\Desktop\Overtale final2\constants.h(80,34): warning C4305: 'initializing': truncation from 'int' to 'UCHAR'
+C:\Users\user\Desktop\Overtale final2\constants.h(80,30): warning C4309: 'initializing': truncation of constant value
+C:\Users\user\Desktop\Overtale final2\boss3.h(27,29): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\user\Desktop\Overtale final2\asteroid.h(23,29): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\user\Desktop\Overtale final2\overtale.cpp(198,43): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\user\Desktop\Overtale final2\overtale.cpp(204,43): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\user\Desktop\Overtale final2\overtale.cpp(209,43): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\user\Desktop\Overtale final2\overtale.cpp(214,43): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\user\Desktop\Overtale final2\overtale.cpp(219,43): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\user\Desktop\Overtale final2\overtale.cpp(225,43): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\user\Desktop\Overtale final2\overtale.cpp(231,43): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\user\Desktop\Overtale final2\overtale.cpp(473,39): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\user\Desktop\Overtale final2\overtale.cpp(479,39): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\user\Desktop\Overtale final2\overtale.cpp(520,39): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\user\Desktop\Overtale final2\overtale.cpp(526,39): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\user\Desktop\Overtale final2\overtale.cpp(579,53): warning C4305: 'argument': truncation from 'UINT' to 'float'
+C:\Users\user\Desktop\Overtale final2\overtale.cpp(597,39): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\user\Desktop\Overtale final2\overtale.cpp(603,39): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\user\Desktop\Overtale final2\overtale.cpp(149): warning C4715: 'Overtale::update': not all control paths return a value
+  Overtale.vcxproj -> C:\Users\user\Desktop\Overtale final2\Debug\Overtale.exe

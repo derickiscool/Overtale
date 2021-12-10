@@ -80,6 +80,7 @@ int Overtale::update(float frameTime)
     {
         projectiles[0]->clearProjectiles(projectiles);
         boss1.setTimer(0);
+        boss3.setTimer(0);
         ship1.setHealth(100);
         return 1;
     }
