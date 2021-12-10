@@ -52,6 +52,9 @@ const char MENU_BACKGROUND_IMAGE[] = "pictures\\menuBackground.png";
 const char MENU_ARROW_IMAGE[] = "pictures\\menuArrow.png";
 const char BOSS3_IMAGE[] = "pictures\\boss3.png";
 const char BOSS3Projectile_IMAGE[] = "pictures\\boss3Projectile.png";
+//booss2
+const char BOSS2_IMAGE[] = "pictures\\boss2.png";
+//const char BOSS2Projectile_IMAGE[] = ".png";
 const char ASTEROID_IMAGE[] = "pictures\\asteroids.png";
 const char HEAL_IMAGE[] = "pictures\\heal.png";
 const char SHIELD_IMAGE[] = "pictures\\shield.png";

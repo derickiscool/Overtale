@@ -15,6 +15,7 @@
 #include "projectile.h"
 #include "textDX.h"
 #include "boss3.h"
+#include "boss2.h"
 #include "asteroid.h"
 #include "powerup.h"
 #include "gameOver.h"
@@ -65,6 +66,10 @@ private:
     Projectile boss1Projectile;
     Boss1 boss1;
     
+    //Boss 2
+    Projectile boss2Projectile;
+    Boss2 boss2;
+
     //Boss 3
     Projectile boss3Projectile;
     Boss3 boss3;
